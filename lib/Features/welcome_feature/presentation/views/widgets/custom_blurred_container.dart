@@ -46,7 +46,6 @@ class CustomBlurredContainer extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 50),
                 child: Text(
                   'Browser All Movies/Series and more',
-                  maxLines: 2,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 18,
