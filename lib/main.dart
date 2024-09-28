@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/Features/welcome_feature/presentation/views/welcome_view.dart';
 
 void main() {
@@ -10,9 +11,14 @@ class MovieApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData().copyWith(
+        scaffoldBackgroundColor: const Color(0xff232336),
+        brightness: Brightness.dark,
+        textTheme: GoogleFonts.josefinSansTextTheme(ThemeData.dark().textTheme),
+      ),
       debugShowCheckedModeBanner: false,
-      home: WelcomeView(),
+      home: const WelcomeView(),
     );
   }
 }
