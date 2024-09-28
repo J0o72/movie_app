@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movie_app/constants.dart';
+import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class CustomWelcomeButton extends StatelessWidget {
@@ -12,7 +14,9 @@ class CustomWelcomeButton extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 100),
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: () {
+          GoRouter.of(context).push(AppRouter.kHomeView);
+        },
         style: ElevatedButton.styleFrom(
           backgroundColor: mainColor,
           padding: const EdgeInsets.all(15),
