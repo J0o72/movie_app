@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_app_bar.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_carousel_slider.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_row.dart';
@@ -19,30 +21,44 @@ class HomeViewBody extends StatelessWidget {
         ),
         body: const TabBarView(
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 20,
+            CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        height: 20,
+                      ),
+                      CustomCarouselSliderView(),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      CustomRow(
+                        leftText: "Genres",
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      GenresListView(),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      CustomRow(
+                        leftText: "Now Playing",
+                      ),
+                      NowPlayingListView(),
+                      CustomRow(
+                        leftText: "Top Rating",
+                      ),
+                      NowPlayingListView(),
+                      CustomRow(
+                        leftText: "Upcoming",
+                      ),
+                      NowPlayingListView(),
+                    ],
+                  ),
                 ),
-                CustomCarouselSliderView(),
-                SizedBox(
-                  height: 20,
-                ),
-                CustomRow(
-                  leftText: "Genres",
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                GenresListView(),
-                SizedBox(
-                  height: 20,
-                ),
-                CustomRow(
-                  leftText: "Now Playing",
-                ),
-                NowPlayingListView(),
               ],
             ),
             Center(
