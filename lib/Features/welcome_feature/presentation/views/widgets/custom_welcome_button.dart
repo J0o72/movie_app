@@ -18,7 +18,7 @@ class CustomWelcomeButton extends StatelessWidget {
           GoRouter.of(context).push(AppRouter.kHomeView);
         },
         style: ElevatedButton.styleFrom(
-          backgroundColor: mainColor,
+          backgroundColor: kMainColor,
           padding: const EdgeInsets.all(15),
           // side: const BorderSide(color: Colors.white),
           shape: RoundedRectangleBorder(

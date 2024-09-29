@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:movie_app/Features/welcome_feature/presentation/views/welcome_view.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 
 void main() {

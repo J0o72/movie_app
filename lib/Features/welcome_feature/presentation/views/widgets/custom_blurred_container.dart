@@ -33,7 +33,7 @@ class CustomBlurredContainer extends StatelessWidget {
                 Text(
                   'Movie App',
                   style: Styles.styleText28.copyWith(
-                    color: mainColor,
+                    color: kMainColor,
                   ),
                 ),
               ],
@@ -58,10 +58,10 @@ class CustomBlurredContainer extends StatelessWidget {
             ),
             const CustomWelcomeButton(),
           ],
-        ).frosted(
-          blur: 3,
-          frostColor: Colors.black,
         ),
+      ).frosted(
+        blur: 3,
+        frostColor: Colors.black,
       ),
     );
   }
