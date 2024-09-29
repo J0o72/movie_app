@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_app_bar.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_carousel_slider.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/custom_row.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/genre_item.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/genres_list_view.dart';
 import 'package:movie_app/core/utils/styles.dart';
@@ -29,12 +30,8 @@ class HomeViewBody extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                Padding(
-                  padding: EdgeInsets.only(left: 15),
-                  child: Text(
-                    "Genres",
-                    style: Styles.styleText28,
-                  ),
+                CustomRow(
+                  leftText: "Genres",
                 ),
                 SizedBox(
                   height: 10,
@@ -42,6 +39,12 @@ class HomeViewBody extends StatelessWidget {
                 GenresListView(),
                 SizedBox(
                   height: 20,
+                ),
+                CustomRow(
+                  leftText: "Now Playing",
+                ),
+                SizedBox(
+                  height: 10,
                 ),
               ],
             ),
@@ -52,5 +55,14 @@ class HomeViewBody extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class NowPlayingItem extends StatelessWidget {
+  const NowPlayingItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
   }
 }
