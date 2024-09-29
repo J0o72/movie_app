@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_app_bar.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_carousel_slider.dart';
@@ -38,6 +39,9 @@ class HomeViewBody extends StatelessWidget {
                 CustomRow(
                   leftText: "Genres",
                 ),
+                CustomRow(
+                  leftText: "Genres",
+                ),
                 SizedBox(
                   height: 10,
                 ),
@@ -45,6 +49,13 @@ class HomeViewBody extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
+                CustomRow(
+                  leftText: "Now Playing",
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                NowPlayingItem(),
                 CustomRow(
                   leftText: "Now Playing",
                 ),
