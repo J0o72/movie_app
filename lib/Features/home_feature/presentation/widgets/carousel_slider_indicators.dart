@@ -24,7 +24,7 @@ class CustomCarouselIndicators extends StatelessWidget {
               innerCarouselController.animateToPage(index);
             },
             child: AnimatedContainer(
-              width: isSelected ? 55 : 17,
+              width: isSelected ? 40 : 15,
               height: 10,
               margin: EdgeInsets.symmetric(horizontal: isSelected ? 6 : 3),
               duration: const Duration(milliseconds: 300),

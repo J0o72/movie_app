@@ -30,7 +30,7 @@ class CustomWelcomeButton extends StatelessWidget {
           children: [
             Text(
               "Enter Now",
-              style: Styles.styleText20,
+              style: Styles.styleText22,
             ),
             Icon(
               Icons.arrow_forward,

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_app_bar.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_carousel_slider.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/genre_item.dart';
 import 'package:movie_app/constants.dart';
+import 'package:movie_app/core/utils/styles.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -18,11 +20,26 @@ class HomeViewBody extends StatelessWidget {
         body: const TabBarView(
           children: [
             Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(
                   height: 20,
                 ),
                 CustomCarouselSliderView(),
+                SizedBox(
+                  height: 20,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 15),
+                  child: Text(
+                    "Genres",
+                    style: Styles.styleText28,
+                  ),
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                GenreItem(),
               ],
             ),
             Center(
