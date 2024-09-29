@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 
 class CustomImageCarouselItem extends StatelessWidget {
   const CustomImageCarouselItem({super.key, required this.imageUrl});
@@ -13,9 +14,7 @@ class CustomImageCarouselItem extends StatelessWidget {
       child: CachedNetworkImage(
         fit: BoxFit.fill,
         errorWidget: (context, url, error) => const Icon(Icons.error),
-        placeholder: (context, url) => const Center(
-          child: CircularProgressIndicator(),
-        ),
+        placeholder: (context, url) => const CustomCircularLoading(),
         imageUrl: imageUrl,
       ),
     );

@@ -1,6 +1,9 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_app_bar.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_carousel_slider.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_row.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/genre_item.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/genres_list_view.dart';
@@ -46,6 +49,7 @@ class HomeViewBody extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
+                NowPlayingItem(),
               ],
             ),
             Center(
@@ -63,6 +67,19 @@ class NowPlayingItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const SizedBox(
+      width: 200,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CustomPoster(),
+          Text(
+            textAlign: TextAlign.center,
+            "Breaking Bad (2020000000)",
+            style: Styles.styleText18,
+          ),
+        ],
+      ),
+    );
   }
 }
