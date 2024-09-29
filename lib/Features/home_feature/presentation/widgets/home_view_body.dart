@@ -3,7 +3,7 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/custom_app_
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_carousel_slider.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_row.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/genres_list_view.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_item.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_list_view.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -49,27 +49,6 @@ class HomeViewBody extends StatelessWidget {
               child: Text("TV Shows"),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class NowPlayingListView extends StatelessWidget {
-  const NowPlayingListView({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 300,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: ListView.builder(
-          scrollDirection: Axis.horizontal,
-          itemCount: 5,
-          itemBuilder: (context, index) {
-            return const NowPlayingItem();
-          },
         ),
       ),
     );

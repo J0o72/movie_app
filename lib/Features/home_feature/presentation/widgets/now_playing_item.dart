@@ -10,7 +10,7 @@ class NowPlayingItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Padding(
-      padding: EdgeInsets.only(right: 10),
+      padding: EdgeInsets.only(right: 15),
       child: SizedBox(
         width: 177,
         child: Column(
