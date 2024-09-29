@@ -42,16 +42,34 @@ class HomeViewBody extends StatelessWidget {
                 CustomRow(
                   leftText: "Now Playing",
                 ),
-                SizedBox(
-                  height: 10,
-                ),
-                NowPlayingItem(),
+                NowPlayingListView(),
               ],
             ),
             Center(
               child: Text("TV Shows"),
             ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class NowPlayingListView extends StatelessWidget {
+  const NowPlayingListView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 300,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: 5,
+          itemBuilder: (context, index) {
+            return const NowPlayingItem();
+          },
         ),
       ),
     );

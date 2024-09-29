@@ -9,27 +9,30 @@ class NowPlayingItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
-      width: 180,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          CustomPoster(),
-          Text(
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            textAlign: TextAlign.center,
-            "Breaking Bad (2020)",
-            style: Styles.styleText18,
-          ),
-          Row(
-            children: [
-              CustomRating(),
-              Spacer(),
-              CustomDurationTime(),
-            ],
-          )
-        ],
+    return const Padding(
+      padding: EdgeInsets.only(right: 10),
+      child: SizedBox(
+        width: 177,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            CustomPoster(),
+            Text(
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
+              "Breaking Bad (2020)",
+              style: Styles.styleText18,
+            ),
+            Row(
+              children: [
+                CustomRating(),
+                Spacer(),
+                CustomDurationTime(),
+              ],
+            )
+          ],
+        ),
       ),
     );
   }
