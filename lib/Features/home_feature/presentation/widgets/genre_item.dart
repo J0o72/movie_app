@@ -9,7 +9,7 @@ class GenreItem extends StatelessWidget {
     return Container(
       width: 100,
       height: 50,
-      margin: const EdgeInsets.only(left: 30),
+      margin: const EdgeInsets.only(right: 10),
       decoration: BoxDecoration(
         color: const Color(0xff7c889f),
         borderRadius: BorderRadius.circular(12),

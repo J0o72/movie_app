@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_app_bar.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_carousel_slider.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/genre_item.dart';
-import 'package:movie_app/constants.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/genres_list_view.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class HomeViewBody extends StatelessWidget {
@@ -39,7 +39,10 @@ class HomeViewBody extends StatelessWidget {
                 SizedBox(
                   height: 10,
                 ),
-                GenreItem(),
+                GenresListView(),
+                SizedBox(
+                  height: 20,
+                ),
               ],
             ),
             Center(
