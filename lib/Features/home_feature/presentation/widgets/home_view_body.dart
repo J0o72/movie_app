@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_app_bar.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/custom_carousel_slider.dart';
+import 'package:movie_app/constants.dart';
 
 class HomeViewBody extends StatelessWidget {
   const HomeViewBody({super.key});
@@ -15,8 +17,13 @@ class HomeViewBody extends StatelessWidget {
         ),
         body: const TabBarView(
           children: [
-            Center(
-              child: Text("Movies"),
+            Column(
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                CustomCarouselSlider(),
+              ],
             ),
             Center(
               child: Text("TV Shows"),

@@ -29,6 +29,8 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   blur: ^3.1.0
+  cached_network_image: ^3.4.0
+  carousel_slider: ^5.0.0
   cupertino_icons: ^1.0.6
   flutter:
     sdk: flutter
