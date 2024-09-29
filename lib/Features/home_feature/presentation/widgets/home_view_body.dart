@@ -22,7 +22,7 @@ class HomeViewBody extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                CustomCarouselSlider(),
+                CustomCarouselSliderView(),
               ],
             ),
             Center(
