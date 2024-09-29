@@ -1,6 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_app_bar.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_carousel_slider.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/custom_duration_time.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/custom_rating.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/custom_row.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/genre_item.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/genres_list_view.dart';
 import 'package:movie_app/core/utils/styles.dart';
@@ -29,12 +35,8 @@ class HomeViewBody extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
-                Padding(
-                  padding: EdgeInsets.only(left: 15),
-                  child: Text(
-                    "Genres",
-                    style: Styles.styleText28,
-                  ),
+                CustomRow(
+                  leftText: "Genres",
                 ),
                 SizedBox(
                   height: 10,
@@ -43,6 +45,13 @@ class HomeViewBody extends StatelessWidget {
                 SizedBox(
                   height: 20,
                 ),
+                CustomRow(
+                  leftText: "Now Playing",
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                NowPlayingItem(),
               ],
             ),
             Center(
@@ -50,6 +59,37 @@ class HomeViewBody extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class NowPlayingItem extends StatelessWidget {
+  const NowPlayingItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const SizedBox(
+      width: 180,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          CustomPoster(),
+          Text(
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.center,
+            "Breaking Bad (2020)",
+            style: Styles.styleText18,
+          ),
+          Row(
+            children: [
+              CustomRating(),
+              Spacer(),
+              CustomDurationTime(),
+            ],
+          )
+        ],
       ),
     );
   }
