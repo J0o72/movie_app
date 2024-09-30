@@ -11,38 +11,42 @@ class TabContentView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
-        CustomCarouselSliderView(),
-        SizedBox(
+        const CustomCarouselSliderView(),
+        const SizedBox(
           height: 20,
         ),
         CustomRow(
           leftText: "Genres",
+          onTap: () {},
         ),
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
-        GenresListView(),
-        SizedBox(
+        const GenresListView(),
+        const SizedBox(
           height: 20,
         ),
         CustomRow(
           leftText: "Now Playing",
+          onTap: () {},
         ),
-        NowPlayingListView(),
+        const NowPlayingListView(),
         CustomRow(
           leftText: "Top Rating",
+          onTap: () {},
         ),
-        NowPlayingListView(),
+        const NowPlayingListView(),
         CustomRow(
           leftText: "Upcoming",
+          onTap: () {},
         ),
-        NowPlayingListView(),
+        const NowPlayingListView(),
       ],
     );
   }

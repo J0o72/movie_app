@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_app_bar.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/section_home_view_body.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/tab_content_view.dart';
 
 class PageWithTabBarView extends StatelessWidget {
   const PageWithTabBarView({

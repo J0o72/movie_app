@@ -6,9 +6,11 @@ class CustomRow extends StatelessWidget {
   const CustomRow({
     super.key,
     required this.leftText,
+    required this.onTap,
   });
 
   final String leftText;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class CustomRow extends StatelessWidget {
             style: Styles.styleText28,
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: onTap,
             child: const Text(
               "See All",
               style: Styles.styleText20,
