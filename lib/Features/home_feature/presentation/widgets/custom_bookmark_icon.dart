@@ -12,7 +12,7 @@ class CustomBookmarkIcon extends StatelessWidget {
       right: 5,
       top: 5,
       child: CircleAvatar(
-        backgroundColor: kMainColor.withOpacity(0.5),
+        backgroundColor: kMainColor.withOpacity(0.8),
         child: IconButton(
           padding: EdgeInsets.zero,
           alignment: Alignment.center,
