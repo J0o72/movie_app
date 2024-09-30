@@ -1,8 +1,5 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/page_with_tab_bar.dart';
-import 'package:movie_app/Features/search_feature/presentation/views/search_view.dart';
-import 'package:movie_app/Features/search_feature/presentation/views/widgets/search_view_body.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
@@ -47,7 +44,9 @@ class _HomeViewBodyState extends State<HomeViewBody> {
       items: const [
         BottomNavigationBarItem(
           label: "Home",
-          icon: Icon(Icons.home),
+          icon: Icon(
+            Icons.home,
+          ),
         ),
         BottomNavigationBarItem(
           label: "Search",

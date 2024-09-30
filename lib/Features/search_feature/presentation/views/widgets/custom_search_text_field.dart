@@ -2,12 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
-class CustomSearchTextField extends StatelessWidget {
-  CustomSearchTextField({
+class CustomSearchTextField extends StatefulWidget {
+  const CustomSearchTextField({
     super.key,
   });
 
+  @override
+  State<CustomSearchTextField> createState() => _CustomSearchTextFieldState();
+}
+
+class _CustomSearchTextFieldState extends State<CustomSearchTextField> {
   final myController = TextEditingController();
+
   String? text;
 
   @override

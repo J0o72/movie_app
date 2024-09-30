@@ -7,8 +7,8 @@ class GenreItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100,
-      height: 50,
+      width: 130,
+      height: 40,
       margin: const EdgeInsets.only(right: 10),
       decoration: BoxDecoration(
         color: const Color(0xff7c889f),
@@ -17,7 +17,7 @@ class GenreItem extends StatelessWidget {
       child: const Center(
         child: Text(
           "Action",
-          style: Styles.styleText22,
+          style: Styles.styleText18,
         ),
       ),
     );

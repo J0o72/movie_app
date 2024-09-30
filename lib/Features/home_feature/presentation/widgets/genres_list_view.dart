@@ -7,7 +7,7 @@ class GenresListView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50,
+      height: 40,
       child: Padding(
         padding: const EdgeInsets.only(left: 25),
         child: ListView.builder(
