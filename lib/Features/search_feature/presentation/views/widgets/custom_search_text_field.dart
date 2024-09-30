@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/constants.dart';
+import 'package:movie_app/core/utils/styles.dart';
 
 class CustomSearchTextField extends StatelessWidget {
   CustomSearchTextField({
@@ -16,6 +18,7 @@ class CustomSearchTextField extends StatelessWidget {
         // text = value;
       },
       onSubmitted: (value) {},
+      cursorColor: kMainColor,
       decoration: InputDecoration(
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(
@@ -28,9 +31,15 @@ class CustomSearchTextField extends StatelessWidget {
           ),
         ),
         hintText: "Search",
+        hintStyle: Styles.styleText16.copyWith(
+          color: Colors.white.withOpacity(0.5),
+        ),
         suffixIcon: IconButton(
           onPressed: () {},
-          icon: const Icon(Icons.search),
+          icon: const Icon(
+            Icons.search,
+            color: kMainColor,
+          ),
         ),
       ),
     );
