@@ -1,8 +1,6 @@
 import 'package:blur/blur.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/custom_app_bar.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/page_with_tab_bar.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/section_home_view_body.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
@@ -20,18 +18,25 @@ class _HomeViewBodyState extends State<HomeViewBody> {
     PageWithTabBarView(),
     Center(child: Text('Page 2')),
     Center(child: Text('Page 3')),
+    Center(child: Text('Page 4')),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: bottomNavigationBar(),
+      bottomNavigationBar: bottomNavigationBar().frosted(
+        blur: 3,
+        frostColor: Colors.black.withOpacity(0),
+      ),
       body: pages[currentIndex],
     );
   }
 
   BottomNavigationBar bottomNavigationBar() {
     return BottomNavigationBar(
+      backgroundColor: Colors.black.withOpacity(0),
+      elevation: 0,
+      enableFeedback: false,
       onTap: (value) {
         setState(() {
           currentIndex = value;
@@ -42,10 +47,16 @@ class _HomeViewBodyState extends State<HomeViewBody> {
       selectedLabelStyle:
           Styles.styleText16.copyWith(fontWeight: FontWeight.bold),
       showUnselectedLabels: false,
+      unselectedItemColor: Colors.white,
+      type: BottomNavigationBarType.fixed,
       items: const [
         BottomNavigationBarItem(
           label: "Home",
           icon: Icon(Icons.home),
+        ),
+        BottomNavigationBarItem(
+          label: "Search",
+          icon: Icon(Icons.search),
         ),
         BottomNavigationBarItem(
           label: "Save",
