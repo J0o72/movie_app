@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/genre_item.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/genre_item_home.dart';
 
-class GenresListView extends StatelessWidget {
-  const GenresListView({super.key});
+class GenresHomeListView extends StatelessWidget {
+  const GenresHomeListView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class GenresListView extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           itemCount: 5,
           itemBuilder: (context, index) {
-            return const GenreItem();
+            return const GenreItemHome();
           },
         ),
       ),

@@ -32,7 +32,7 @@ class TabContentView extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        const GenresListView(),
+        const GenresHomeListView(),
         const SizedBox(
           height: 20,
         ),
