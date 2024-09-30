@@ -13,6 +13,7 @@ class CustomImageCarouselItem extends StatelessWidget {
       borderRadius: BorderRadius.circular(16),
       child: CachedNetworkImage(
         fit: BoxFit.fill,
+        width: MediaQuery.of(context).size.width * 0.8,
         errorWidget: (context, url, error) => const Icon(Icons.error),
         placeholder: (context, url) => const CustomCircularLoading(),
         imageUrl: imageUrl,
