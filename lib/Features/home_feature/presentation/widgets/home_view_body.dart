@@ -16,13 +16,6 @@ class HomeViewBody extends StatefulWidget {
 class _HomeViewBodyState extends State<HomeViewBody> {
   int currentIndex = 0;
 
-  final List<Widget> pages = const [
-    PageWithTabBarView(),
-    SearchView(),
-    Center(child: Text('Page 3')),
-    Center(child: Text('Page 4')),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
