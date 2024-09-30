@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_carousel_slider.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_row.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/genres_list_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_list_view.dart';
+import 'package:movie_app/core/utils/app_routes.dart';
 
 class TabContentView extends StatelessWidget {
   const TabContentView({
@@ -23,7 +25,9 @@ class TabContentView extends StatelessWidget {
         ),
         CustomRow(
           leftText: "Genres",
-          onTap: () {},
+          onTap: () {
+            GoRouter.of(context).push(AppRouter.kGenreView);
+          },
         ),
         const SizedBox(
           height: 10,
