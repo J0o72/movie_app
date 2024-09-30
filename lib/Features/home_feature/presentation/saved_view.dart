@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/save_view_body.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/saved_view_body.dart';
 
 class SavedView extends StatelessWidget {
   const SavedView({super.key});

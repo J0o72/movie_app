@@ -53,8 +53,8 @@ class _HomeViewBodyState extends State<HomeViewBody> {
           icon: Icon(Icons.search),
         ),
         BottomNavigationBarItem(
-          label: "Save",
-          icon: Icon(Icons.bookmark),
+          label: "Saved",
+          icon: Icon(Icons.bookmark_border),
         ),
         BottomNavigationBarItem(
           label: "Me",

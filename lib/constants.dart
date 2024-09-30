@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/Features/home_feature/presentation/saved_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/page_with_tab_bar.dart';
 import 'package:movie_app/Features/search_feature/presentation/views/search_view.dart';
 
@@ -18,6 +19,6 @@ const List<String> innerStyleImages = [
 const List<Widget> pages = [
   PageWithTabBarView(),
   SearchView(),
-  Center(child: Text('Page 3')),
+  SavedView(),
   Center(child: Text('Page 4')),
 ];
