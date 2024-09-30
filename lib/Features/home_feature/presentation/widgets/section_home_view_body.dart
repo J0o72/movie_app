@@ -4,8 +4,8 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/custom_row.
 import 'package:movie_app/Features/home_feature/presentation/widgets/genres_list_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_list_view.dart';
 
-class SectionHomeViewBody extends StatelessWidget {
-  const SectionHomeViewBody({
+class TabContentView extends StatelessWidget {
+  const TabContentView({
     super.key,
   });
 
