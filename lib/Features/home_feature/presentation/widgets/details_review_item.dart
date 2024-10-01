@@ -7,17 +7,23 @@ class DetailsReviewItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
-      children: [
-        DetailsCustomPersonPhoto(
-          height: 70,
-          width: 70,
-        ),
-        SizedBox(
-          width: 10,
-        ),
-        DetailsReviewerContent(),
-      ],
+    return const Padding(
+      padding: EdgeInsets.only(
+        bottom: 10,
+      ),
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          DetailsCustomPersonPhoto(
+            height: 70,
+            width: 70,
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          DetailsReviewerContent(),
+        ],
+      ),
     );
   }
 }

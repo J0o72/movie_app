@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_back_arrow_icon.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_genre_shape_saved.dart';
@@ -7,7 +9,9 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/details_act
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_custom_poster.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_read_more_text.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_review_item.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/details_review_list_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_trailer_rating_duration_row.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_list_view.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class DetailsViewBody extends StatelessWidget {
@@ -100,9 +104,21 @@ class DetailsViewBodyInformation extends StatelessWidget {
             style: Styles.styleText26,
             horizontalPadding: 10,
           ),
-          const DetailsReviewItem(),
           const SizedBox(
-            height: 100,
+            height: 5,
+          ),
+          const DetailsReviewListView(),
+          const SizedBox(
+            height: 10,
+          ),
+          CustomRow(
+            leftText: "More Like This",
+            onTap: () {},
+            style: Styles.styleText26,
+            horizontalPadding: 10,
+          ),
+          const NowPlayingListView(
+            horizontalPadding: 10,
           ),
         ],
       ),
