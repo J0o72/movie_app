@@ -13,9 +13,9 @@ class DetailsCustomPoster extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.4,
       width: MediaQuery.of(context).size.width,
       child: CachedNetworkImage(
-        fit: BoxFit.fill,
+        fit: BoxFit.cover,
         imageUrl:
-            'https://image.tmdb.org/t/p/original/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg',
+            'https://cdn.marvel.com/content/1x/avengersendgame_lob_mas_mob_01.jpg',
         errorWidget: (context, url, error) => const Icon(Icons.error),
         placeholder: (context, url) => const Center(
           child: CustomCircularLoading(),

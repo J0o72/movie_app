@@ -3,6 +3,7 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/custom_back
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_custom_poster.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_view_body_information.dart';
+import 'package:movie_app/constants.dart';
 
 class DetailsViewBody extends StatelessWidget {
   const DetailsViewBody({super.key});
@@ -20,12 +21,12 @@ class DetailsViewBodyContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CustomScrollView(
+    return CustomScrollView(
       slivers: [
         SliverToBoxAdapter(
           child: Column(
             children: [
-              Stack(
+              const Stack(
                 children: [
                   DetailsCustomPoster(),
                   CustomBookmarkIcon(
@@ -35,7 +36,19 @@ class DetailsViewBodyContent extends StatelessWidget {
                   CustomBackArrowIcon(),
                 ],
               ),
-              DetailsViewBodyInformation(),
+              Container(
+                decoration: BoxDecoration(
+                    color: Colors.black.withOpacity(0.5),
+                    boxShadow: const [
+                      BoxShadow(
+                        blurRadius: 150,
+                        color: Colors.black,
+                        offset: Offset(0, -100),
+                        spreadRadius: 5,
+                      ),
+                    ]),
+                child: const DetailsViewBodyInformation(),
+              ),
             ],
           ),
         ),
