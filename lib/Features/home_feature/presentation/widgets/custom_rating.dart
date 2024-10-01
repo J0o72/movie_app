@@ -10,10 +10,13 @@ class CustomRating extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Row(
       children: [
-        Icon(
-          Icons.star,
-          size: 24,
-          color: Colors.yellow,
+        Padding(
+          padding: EdgeInsets.only(bottom: 5),
+          child: Icon(
+            Icons.star_rate_rounded,
+            size: 24,
+            color: Colors.yellow,
+          ),
         ),
         SizedBox(
           width: 5,
