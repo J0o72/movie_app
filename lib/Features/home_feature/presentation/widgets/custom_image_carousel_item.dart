@@ -30,7 +30,10 @@ class CustomImageCarouselItem extends StatelessWidget {
             ),
           ),
         ),
-        const CustomBookmarkIcon(),
+        const CustomBookmarkIcon(
+          rightPos: 5,
+          topPos: 5,
+        ),
       ],
     );
   }
