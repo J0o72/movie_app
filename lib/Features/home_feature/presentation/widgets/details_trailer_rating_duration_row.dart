@@ -12,7 +12,7 @@ class TrailerRatingDurationRow extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         SizedBox(
-          width: 15,
+          width: 5,
         ),
         CustomTrailerPlayer(),
         SizedBox(
