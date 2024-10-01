@@ -10,15 +10,14 @@ class CustomTrailerPlayer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          border: Border.all(
-            color: const Color(0xff7c889f),
-          ),
-          color: const Color(0xff7c889f).withOpacity(0.3),
-          borderRadius: BorderRadius.circular(16)),
+        border: Border.all(
+          color: const Color(0xff7c889f),
+        ),
+        color: const Color(0xff7c889f).withOpacity(0.3),
+        borderRadius: BorderRadius.circular(16),
+      ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
-        // mainAxisAlignment: MainAxisAlignment.start,
-        // crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           IconButton(
             padding: EdgeInsets.zero,
