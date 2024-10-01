@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/saved_list_view.dart';
 
-import 'package:movie_app/Features/home_feature/presentation/widgets/saved_view_item.dart';
-
 import 'package:movie_app/core/utils/styles.dart';
 
 class SavedViewBody extends StatelessWidget {
