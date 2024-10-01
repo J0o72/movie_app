@@ -7,21 +7,25 @@ class CustomRow extends StatelessWidget {
     super.key,
     required this.leftText,
     required this.onTap,
+    this.style = Styles.styleText28,
+    this.horizontalPadding = 15,
   });
 
   final String leftText;
   final Function() onTap;
+  final TextStyle style;
+  final double horizontalPadding;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
+      padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             leftText,
-            style: Styles.styleText28,
+            style: style,
           ),
           GestureDetector(
             onTap: onTap,

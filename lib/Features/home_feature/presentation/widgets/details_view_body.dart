@@ -1,10 +1,17 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_back_arrow_icon.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_genre_shape_saved.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/custom_row.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/details_actors_item.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/details_actors_list_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_custom_poster.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_read_more_text.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_trailer_rating_duration_row.dart';
+import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class DetailsViewBody extends StatelessWidget {
@@ -23,19 +30,25 @@ class DetailsViewBodyContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [
-        Stack(
-          children: [
-            DetailsCustomPoster(),
-            CustomBookmarkIcon(
-              rightPos: 20,
-              topPos: 40,
-            ),
-            CustomBackArrowIcon(),
-          ],
+    return const CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: Column(
+            children: [
+              Stack(
+                children: [
+                  DetailsCustomPoster(),
+                  CustomBookmarkIcon(
+                    rightPos: 20,
+                    topPos: 40,
+                  ),
+                  CustomBackArrowIcon(),
+                ],
+              ),
+              DetailsViewBodyInformation(),
+            ],
+          ),
         ),
-        DetailsViewBodyInformation(),
       ],
     );
   }
@@ -46,15 +59,15 @@ class DetailsViewBodyInformation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 10),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         children: [
-          Text(
+          const Text(
             "Breaking Bad",
             style: Styles.styleText28,
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CustomGenreShapeSaved(),
@@ -64,18 +77,33 @@ class DetailsViewBodyInformation extends StatelessWidget {
               CustomGenreShapeSaved(),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
-          TrailerRatingDurationRow(),
-          SizedBox(
+          const TrailerRatingDurationRow(),
+          const SizedBox(
             height: 10,
           ),
-          Center(
-            child: ReadMoreText(
-                text:
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vehicula libero eget felis hendrerit, ut facilisis libero dapibus. Aenean ut odio eros. Curabitur auctor feugiat orci, ac facilisis est interdum nec. Nam commodo ligula at felis tincidunt, et vestibulum enim facilisis. Sed congue non felis a viverra. Donec condimentum lorem eu nisi consequat, a ultricies lorem varius. Vivamus ultricies non arcu a molestie. Donec ut ipsum tortor. Donec ac lorem ac eros scelerisque dictum.'),
-          )
+          const ReadMoreText(
+            text:
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vehicula libero eget felis hendrerit, ut facilisis libero dapibus. Aenean ut odio eros. Curabitur auctor feugiat orci, ac facilisis est interdum nec. Nam commodo ligula at felis tincidunt, et vestibulum enim facilisis. Sed congue non felis a viverra. Donec condimentum lorem eu nisi consequat, a ultricies lorem varius. Vivamus ultricies non arcu a molestie. Donec ut ipsum tortor. Donec ac lorem ac eros scelerisque dictum.',
+          ),
+          CustomRow(
+            leftText: "Actors",
+            onTap: () {},
+            style: Styles.styleText26,
+            horizontalPadding: 10,
+          ),
+          const ActorsListView(),
+          const SizedBox(
+            height: 10,
+          ),
+          CustomRow(
+            leftText: "Reviews",
+            onTap: () {},
+            style: Styles.styleText26,
+            horizontalPadding: 10,
+          ),
         ],
       ),
     );

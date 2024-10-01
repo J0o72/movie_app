@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/core/utils/styles.dart';
 
 class ReadMoreText extends StatefulWidget {
   const ReadMoreText({super.key, required this.text, this.maxLines = 3});
@@ -20,34 +21,35 @@ class _ReadMoreTextState extends State<ReadMoreText> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          widget.text,
-          maxLines: isExpanded ? null : widget.maxLines,
-          overflow: TextOverflow.fade,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            TextButton(
-              style: ButtonStyle(
-                padding: MaterialStateProperty.all(EdgeInsets.zero),
-                alignment: Alignment.topCenter,
-              ),
-              onPressed: toggleExpanded,
-              child: Padding(
-                padding: const EdgeInsets.only(right: 10),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 15),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            style: Styles.styleText16,
+            widget.text,
+            maxLines: isExpanded ? null : widget.maxLines,
+            overflow: TextOverflow.fade,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              TextButton(
+                style: ButtonStyle(
+                  padding: MaterialStateProperty.all(EdgeInsets.zero),
+                  alignment: Alignment.topCenter,
+                ),
+                onPressed: toggleExpanded,
                 child: Text(
                   isExpanded ? 'Read Less' : 'Read More',
                   style: const TextStyle(color: Colors.blue),
                 ),
               ),
-            ),
-          ],
-        ),
-      ],
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
