@@ -1,0 +1,44 @@
+import 'package:flutter/material.dart';
+import 'package:movie_app/core/utils/styles.dart';
+
+class CustomTrailerPlayer extends StatelessWidget {
+  const CustomTrailerPlayer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+          border: Border.all(
+            color: const Color(0xff7c889f),
+          ),
+          color: const Color(0xff7c889f).withOpacity(0.3),
+          borderRadius: BorderRadius.circular(16)),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        // mainAxisAlignment: MainAxisAlignment.start,
+        // crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          IconButton(
+            padding: EdgeInsets.zero,
+            alignment: Alignment.centerLeft,
+            onPressed: () {},
+            icon: const Icon(
+              Icons.play_arrow_rounded,
+              size: 55,
+              color: Colors.red,
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.only(right: 12),
+            child: Text(
+              "Trailer",
+              style: Styles.styleText22,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
