@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/details_custom_person_photo.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
@@ -12,18 +13,9 @@ class ActorsItem extends StatelessWidget {
       padding: const EdgeInsets.only(right: 8),
       child: Column(
         children: [
-          Container(
-            decoration: BoxDecoration(
-              border: Border.all(color: kMainColor),
-              borderRadius: BorderRadius.circular(50),
-            ),
-            width: 100,
+          const DetailsCustomPersonPhoto(
             height: 100,
-            child: const CircleAvatar(
-              backgroundImage: CachedNetworkImageProvider(
-                "https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcQVvw9wM-vic6DpsytCKxIPryMNkHemJMjGyWfxL4Mu4Q7giMB9AbbMgQFRMdygvAj-xxNDjKnzL_iG9cc",
-              ),
-            ),
+            width: 100,
           ),
           const SizedBox(
             height: 5,

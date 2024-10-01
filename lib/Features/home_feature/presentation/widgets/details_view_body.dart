@@ -1,13 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_back_arrow_icon.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_genre_shape_saved.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_row.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/details_actors_item.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_actors_list_view.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/details_custom_person_photo.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_custom_poster.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_read_more_text.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_trailer_rating_duration_row.dart';
@@ -104,8 +104,25 @@ class DetailsViewBodyInformation extends StatelessWidget {
             style: Styles.styleText26,
             horizontalPadding: 10,
           ),
+          const DetailsReviewItem(),
         ],
       ),
+    );
+  }
+}
+
+class DetailsReviewItem extends StatelessWidget {
+  const DetailsReviewItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Row(
+      children: [
+        DetailsCustomPersonPhoto(
+          height: 70,
+          width: 70,
+        ),
+      ],
     );
   }
 }
