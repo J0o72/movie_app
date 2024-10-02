@@ -8,6 +8,7 @@ class ActorProfileBirthLocation extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Icon(
           Icons.location_on_sharp,

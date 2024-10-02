@@ -11,7 +11,7 @@ class ActorProfileBackgroundImage extends StatelessWidget {
     return Opacity(
       opacity: 0.3,
       child: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.6,
+        height: MediaQuery.of(context).size.height,
         child: CachedNetworkImage(
           fit: BoxFit.cover,
           imageUrl:

@@ -6,6 +6,8 @@ class ActorProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ActorProfileViewBody();
+    return const SafeArea(
+      child: ActorProfileViewBody(),
+    );
   }
 }
