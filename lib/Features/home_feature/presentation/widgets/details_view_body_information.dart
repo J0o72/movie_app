@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_genre_shape_saved.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_row.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_actors_list_view.dart';
@@ -6,6 +7,7 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/details_rea
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_review_list_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_trailer_rating_duration_row.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_list_view.dart';
+import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class DetailsViewBodyInformation extends StatelessWidget {
@@ -44,7 +46,9 @@ class DetailsViewBodyInformation extends StatelessWidget {
           ),
           CustomRow(
             leftText: "Casts",
-            onTap: () {},
+            onTap: () {
+              GoRouter.of(context).push(AppRouter.kCastView);
+            },
             style: Styles.styleText26,
             horizontalPadding: 10,
           ),
