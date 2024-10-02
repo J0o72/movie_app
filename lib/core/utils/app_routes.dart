@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:movie_app/Features/home_feature/presentation/actors_profile_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/cast_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/details_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/genre_view.dart';
@@ -16,6 +17,7 @@ abstract class AppRouter {
   static const kMovieCollevionView = '/movieCollevionView';
   static const kCastView = '/castView';
   static const kReviewView = '/reviewView';
+  static const kActorProfileView = '/actorView';
 
   static final router = GoRouter(
     routes: [
@@ -50,6 +52,10 @@ abstract class AppRouter {
       GoRoute(
         path: kReviewView,
         builder: (context, state) => const ReviewView(),
+      ),
+      GoRoute(
+        path: kActorProfileView,
+        builder: (context, state) => const ActorProfileView(),
       ),
     ],
   );
