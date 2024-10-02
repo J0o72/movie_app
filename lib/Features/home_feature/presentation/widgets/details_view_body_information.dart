@@ -58,7 +58,9 @@ class DetailsViewBodyInformation extends StatelessWidget {
           ),
           CustomRow(
             leftText: "Reviews",
-            onTap: () {},
+            onTap: () {
+              GoRouter.of(context).push(AppRouter.kReviewView);
+            },
             style: Styles.styleText26,
             horizontalPadding: 10,
           ),
@@ -71,7 +73,9 @@ class DetailsViewBodyInformation extends StatelessWidget {
           ),
           CustomRow(
             leftText: "More Like This",
-            onTap: () {},
+            onTap: () {
+              GoRouter.of(context).push(AppRouter.kMovieCollevionView);
+            },
             style: Styles.styleText26,
             horizontalPadding: 10,
           ),
