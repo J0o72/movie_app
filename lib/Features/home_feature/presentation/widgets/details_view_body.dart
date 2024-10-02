@@ -37,15 +37,16 @@ class DetailsViewBodyContent extends StatelessWidget {
               ),
               Container(
                 decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.5),
-                    boxShadow: const [
-                      BoxShadow(
-                        blurRadius: 150,
-                        color: Colors.black,
-                        offset: Offset(0, -100),
-                        spreadRadius: 5,
-                      ),
-                    ]),
+                  color: Colors.black.withOpacity(0.5),
+                  boxShadow: const [
+                    BoxShadow(
+                      blurRadius: 150,
+                      color: Colors.black,
+                      offset: Offset(0, -100),
+                      spreadRadius: 5,
+                    ),
+                  ],
+                ),
                 child: const DetailsViewBodyInformation(),
               ),
             ],

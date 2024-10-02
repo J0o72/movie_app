@@ -43,7 +43,7 @@ class DetailsViewBodyInformation extends StatelessWidget {
                 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vehicula libero eget felis hendrerit, ut facilisis libero dapibus. Aenean ut odio eros. Curabitur auctor feugiat orci, ac facilisis est interdum nec. Nam commodo ligula at felis tincidunt, et vestibulum enim facilisis. Sed congue non felis a viverra. Donec condimentum lorem eu nisi consequat, a ultricies lorem varius. Vivamus ultricies non arcu a molestie. Donec ut ipsum tortor. Donec ac lorem ac eros scelerisque dictum.',
           ),
           CustomRow(
-            leftText: "Actors",
+            leftText: "Casts",
             onTap: () {},
             style: Styles.styleText26,
             horizontalPadding: 10,
