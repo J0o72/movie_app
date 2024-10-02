@@ -6,6 +6,8 @@ class MovieCollecionView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MovieCollecionViewBody();
+    return const SafeArea(
+      child: MovieCollecionViewBody(),
+    );
   }
 }

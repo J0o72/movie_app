@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:movie_app/Features/home_feature/presentation/details_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/genre_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/home_view.dart';
+import 'package:movie_app/Features/home_feature/presentation/movies_collection_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/saved_view.dart';
 import 'package:movie_app/Features/welcome_feature/presentation/views/welcome_view.dart';
 
@@ -10,6 +11,7 @@ abstract class AppRouter {
   static const kGenreView = '/genreView';
   static const kDetailsView = '/detailsView';
   static const kSavedView = '/savedView';
+  static const kMovieCollevionView = '/movieCollevionView';
 
   static final router = GoRouter(
     routes: [
@@ -32,6 +34,10 @@ abstract class AppRouter {
       GoRoute(
         path: kSavedView,
         builder: (context, state) => const SavedView(),
+      ),
+      GoRoute(
+        path: kMovieCollevionView,
+        builder: (context, state) => const MovieCollecionView(),
       ),
     ],
   );

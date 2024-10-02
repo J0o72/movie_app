@@ -38,7 +38,9 @@ class TabContentView extends StatelessWidget {
         ),
         CustomRow(
           leftText: "Now Playing",
-          onTap: () {},
+          onTap: () {
+            GoRouter.of(context).push(AppRouter.kMovieCollevionView);
+          },
         ),
         const NowPlayingListView(),
         CustomRow(

@@ -6,7 +6,10 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circ
 class CustomPoster extends StatelessWidget {
   const CustomPoster({
     super.key,
+    required this.isThereBookmark,
   });
+
+  final bool isThereBookmark;
 
   @override
   Widget build(BuildContext context) {
@@ -30,10 +33,12 @@ class CustomPoster extends StatelessWidget {
             ),
           ),
         ),
-        const CustomBookmarkIcon(
-          rightPos: 5,
-          topPos: 5,
-        ),
+        isThereBookmark
+            ? const CustomBookmarkIcon(
+                rightPos: 5,
+                topPos: 5,
+              )
+            : Container(),
       ],
     );
   }

@@ -22,7 +22,9 @@ class NowPlayingItem extends StatelessWidget {
           child: const Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CustomPoster(),
+              CustomPoster(
+                isThereBookmark: true,
+              ),
               Text(
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
