@@ -1,7 +1,5 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_custom_person_photo.dart';
-import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class ActorsItem extends StatelessWidget {

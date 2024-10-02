@@ -13,7 +13,7 @@ class MovieApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       theme: ThemeData().copyWith(
-        scaffoldBackgroundColor: const Color(0xff232336),
+        scaffoldBackgroundColor: Colors.black,
         brightness: Brightness.dark,
         textTheme: GoogleFonts.josefinSansTextTheme(ThemeData.dark().textTheme),
       ),

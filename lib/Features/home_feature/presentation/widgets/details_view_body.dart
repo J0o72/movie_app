@@ -3,7 +3,6 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/custom_back
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_custom_poster.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_view_body_information.dart';
-import 'package:movie_app/constants.dart';
 
 class DetailsViewBody extends StatelessWidget {
   const DetailsViewBody({super.key});
