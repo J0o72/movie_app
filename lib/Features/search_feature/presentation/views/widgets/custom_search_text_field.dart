@@ -21,7 +21,7 @@ class _CustomSearchTextFieldState extends State<CustomSearchTextField> {
     return TextField(
       controller: myController,
       onChanged: (value) {
-        // text = value;
+        text = value;
       },
       onSubmitted: (value) {},
       cursorColor: kMainColor,
