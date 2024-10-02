@@ -9,9 +9,9 @@ class MovieCollecionViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
+        title: Text(
           "Now Playing",
-          style: Styles.styleText28,
+          style: Styles.styleText28.copyWith(color: Colors.red),
         ),
         centerTitle: true,
         automaticallyImplyLeading: false,

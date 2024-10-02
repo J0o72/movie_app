@@ -12,8 +12,8 @@ class ActorsItem extends StatelessWidget {
       child: Column(
         children: [
           const DetailsCustomPersonPhoto(
-            height: 100,
-            width: 100,
+            height: 93,
+            width: 93,
           ),
           const SizedBox(
             height: 5,
