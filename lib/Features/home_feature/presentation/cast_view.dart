@@ -6,6 +6,8 @@ class CastView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CastViewBody();
+    return const SafeArea(
+      child: CastViewBody(),
+    );
   }
 }
