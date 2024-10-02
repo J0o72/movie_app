@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/actor_profile_background_image.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/actor_profile_birth_location.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_custom_person_photo.dart';
 import 'package:movie_app/constants.dart';
+import 'package:movie_app/core/utils/styles.dart';
 
 class ActorProfileViewBody extends StatelessWidget {
   const ActorProfileViewBody({super.key});
@@ -34,6 +36,14 @@ class ActorProfileInformation extends StatelessWidget {
             height: 250,
             borderRadius: 150,
           ),
+          SizedBox(
+            height: 10,
+          ),
+          Text(
+            "Chris Hemsworth",
+            style: Styles.styleText26,
+          ),
+          ActorProfileBirthLocation(),
         ],
       ),
     );
