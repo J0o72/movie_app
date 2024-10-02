@@ -8,21 +8,22 @@ class DetailsCustomPersonPhoto extends StatelessWidget {
     super.key,
     required this.width,
     required this.height,
+    this.borderRadius = 50,
   });
 
-  final double width, height;
+  final double width, height, borderRadius;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(color: kMainColor),
-        borderRadius: BorderRadius.circular(50),
+        borderRadius: BorderRadius.circular(borderRadius),
       ),
       width: width,
       height: height,
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(50),
+        borderRadius: BorderRadius.circular(borderRadius),
         child: CachedNetworkImage(
           fit: BoxFit.cover,
           imageUrl:
