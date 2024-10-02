@@ -45,12 +45,16 @@ class TabContentView extends StatelessWidget {
         const NowPlayingListView(),
         CustomRow(
           leftText: "Top Rating",
-          onTap: () {},
+          onTap: () {
+            GoRouter.of(context).push(AppRouter.kMovieCollevionView);
+          },
         ),
         const NowPlayingListView(),
         CustomRow(
           leftText: "Upcoming",
-          onTap: () {},
+          onTap: () {
+            GoRouter.of(context).push(AppRouter.kMovieCollevionView);
+          },
         ),
         const NowPlayingListView(),
       ],
