@@ -18,4 +18,9 @@ class TVShowsRepoImpl implements TVShowsRepo {
   Future<Either<Failure, List<MovieModel>>> fetchTopRatingTVShows() {
     throw UnimplementedError();
   }
+
+  @override
+  Future<Either<Failure, List<MovieModel>>> fetchAiringTodayTVShows() {
+    throw UnimplementedError();
+  }
 }

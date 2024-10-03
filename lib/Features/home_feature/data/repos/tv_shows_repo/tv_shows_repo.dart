@@ -6,5 +6,5 @@ abstract class TVShowsRepo {
   Future<Either<Failure, List<MovieModel>>> fetchPopularTVShows();
   Future<Either<Failure, List<MovieModel>>> fetchOnTheAirTVShows();
   Future<Either<Failure, List<MovieModel>>> fetchTopRatingTVShows();
-  // Future<Either<Failure, List<MovieModel>>> fetchComingSoonTVShows();
+  Future<Either<Failure, List<MovieModel>>> fetchAiringTodayTVShows();
 }
