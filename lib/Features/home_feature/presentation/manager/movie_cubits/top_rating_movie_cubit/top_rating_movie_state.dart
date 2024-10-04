@@ -9,16 +9,16 @@ sealed class TopRatingMovieState extends Equatable {
 
 final class TopRatingMovieInitial extends TopRatingMovieState {}
 
-final class PopularMovieSuccess extends TopRatingMovieState {
+final class TopRatingMovieSuccess extends TopRatingMovieState {
   final List<MovieModel> topRatingMovies;
 
-  const PopularMovieSuccess({required this.topRatingMovies});
+  const TopRatingMovieSuccess({required this.topRatingMovies});
 }
 
-final class PopularMovieFailure extends TopRatingMovieState {
+final class TopRatingMovieFailure extends TopRatingMovieState {
   final String errorMessage;
 
-  const PopularMovieFailure({required this.errorMessage});
+  const TopRatingMovieFailure({required this.errorMessage});
 }
 
-final class PopularMovieLoading extends TopRatingMovieState {}
+final class TopRatingMovieLoading extends TopRatingMovieState {}

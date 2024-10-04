@@ -15,14 +15,17 @@ class PopularTvShowsCubit extends Cubit<PopularTvShowsState> {
 
     var result = await tvShowsRepo.fetchPopularTVShows();
 
-    result.fold((failure) {
-      emit(
-        PopularTvShowsFailure(errorMessage: failure.errMessage),
-      );
-    }, (popularTVShows) {
-      emit(
-        PopularTvShowsSuccess(popularTVShows: popularTVShows),
-      );
-    });
+    result.fold(
+      (failure) {
+        emit(
+          PopularTvShowsFailure(errorMessage: failure.errMessage),
+        );
+      },
+      (popularTVShows) {
+        emit(
+          PopularTvShowsSuccess(popularTVShows: popularTVShows),
+        );
+      },
+    );
   }
 }

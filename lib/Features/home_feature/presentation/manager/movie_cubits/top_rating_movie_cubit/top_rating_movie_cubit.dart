@@ -11,17 +11,17 @@ class TopRatingMovieCubit extends Cubit<TopRatingMovieState> {
   final MovieRepo movieRepo;
 
   Future<void> fetchTopRatingMovies() async {
-    emit(PopularMovieLoading());
+    emit(TopRatingMovieLoading());
 
     var result = await movieRepo.fetchTopRatingMovies();
 
     result.fold((failure) {
       emit(
-        PopularMovieFailure(errorMessage: failure.errMessage),
+        TopRatingMovieFailure(errorMessage: failure.errMessage),
       );
     }, (topRatingMovies) {
       emit(
-        PopularMovieSuccess(topRatingMovies: topRatingMovies),
+        TopRatingMovieSuccess(topRatingMovies: topRatingMovies),
       );
     });
   }

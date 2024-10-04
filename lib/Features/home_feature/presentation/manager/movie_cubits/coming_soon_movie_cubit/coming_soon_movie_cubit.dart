@@ -11,17 +11,17 @@ class ComingSoonMovieCubit extends Cubit<ComingSoonMovieState> {
   final MovieRepo movieRepo;
 
   Future<void> fetchComingSoonMovies() async {
-    emit(NowPlayingMovieLoading());
+    emit(ComingSoonMovieLoading());
 
     var result = await movieRepo.fetchComingSoonMovies();
 
     result.fold((failure) {
       emit(
-        NowPlayingMovieFailure(errorMessage: failure.errMessage),
+        ComingSoonMovieFailure(errorMessage: failure.errMessage),
       );
     }, (comingSoonMovies) {
       emit(
-        NowPlayingMovieSuccess(comingSoonMovies: comingSoonMovies),
+        ComingSoonMovieSuccess(comingSoonMovies: comingSoonMovies),
       );
     });
   }

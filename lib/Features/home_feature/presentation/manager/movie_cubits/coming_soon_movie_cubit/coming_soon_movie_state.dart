@@ -9,16 +9,16 @@ sealed class ComingSoonMovieState extends Equatable {
 
 final class ComingSoonMovieInitial extends ComingSoonMovieState {}
 
-final class NowPlayingMovieSuccess extends ComingSoonMovieState {
+final class ComingSoonMovieSuccess extends ComingSoonMovieState {
   final List<MovieModel> comingSoonMovies;
 
-  const NowPlayingMovieSuccess({required this.comingSoonMovies});
+  const ComingSoonMovieSuccess({required this.comingSoonMovies});
 }
 
-final class NowPlayingMovieFailure extends ComingSoonMovieState {
+final class ComingSoonMovieFailure extends ComingSoonMovieState {
   final String errorMessage;
 
-  const NowPlayingMovieFailure({required this.errorMessage});
+  const ComingSoonMovieFailure({required this.errorMessage});
 }
 
-final class NowPlayingMovieLoading extends ComingSoonMovieState {}
+final class ComingSoonMovieLoading extends ComingSoonMovieState {}
