@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/custom_duration_time.dart';
+import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/custom_released_date.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_rating.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class NowPlayingItem extends StatelessWidget {
-  const NowPlayingItem({super.key});
+  const NowPlayingItem({super.key, required this.movieModel});
+  final MovieModel movieModel;
 
   @override
   Widget build(BuildContext context) {
@@ -19,25 +21,37 @@ class NowPlayingItem extends StatelessWidget {
           onTap: () {
             GoRouter.of(context).push(AppRouter.kDetailsView);
           },
-          child: const Column(
+          child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CustomPoster(
                 isThereBookmark: true,
+                movieModel: movieModel,
+              ),
+              const SizedBox(
+                height: 10,
               ),
               Text(
-                maxLines: 2,
+                maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                textAlign: TextAlign.center,
-                "Breaking Bad (2020)",
+                textAlign: TextAlign.start,
+                movieModel.originalTitle ?? "",
                 style: Styles.styleText18,
               ),
-              Row(
-                children: [
-                  CustomRating(),
-                  Spacer(),
-                  CustomDurationTime(),
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CustomRating(
+                      movieModel: movieModel,
+                    ),
+                    const Spacer(),
+                    CustomReleasedDate(
+                      movieModel: movieModel,
+                    ),
+                  ],
+                ),
               )
             ],
           ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/custom_rating.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class DetailsReviewerContent extends StatelessWidget {
@@ -30,7 +29,7 @@ class DetailsReviewerContent extends StatelessWidget {
           ),
           Row(
             children: [
-              const CustomRating(),
+              // const CustomRating(),
               const Spacer(),
               Padding(
                 padding: const EdgeInsets.only(

@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 
@@ -7,9 +8,12 @@ class CustomPoster extends StatelessWidget {
   const CustomPoster({
     super.key,
     required this.isThereBookmark,
+    required this.movieModel,
   });
 
+  final String image = "https://image.tmdb.org/t/p/original";
   final bool isThereBookmark;
+  final MovieModel movieModel;
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +27,7 @@ class CustomPoster extends StatelessWidget {
               aspectRatio: 2.8 / 3.5,
               child: CachedNetworkImage(
                 fit: BoxFit.cover,
-                imageUrl:
-                    'https://image.tmdb.org/t/p/original/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg',
+                imageUrl: '$image${movieModel.posterPath}',
                 errorWidget: (context, url, error) => const Icon(Icons.error),
                 placeholder: (context, url) => const Center(
                   child: CustomCircularLoading(),

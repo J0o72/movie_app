@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/custom_duration_time.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_genre_shape_saved.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster_saved.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/custom_rating.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class SavedViewItemContent extends StatelessWidget {
@@ -26,7 +24,7 @@ class SavedViewItemContent extends StatelessWidget {
                 "Breaking Bad (2020)",
                 style: Styles.styleText18,
               ),
-              CustomRating(),
+              // CustomRating(),
               Row(
                 children: [
                   CustomGenreShapeSaved(),
@@ -36,7 +34,7 @@ class SavedViewItemContent extends StatelessWidget {
                   CustomGenreShapeSaved(),
                 ],
               ),
-              CustomDurationTime(),
+              // CustomDurationTime(),
             ],
           )
         ],

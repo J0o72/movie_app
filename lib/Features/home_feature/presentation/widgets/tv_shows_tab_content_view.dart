@@ -8,6 +8,7 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/custom_row.
 import 'package:movie_app/Features/home_feature/presentation/widgets/genres_list_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_list_view.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
+import 'package:movie_app/core/widgets/custom_error_failure.dart';
 
 class TvShowsTabContentView extends StatelessWidget {
   const TvShowsTabContentView({
@@ -29,12 +30,7 @@ class TvShowsTabContentView extends StatelessWidget {
                 moviesOrTVShowsModel: state.popularTVShows,
               );
             } else if (state is PopularTvShowsFailure) {
-              return const Center(
-                child: Text(
-                  "Error",
-                  textAlign: TextAlign.center,
-                ),
-              );
+              return const CustomErrorFailure();
             } else {
               return const CustomCircularLoading();
             }

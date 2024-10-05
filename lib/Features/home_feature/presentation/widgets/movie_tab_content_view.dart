@@ -8,6 +8,7 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/custom_row.
 import 'package:movie_app/Features/home_feature/presentation/widgets/genres_list_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_list_view.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
+import 'package:movie_app/core/widgets/custom_error_failure.dart';
 
 class MovieTabContentView extends StatelessWidget {
   const MovieTabContentView({
@@ -29,12 +30,7 @@ class MovieTabContentView extends StatelessWidget {
                 moviesOrTVShowsModel: state.popularMovies,
               );
             } else if (state is PopularMovieFailure) {
-              return const Center(
-                child: Text(
-                  "Error",
-                  textAlign: TextAlign.center,
-                ),
-              );
+              return const CustomErrorFailure();
             } else {
               return const CustomCircularLoading();
             }
@@ -63,20 +59,26 @@ class MovieTabContentView extends StatelessWidget {
           },
         ),
         const NowPlayingListView(),
+        const SizedBox(
+          height: 20,
+        ),
         CustomRow(
           leftText: "Top Rating",
           onTap: () {
             GoRouter.of(context).push(AppRouter.kMovieCollevionView);
           },
         ),
-        const NowPlayingListView(),
+        const TopRatingListView(),
+        const SizedBox(
+          height: 20,
+        ),
         CustomRow(
           leftText: "Upcoming",
           onTap: () {
             GoRouter.of(context).push(AppRouter.kMovieCollevionView);
           },
         ),
-        const NowPlayingListView(),
+        const ComingSoonListView(),
       ],
     );
   }
