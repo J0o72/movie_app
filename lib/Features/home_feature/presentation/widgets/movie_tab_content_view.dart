@@ -6,6 +6,8 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/custom_caro
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_row.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/genres_list_view.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/movie_top_rating_list_view.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/movie_up_coming_list_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_list_view.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
@@ -78,7 +80,7 @@ class MovieTabContentView extends StatelessWidget {
             GoRouter.of(context).push(AppRouter.kMovieCollevionView);
           },
         ),
-        const ComingSoonListView(),
+        const UpComingListView(),
       ],
     );
   }
