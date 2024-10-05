@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/Features/home_feature/data/repos/movie_repo/movie_repo_impl.dart';
 import 'package:movie_app/Features/home_feature/data/repos/tv_shows_repo/tv_shows_repo_impl.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/coming_soon_movie_cubit/coming_soon_movie_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/genre_movie_cubit/genre_movie_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/now_playing_movie_cubit/now_playing_movie_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/popular_movie_cubit/popular_movie_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/top_rating_movie_cubit/top_rating_movie_cubit.dart';
@@ -52,6 +53,11 @@ class PageWithTabBarView extends StatelessWidget {
                   create: (context) =>
                       NowPlayingMovieCubit(getIt.get<MovieRepoImpl>())
                         ..fetchNowPlayingMovies(),
+                ),
+                BlocProvider(
+                  create: (context) =>
+                      GenreMovieCubit(getIt.get<MovieRepoImpl>())
+                        ..fetchGenreMovies(),
                 ),
               ],
               child: const CustomScrollView(
