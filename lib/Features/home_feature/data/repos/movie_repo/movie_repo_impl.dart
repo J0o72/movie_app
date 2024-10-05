@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:movie_app/Features/home_feature/data/models/genres_model/genres_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
 import 'package:movie_app/Features/home_feature/data/repos/movie_repo/movie_repo.dart';
 import 'package:movie_app/core/errors/failure.dart';
@@ -95,7 +96,22 @@ class MovieRepoImpl implements MovieRepo {
   }
 
   @override
-  Future<Either<Failure, List<MovieModel>>> fetchGenresMovies() {
-    throw UnimplementedError();
+  Future<Either<Failure, List<GenresModel>>> fetchGenresMovies() async {
+    try {
+      var data = await apiService.get(endPoint: 'genre/movie/list?language=en');
+
+      List<GenresModel> genreMovies = [];
+      for (var item in data['results']) {
+        genreMovies.add(GenresModel.fromJson(item));
+      }
+
+      return right(genreMovies);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
   }
 }
