@@ -16,54 +16,50 @@ class PageWithTabBarView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      initialIndex: 0,
-      length: 2,
-      child: Scaffold(
-        appBar: CustomAppBar(
-          appBar: AppBar(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => ComingSoonMovieCubit(getIt.get<MovieRepoImpl>())
+            ..fetchComingSoonMovies(),
         ),
-        body: TabBarView(
-          children: [
-            MultiBlocProvider(
-              providers: [
-                BlocProvider(
-                  create: (context) =>
-                      ComingSoonMovieCubit(getIt.get<MovieRepoImpl>())
-                        ..fetchComingSoonMovies(),
-                ),
-                BlocProvider(
-                  create: (context) =>
-                      PopularMovieCubit(getIt.get<MovieRepoImpl>())
-                        ..fetchPopularMovies(),
-                ),
-                BlocProvider(
-                  create: (context) =>
-                      TopRatingMovieCubit(getIt.get<MovieRepoImpl>())
-                        ..fetchTopRatingMovies(),
-                ),
-                BlocProvider(
-                  create: (context) =>
-                      NowPlayingMovieCubit(getIt.get<MovieRepoImpl>())
-                        ..fetchNowPlayingMovies(),
-                ),
-              ],
-              child: const CustomScrollView(
+        BlocProvider(
+          create: (context) => PopularMovieCubit(getIt.get<MovieRepoImpl>())
+            ..fetchPopularMovies(),
+        ),
+        BlocProvider(
+          create: (context) => TopRatingMovieCubit(getIt.get<MovieRepoImpl>())
+            ..fetchTopRatingMovies(),
+        ),
+        BlocProvider(
+          create: (context) => NowPlayingMovieCubit(getIt.get<MovieRepoImpl>())
+            ..fetchNowPlayingMovies(),
+        ),
+      ],
+      child: DefaultTabController(
+        initialIndex: 0,
+        length: 2,
+        child: Scaffold(
+          appBar: CustomAppBar(
+            appBar: AppBar(),
+          ),
+          body: const TabBarView(
+            children: [
+              CustomScrollView(
                 slivers: [
                   SliverToBoxAdapter(
                     child: TabContentView(),
                   ),
                 ],
               ),
-            ),
-            const CustomScrollView(
-              slivers: [
-                SliverToBoxAdapter(
-                  child: TabContentView(),
-                ),
-              ],
-            ),
-          ],
+              CustomScrollView(
+                slivers: [
+                  SliverToBoxAdapter(
+                    child: TabContentView(),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

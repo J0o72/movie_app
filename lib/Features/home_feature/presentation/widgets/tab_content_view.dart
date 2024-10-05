@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/popular_movie_cubit/popular_movie_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_carousel_slider.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_row.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/genres_list_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_list_view.dart';
@@ -19,7 +22,23 @@ class TabContentView extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        const CustomCarouselSliderView(),
+        BlocBuilder<PopularMovieCubit, PopularMovieState>(
+          builder: (context, state) {
+            if (state is PopularMovieSuccess) {
+              // debugPrint(state.popularMovies.length.toString());
+              return const CustomCarouselSliderView();
+            } else if (state is PopularMovieFailure) {
+              return const Center(
+                child: Text(
+                  "Error",
+                  textAlign: TextAlign.center,
+                ),
+              );
+            } else {
+              return const CustomCircularLoading();
+            }
+          },
+        ),
         const SizedBox(
           height: 20,
         ),
