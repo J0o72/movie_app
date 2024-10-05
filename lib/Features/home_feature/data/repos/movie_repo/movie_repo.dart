@@ -7,4 +7,5 @@ abstract class MovieRepo {
   Future<Either<Failure, List<MovieModel>>> fetchNowPlayingMovies();
   Future<Either<Failure, List<MovieModel>>> fetchTopRatingMovies();
   Future<Either<Failure, List<MovieModel>>> fetchComingSoonMovies();
+  Future<Either<Failure, List<MovieModel>>> fetchGenresMovies();
 }

@@ -93,4 +93,9 @@ class MovieRepoImpl implements MovieRepo {
       }
     }
   }
+
+  @override
+  Future<Either<Failure, List<MovieModel>>> fetchGenresMovies() {
+    throw UnimplementedError();
+  }
 }
