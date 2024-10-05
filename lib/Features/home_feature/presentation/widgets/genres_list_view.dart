@@ -19,7 +19,7 @@ class GenresHomeListView extends StatelessWidget {
               padding: const EdgeInsets.only(left: 25),
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: 5,
+                itemCount: state.genre.length,
                 itemBuilder: (context, index) {
                   return GenreItemHome(
                     genresModel: state.genre[index],

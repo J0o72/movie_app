@@ -16,6 +16,26 @@ const List<String> innerStyleImages = [
   'https://image.tmdb.org/t/p/original/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg',
 ];
 
+const List<Color> genreColor = [
+  Color(0xff2C3E50),
+  Color(0xff3B3B98),
+  Color(0xff8E44AD),
+  Color(0xffC0392B),
+  Color(0xff2980B9),
+  Color(0xff27AE60),
+  Color(0xffE74C3C),
+  Color(0xffD35400),
+  Color(0xff2C3E50),
+  Color(0xff34495E),
+  Color(0xff4A235A),
+  Color(0xff641E16),
+  Color(0xff1ABC9C),
+  Color(0xff9B59B6),
+  Color(0xff283747),
+  Color(0xff2874A6),
+  Color(0xff1F1B24),
+];
+
 const List<Widget> pages = [
   PageWithTabBarView(),
   SearchView(),
