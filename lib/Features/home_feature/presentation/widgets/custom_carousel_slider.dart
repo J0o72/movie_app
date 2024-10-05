@@ -33,12 +33,6 @@ class _CustomCarouselSliderViewState extends State<CustomCarouselSliderView>
       children: [
         CarouselSlider(
           carouselController: innerCarouselController,
-          // items: innerStyleImages.map((imagePath) {
-          //   return CustomImageCarouselItem(
-          //     imageUrl: imagePath,
-          //     movie: widget.movieModel,
-          //   );
-          // }).toList(),
           items: widget.movieModel.map((e) {
             return CustomImageCarouselItem(movie: e);
           }).toList(),
@@ -57,6 +51,7 @@ class _CustomCarouselSliderViewState extends State<CustomCarouselSliderView>
         CustomCarouselIndicators(
           innerCurrentPage: innerCurrentPage,
           innerCarouselController: innerCarouselController,
+          movies: widget.movieModel,
         ),
         CarouselSliderArrow(
           innerCurrentPage: innerCurrentPage,
