@@ -5,6 +5,7 @@ import 'package:movie_app/Features/home_feature/presentation/manager/tv_shows_cu
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_carousel_slider.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_row.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/genres_list_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/tv_shows_airing_today_list_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/tv_shows_on_the_air_list_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/tv_shows_top_rating_list_view.dart';
@@ -49,7 +50,7 @@ class TvShowsTabContentView extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        // const GenresHomeListView(),
+        const TvShowGenresListView(),
         const SizedBox(
           height: 20,
         ),

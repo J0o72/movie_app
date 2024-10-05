@@ -19,14 +19,18 @@ class GenreItemHome extends StatelessWidget {
       },
       child: Container(
         width: 130,
-        height: 40,
+        height: 50,
         margin: const EdgeInsets.only(right: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         decoration: BoxDecoration(
           color: gerneColor,
           borderRadius: BorderRadius.circular(12),
         ),
         child: Center(
           child: Text(
+            textAlign: TextAlign.center,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             genresModel.name.toString(),
             style: Styles.styleText18,
           ),

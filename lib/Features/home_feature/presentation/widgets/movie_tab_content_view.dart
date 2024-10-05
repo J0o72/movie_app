@@ -50,7 +50,7 @@ class MovieTabContentView extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        const GenresHomeListView(),
+        const MovieGenresHomeListView(),
         const SizedBox(
           height: 20,
         ),
