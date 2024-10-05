@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie_app/Features/home_feature/data/models/genres_model/genres_model.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class GenreItemHome extends StatelessWidget {
-  const GenreItemHome({super.key});
+  const GenreItemHome({super.key, required this.genresModel});
+
+  final GenresModel genresModel;
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +23,9 @@ class GenreItemHome extends StatelessWidget {
           color: const Color(0xff7c889f),
           borderRadius: BorderRadius.circular(12),
         ),
-        child: const Center(
+        child: Center(
           child: Text(
-            "Action",
+            genresModel.name.toString(),
             style: Styles.styleText18,
           ),
         ),
