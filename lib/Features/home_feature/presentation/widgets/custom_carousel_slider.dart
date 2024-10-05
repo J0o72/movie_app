@@ -1,12 +1,14 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/carousel_slider_indicators.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_image_carousel_item.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_slider_arrows.dart';
 import 'package:movie_app/constants.dart';
 
 class CustomCarouselSliderView extends StatefulWidget {
-  const CustomCarouselSliderView({super.key});
+  const CustomCarouselSliderView({super.key, required this.movieModel});
+  final List<MovieModel> movieModel;
 
   @override
   State<CustomCarouselSliderView> createState() =>
@@ -31,10 +33,14 @@ class _CustomCarouselSliderViewState extends State<CustomCarouselSliderView>
       children: [
         CarouselSlider(
           carouselController: innerCarouselController,
-          items: innerStyleImages.map((imagePath) {
-            return CustomImageCarouselItem(
-              imageUrl: imagePath,
-            );
+          // items: innerStyleImages.map((imagePath) {
+          //   return CustomImageCarouselItem(
+          //     imageUrl: imagePath,
+          //     movie: widget.movieModel,
+          //   );
+          // }).toList(),
+          items: widget.movieModel.map((e) {
+            return CustomImageCarouselItem(movie: e);
           }).toList(),
           options: CarouselOptions(
             autoPlay: true,

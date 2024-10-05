@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/Features/home_feature/data/repos/movie_repo/movie_repo_impl.dart';
+import 'package:movie_app/Features/home_feature/data/repos/tv_shows_repo/tv_shows_repo_impl.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/coming_soon_movie_cubit/coming_soon_movie_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/now_playing_movie_cubit/now_playing_movie_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/popular_movie_cubit/popular_movie_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/top_rating_movie_cubit/top_rating_movie_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/tv_shows_cubits/airing_today_tv_shows_cubit/airing_today_tv_shows_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/tv_shows_cubits/on_the_air_tv_shows_cubit/on_the_air_tv_shows_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/tv_shows_cubits/popular_tv_shows_cubit/popular_tv_shows_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/tv_shows_cubits/top_rating_tv_shows_cubit/top_rating_tv_shows_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_app_bar.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/tab_content_view.dart';
 import 'package:movie_app/core/utils/service_locator.dart';
@@ -33,6 +38,25 @@ class PageWithTabBarView extends StatelessWidget {
         BlocProvider(
           create: (context) => NowPlayingMovieCubit(getIt.get<MovieRepoImpl>())
             ..fetchNowPlayingMovies(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              OnTheAirTvShowsCubit(getIt.get<TVShowsRepoImpl>())
+                ..fetchOnTheAirTVShows(),
+        ),
+        BlocProvider(
+          create: (context) => PopularTvShowsCubit(getIt.get<TVShowsRepoImpl>())
+            ..fetchPopularTvShows(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              TopRatingTvShowsCubit(getIt.get<TVShowsRepoImpl>())
+                ..fetchTopRatingTVShows(),
+        ),
+        BlocProvider(
+          create: (context) =>
+              AiringTodayTvShowsCubit(getIt.get<TVShowsRepoImpl>())
+                ..fetchAiringTodayTVShows(),
         ),
       ],
       child: DefaultTabController(

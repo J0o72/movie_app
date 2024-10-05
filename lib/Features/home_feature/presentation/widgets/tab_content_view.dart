@@ -26,7 +26,9 @@ class TabContentView extends StatelessWidget {
           builder: (context, state) {
             if (state is PopularMovieSuccess) {
               // debugPrint(state.popularMovies.length.toString());
-              return const CustomCarouselSliderView();
+              return CustomCarouselSliderView(
+                movieModel: state.popularMovies,
+              );
             } else if (state is PopularMovieFailure) {
               return const Center(
                 child: Text(

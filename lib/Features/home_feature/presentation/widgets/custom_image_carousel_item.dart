@@ -1,14 +1,16 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 
 class CustomImageCarouselItem extends StatelessWidget {
-  const CustomImageCarouselItem({super.key, required this.imageUrl});
+  const CustomImageCarouselItem({super.key, required this.movie});
 
-  final String imageUrl;
+  final String imageUrl = "https://image.tmdb.org/t/p/original";
+  final MovieModel movie;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class CustomImageCarouselItem extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.4,
               errorWidget: (context, url, error) => const Icon(Icons.error),
               placeholder: (context, url) => const CustomCircularLoading(),
-              imageUrl: imageUrl,
+              imageUrl: "$imageUrl${movie.posterPath}",
             ),
           ),
         ),
