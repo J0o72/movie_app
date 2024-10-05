@@ -12,6 +12,7 @@ import 'package:movie_app/Features/home_feature/presentation/manager/tv_shows_cu
 import 'package:movie_app/Features/home_feature/presentation/manager/tv_shows_cubits/top_rating_tv_shows_cubit/top_rating_tv_shows_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_app_bar.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/tab_content_view.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/tv_shows_tab_content_view.dart';
 import 'package:movie_app/core/utils/service_locator.dart';
 
 class PageWithTabBarView extends StatelessWidget {
@@ -71,14 +72,14 @@ class PageWithTabBarView extends StatelessWidget {
               CustomScrollView(
                 slivers: [
                   SliverToBoxAdapter(
-                    child: TabContentView(),
+                    child: MovieTabContentView(),
                   ),
                 ],
               ),
               CustomScrollView(
                 slivers: [
                   SliverToBoxAdapter(
-                    child: TabContentView(),
+                    child: TvShowsTabContentView(),
                   ),
                 ],
               ),

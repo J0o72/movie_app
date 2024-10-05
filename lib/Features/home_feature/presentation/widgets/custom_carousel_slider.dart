@@ -4,7 +4,6 @@ import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_mo
 import 'package:movie_app/Features/home_feature/presentation/widgets/carousel_slider_indicators.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_image_carousel_item.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_slider_arrows.dart';
-import 'package:movie_app/constants.dart';
 
 class CustomCarouselSliderView extends StatefulWidget {
   const CustomCarouselSliderView({super.key, required this.movieModel});
