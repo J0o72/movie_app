@@ -101,11 +101,10 @@ class MovieRepoImpl implements MovieRepo {
       var data = await apiService.get(endPoint: 'genre/movie/list?language=en');
 
       List<GenresModel> genreMovies = [];
-      for (var item in data['results']) {
+      for (var item in data['genres']) {
         genreMovies.add(GenresModel.fromJson(item));
       }
-
-      return right(genreMovies);
+      return right(genreMovies.toList());
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));
