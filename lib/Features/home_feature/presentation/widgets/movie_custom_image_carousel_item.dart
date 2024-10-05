@@ -6,8 +6,8 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/custom_book
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 
-class CustomImageCarouselItem extends StatelessWidget {
-  const CustomImageCarouselItem({super.key, required this.movie});
+class MovieCustomImageCarouselItem extends StatelessWidget {
+  const MovieCustomImageCarouselItem({super.key, required this.movie});
 
   final String imageUrl = "https://image.tmdb.org/t/p/original";
   final MovieModel movie;

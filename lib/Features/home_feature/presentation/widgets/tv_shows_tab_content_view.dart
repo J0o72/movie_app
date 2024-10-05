@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/popular_movie_cubit/popular_movie_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/tv_shows_cubits/popular_tv_shows_cubit/popular_tv_shows_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_carousel_slider.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_row.dart';
@@ -9,10 +9,21 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/genres_list
 import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_list_view.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 
-class TvShowsTabContentView extends StatelessWidget {
+class TvShowsTabContentView extends StatefulWidget {
   const TvShowsTabContentView({
     super.key,
   });
+
+  @override
+  State<TvShowsTabContentView> createState() => _TvShowsTabContentViewState();
+}
+
+class _TvShowsTabContentViewState extends State<TvShowsTabContentView> {
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<PopularTvShowsCubit>(context).fetchPopularTvShows();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +33,14 @@ class TvShowsTabContentView extends StatelessWidget {
         const SizedBox(
           height: 20,
         ),
-        BlocBuilder<PopularMovieCubit, PopularMovieState>(
+        BlocBuilder<PopularTvShowsCubit, PopularTvShowsState>(
           builder: (context, state) {
-            if (state is PopularMovieSuccess) {
+            if (state is PopularTvShowsSuccess) {
               return CustomCarouselSliderView(
-                movieModel: state.popularMovies,
+                moviesOrTVShowsModel: state.popularTVShows,
               );
-            } else if (state is PopularMovieFailure) {
+            } else if (state is PopularTvShowsFailure) {
+              print(state.errorMessage);
               return const Center(
                 child: Text(
                   "Error",

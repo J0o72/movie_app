@@ -3,9 +3,9 @@ import 'package:equatable/equatable.dart';
 class TvShowsModel extends Equatable {
   final bool? adult;
   final String? backdropPath;
-  final List<int>? genreIds;
+  final List<dynamic>? genreIds;
   final int? id;
-  final List<String>? originCountry;
+  final List<dynamic>? originCountry;
   final String? originalLanguage;
   final String? originalName;
   final String? overview;
@@ -36,9 +36,9 @@ class TvShowsModel extends Equatable {
   factory TvShowsModel.fromJson(Map<String, dynamic> json) => TvShowsModel(
         adult: json['adult'] as bool?,
         backdropPath: json['backdrop_path'] as String?,
-        genreIds: json['genre_ids'] as List<int>?,
+        genreIds: json['genre_ids'] as List<dynamic>?,
         id: json['id'] as int?,
-        originCountry: json['origin_country'] as List<String>?,
+        originCountry: json['origin_country'] as List<dynamic>?,
         originalLanguage: json['original_language'] as String?,
         originalName: json['original_name'] as String?,
         overview: json['overview'] as String?,

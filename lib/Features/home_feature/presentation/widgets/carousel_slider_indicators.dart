@@ -1,6 +1,5 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
 import 'package:movie_app/constants.dart';
 
 class CustomCarouselIndicators extends StatelessWidget {
@@ -8,19 +7,19 @@ class CustomCarouselIndicators extends StatelessWidget {
     super.key,
     required this.innerCurrentPage,
     required this.innerCarouselController,
-    required this.movies,
+    required this.moviesOrTVShows,
   });
 
   final int innerCurrentPage;
   final CarouselSliderController innerCarouselController;
-  final List<MovieModel> movies;
+  final List<dynamic> moviesOrTVShows;
 
   @override
   Widget build(BuildContext context) {
     return Positioned(
       bottom: 10,
       child: Row(
-        children: List.generate(movies.length, (index) {
+        children: List.generate(moviesOrTVShows.length, (index) {
           bool isSelected = innerCurrentPage == index;
           return GestureDetector(
             onTap: () {

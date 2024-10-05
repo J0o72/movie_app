@@ -11,7 +11,7 @@ import 'package:movie_app/Features/home_feature/presentation/manager/tv_shows_cu
 import 'package:movie_app/Features/home_feature/presentation/manager/tv_shows_cubits/popular_tv_shows_cubit/popular_tv_shows_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/tv_shows_cubits/top_rating_tv_shows_cubit/top_rating_tv_shows_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_app_bar.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/tab_content_view.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/movie_tab_content_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/tv_shows_tab_content_view.dart';
 import 'package:movie_app/core/utils/service_locator.dart';
 
@@ -22,69 +22,115 @@ class PageWithTabBarView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => ComingSoonMovieCubit(getIt.get<MovieRepoImpl>())
-            ..fetchComingSoonMovies(),
+    return
+        // MultiBlocProvider(
+        // providers: [
+        // BlocProvider(
+        //   create: (context) => ComingSoonMovieCubit(getIt.get<MovieRepoImpl>())
+        //     ..fetchComingSoonMovies(),
+        // ),
+        // BlocProvider(
+        //   create: (context) => PopularMovieCubit(getIt.get<MovieRepoImpl>())
+        //     ..fetchPopularMovies(),
+        // ),
+        // BlocProvider(
+        //   create: (context) => TopRatingMovieCubit(getIt.get<MovieRepoImpl>())
+        //     ..fetchTopRatingMovies(),
+        // ),
+        // BlocProvider(
+        //   create: (context) => NowPlayingMovieCubit(getIt.get<MovieRepoImpl>())
+        //     ..fetchNowPlayingMovies(),
+        // ),
+        // BlocProvider(
+        //   create: (context) =>
+        //       OnTheAirTvShowsCubit(getIt.get<TVShowsRepoImpl>())
+        //         ..fetchOnTheAirTVShows(),
+        // ),
+        // BlocProvider(
+        //   create: (context) => PopularTvShowsCubit(getIt.get<TVShowsRepoImpl>())
+        //     ..fetchPopularTvShows(),
+        // ),
+        // BlocProvider(
+        //   create: (context) =>
+        //       TopRatingTvShowsCubit(getIt.get<TVShowsRepoImpl>())
+        //         ..fetchTopRatingTVShows(),
+        // ),
+        // BlocProvider(
+        //   create: (context) =>
+        //       AiringTodayTvShowsCubit(getIt.get<TVShowsRepoImpl>())
+        //         ..fetchAiringTodayTVShows(),
+        // ),
+        // ],
+        DefaultTabController(
+      initialIndex: 0,
+      length: 2,
+      child: Scaffold(
+        appBar: CustomAppBar(
+          appBar: AppBar(),
         ),
-        BlocProvider(
-          create: (context) => PopularMovieCubit(getIt.get<MovieRepoImpl>())
-            ..fetchPopularMovies(),
-        ),
-        BlocProvider(
-          create: (context) => TopRatingMovieCubit(getIt.get<MovieRepoImpl>())
-            ..fetchTopRatingMovies(),
-        ),
-        BlocProvider(
-          create: (context) => NowPlayingMovieCubit(getIt.get<MovieRepoImpl>())
-            ..fetchNowPlayingMovies(),
-        ),
-        BlocProvider(
-          create: (context) =>
-              OnTheAirTvShowsCubit(getIt.get<TVShowsRepoImpl>())
-                ..fetchOnTheAirTVShows(),
-        ),
-        BlocProvider(
-          create: (context) => PopularTvShowsCubit(getIt.get<TVShowsRepoImpl>())
-            ..fetchPopularTvShows(),
-        ),
-        BlocProvider(
-          create: (context) =>
-              TopRatingTvShowsCubit(getIt.get<TVShowsRepoImpl>())
-                ..fetchTopRatingTVShows(),
-        ),
-        BlocProvider(
-          create: (context) =>
-              AiringTodayTvShowsCubit(getIt.get<TVShowsRepoImpl>())
-                ..fetchAiringTodayTVShows(),
-        ),
-      ],
-      child: DefaultTabController(
-        initialIndex: 0,
-        length: 2,
-        child: Scaffold(
-          appBar: CustomAppBar(
-            appBar: AppBar(),
-          ),
-          body: const TabBarView(
-            children: [
-              CustomScrollView(
+        body: TabBarView(
+          children: [
+            MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) =>
+                      ComingSoonMovieCubit(getIt.get<MovieRepoImpl>())
+                        ..fetchComingSoonMovies(),
+                ),
+                BlocProvider(
+                  create: (context) =>
+                      PopularMovieCubit(getIt.get<MovieRepoImpl>()),
+                ),
+                BlocProvider(
+                  create: (context) =>
+                      TopRatingMovieCubit(getIt.get<MovieRepoImpl>())
+                        ..fetchTopRatingMovies(),
+                ),
+                BlocProvider(
+                  create: (context) =>
+                      NowPlayingMovieCubit(getIt.get<MovieRepoImpl>())
+                        ..fetchNowPlayingMovies(),
+                ),
+              ],
+              child: const CustomScrollView(
                 slivers: [
                   SliverToBoxAdapter(
                     child: MovieTabContentView(),
                   ),
                 ],
               ),
-              CustomScrollView(
+            ),
+            MultiBlocProvider(
+              providers: [
+                BlocProvider(
+                  create: (context) =>
+                      OnTheAirTvShowsCubit(getIt.get<TVShowsRepoImpl>())
+                        ..fetchOnTheAirTVShows(),
+                ),
+                BlocProvider(
+                  create: (context) =>
+                      PopularTvShowsCubit(getIt.get<TVShowsRepoImpl>()),
+                ),
+                BlocProvider(
+                  create: (context) =>
+                      TopRatingTvShowsCubit(getIt.get<TVShowsRepoImpl>())
+                        ..fetchTopRatingTVShows(),
+                ),
+                BlocProvider(
+                  create: (context) =>
+                      AiringTodayTvShowsCubit(getIt.get<TVShowsRepoImpl>())
+                        ..fetchAiringTodayTVShows(),
+                ),
+              ],
+              child: const CustomScrollView(
                 slivers: [
                   SliverToBoxAdapter(
                     child: TvShowsTabContentView(),
                   ),
                 ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
