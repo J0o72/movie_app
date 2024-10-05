@@ -22,46 +22,7 @@ class PageWithTabBarView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return
-        // MultiBlocProvider(
-        // providers: [
-        // BlocProvider(
-        //   create: (context) => ComingSoonMovieCubit(getIt.get<MovieRepoImpl>())
-        //     ..fetchComingSoonMovies(),
-        // ),
-        // BlocProvider(
-        //   create: (context) => PopularMovieCubit(getIt.get<MovieRepoImpl>())
-        //     ..fetchPopularMovies(),
-        // ),
-        // BlocProvider(
-        //   create: (context) => TopRatingMovieCubit(getIt.get<MovieRepoImpl>())
-        //     ..fetchTopRatingMovies(),
-        // ),
-        // BlocProvider(
-        //   create: (context) => NowPlayingMovieCubit(getIt.get<MovieRepoImpl>())
-        //     ..fetchNowPlayingMovies(),
-        // ),
-        // BlocProvider(
-        //   create: (context) =>
-        //       OnTheAirTvShowsCubit(getIt.get<TVShowsRepoImpl>())
-        //         ..fetchOnTheAirTVShows(),
-        // ),
-        // BlocProvider(
-        //   create: (context) => PopularTvShowsCubit(getIt.get<TVShowsRepoImpl>())
-        //     ..fetchPopularTvShows(),
-        // ),
-        // BlocProvider(
-        //   create: (context) =>
-        //       TopRatingTvShowsCubit(getIt.get<TVShowsRepoImpl>())
-        //         ..fetchTopRatingTVShows(),
-        // ),
-        // BlocProvider(
-        //   create: (context) =>
-        //       AiringTodayTvShowsCubit(getIt.get<TVShowsRepoImpl>())
-        //         ..fetchAiringTodayTVShows(),
-        // ),
-        // ],
-        DefaultTabController(
+    return DefaultTabController(
       initialIndex: 0,
       length: 2,
       child: Scaffold(
@@ -79,7 +40,8 @@ class PageWithTabBarView extends StatelessWidget {
                 ),
                 BlocProvider(
                   create: (context) =>
-                      PopularMovieCubit(getIt.get<MovieRepoImpl>()),
+                      PopularMovieCubit(getIt.get<MovieRepoImpl>())
+                        ..fetchPopularMovies(),
                 ),
                 BlocProvider(
                   create: (context) =>
@@ -109,7 +71,8 @@ class PageWithTabBarView extends StatelessWidget {
                 ),
                 BlocProvider(
                   create: (context) =>
-                      PopularTvShowsCubit(getIt.get<TVShowsRepoImpl>()),
+                      PopularTvShowsCubit(getIt.get<TVShowsRepoImpl>())
+                        ..fetchPopularTvShows(),
                 ),
                 BlocProvider(
                   create: (context) =>

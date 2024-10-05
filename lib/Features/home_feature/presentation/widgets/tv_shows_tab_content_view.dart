@@ -9,21 +9,10 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/genres_list
 import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_list_view.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 
-class TvShowsTabContentView extends StatefulWidget {
+class TvShowsTabContentView extends StatelessWidget {
   const TvShowsTabContentView({
     super.key,
   });
-
-  @override
-  State<TvShowsTabContentView> createState() => _TvShowsTabContentViewState();
-}
-
-class _TvShowsTabContentViewState extends State<TvShowsTabContentView> {
-  @override
-  void initState() {
-    super.initState();
-    BlocProvider.of<PopularTvShowsCubit>(context).fetchPopularTvShows();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +29,6 @@ class _TvShowsTabContentViewState extends State<TvShowsTabContentView> {
                 moviesOrTVShowsModel: state.popularTVShows,
               );
             } else if (state is PopularTvShowsFailure) {
-              print(state.errorMessage);
               return const Center(
                 child: Text(
                   "Error",

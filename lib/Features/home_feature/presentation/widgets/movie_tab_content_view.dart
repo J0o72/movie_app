@@ -9,21 +9,10 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/genres_list
 import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_list_view.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 
-class MovieTabContentView extends StatefulWidget {
+class MovieTabContentView extends StatelessWidget {
   const MovieTabContentView({
     super.key,
   });
-
-  @override
-  State<MovieTabContentView> createState() => _MovieTabContentViewState();
-}
-
-class _MovieTabContentViewState extends State<MovieTabContentView> {
-  @override
-  void initState() {
-    super.initState();
-    BlocProvider.of<PopularMovieCubit>(context).fetchPopularMovies();
-  }
 
   @override
   Widget build(BuildContext context) {
