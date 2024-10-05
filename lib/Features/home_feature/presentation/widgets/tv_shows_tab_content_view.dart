@@ -5,8 +5,9 @@ import 'package:movie_app/Features/home_feature/presentation/manager/tv_shows_cu
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_carousel_slider.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_row.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/genres_list_view.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_list_view.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/tv_shows_airing_today_list_view.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/tv_shows_on_the_air_list_view.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/tv_shows_top_rating_list_view.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
 
@@ -48,31 +49,31 @@ class TvShowsTabContentView extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        const GenresHomeListView(),
+        // const GenresHomeListView(),
         const SizedBox(
           height: 20,
         ),
         CustomRow(
-          leftText: "Now Playing",
+          leftText: "On The Air",
           onTap: () {
             GoRouter.of(context).push(AppRouter.kMovieCollevionView);
           },
         ),
-        const NowPlayingListView(),
+        const OnTheAirListView(),
         CustomRow(
           leftText: "Top Rating",
           onTap: () {
             GoRouter.of(context).push(AppRouter.kMovieCollevionView);
           },
         ),
-        const NowPlayingListView(),
+        const TopRatingTvShowsListView(),
         CustomRow(
-          leftText: "Upcoming",
+          leftText: "Airing Today",
           onTap: () {
             GoRouter.of(context).push(AppRouter.kMovieCollevionView);
           },
         ),
-        const NowPlayingListView(),
+        const AiringTodayListView(),
       ],
     );
   }
