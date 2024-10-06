@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/Features/home_feature/data/repos/collections_repo/collections_repo_impl.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/collections_cubit/collections_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/saved_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/page_with_tab_bar.dart';
 import 'package:movie_app/Features/search_feature/presentation/views/search_view.dart';
+import 'package:movie_app/core/utils/service_locator.dart';
 
 const kMainColor = Color(0xff1e88e5);
 
