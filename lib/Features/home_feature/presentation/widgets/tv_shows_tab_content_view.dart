@@ -44,13 +44,13 @@ class TvShowsTabContentView extends StatelessWidget {
         CustomRow(
           leftText: "Genres",
           onTap: () {
-            GoRouter.of(context).push(AppRouter.kGenreView);
+            GoRouter.of(context).push(AppRouter.kGenreView, extra: 2);
           },
         ),
         const SizedBox(
           height: 10,
         ),
-        const TvShowGenresListView(),
+        const GenresHomeListView(),
         const SizedBox(
           height: 20,
         ),

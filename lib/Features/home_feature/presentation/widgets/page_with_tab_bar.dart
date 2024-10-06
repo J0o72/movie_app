@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:movie_app/Features/home_feature/data/repos/genre_repo/genre_repo_impl.dart';
 import 'package:movie_app/Features/home_feature/data/repos/movie_repo/movie_repo_impl.dart';
 import 'package:movie_app/Features/home_feature/data/repos/tv_shows_repo/tv_shows_repo_impl.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/genre_cubit/genre_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/coming_soon_movie_cubit/coming_soon_movie_cubit.dart';
-import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/genre_movie_cubit/genre_movie_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/now_playing_movie_cubit/now_playing_movie_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/popular_movie_cubit/popular_movie_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/top_rating_movie_cubit/top_rating_movie_cubit.dart';
@@ -11,7 +12,6 @@ import 'package:movie_app/Features/home_feature/presentation/manager/tv_shows_cu
 import 'package:movie_app/Features/home_feature/presentation/manager/tv_shows_cubits/on_the_air_tv_shows_cubit/on_the_air_tv_shows_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/tv_shows_cubits/popular_tv_shows_cubit/popular_tv_shows_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/tv_shows_cubits/top_rating_tv_shows_cubit/top_rating_tv_shows_cubit.dart';
-import 'package:movie_app/Features/home_feature/presentation/manager/tv_shows_cubits/tv_show_genres_cubit/tv_show_genres_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_app_bar.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/movie_tab_content_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/tv_shows_tab_content_view.dart';
@@ -36,6 +36,10 @@ class PageWithTabBarView extends StatelessWidget {
             MultiBlocProvider(
               providers: [
                 BlocProvider(
+                  create: (context) => GenreCubit(getIt.get<GenreRepoImpl>())
+                    ..fetchGenreMovies(),
+                ),
+                BlocProvider(
                   create: (context) =>
                       ComingSoonMovieCubit(getIt.get<MovieRepoImpl>())
                         ..fetchComingSoonMovies(),
@@ -55,11 +59,6 @@ class PageWithTabBarView extends StatelessWidget {
                       NowPlayingMovieCubit(getIt.get<MovieRepoImpl>())
                         ..fetchNowPlayingMovies(),
                 ),
-                BlocProvider(
-                  create: (context) =>
-                      GenreMovieCubit(getIt.get<MovieRepoImpl>())
-                        ..fetchGenreMovies(),
-                ),
               ],
               child: const CustomScrollView(
                 slivers: [
@@ -71,6 +70,10 @@ class PageWithTabBarView extends StatelessWidget {
             ),
             MultiBlocProvider(
               providers: [
+                BlocProvider(
+                  create: (context) => GenreCubit(getIt.get<GenreRepoImpl>())
+                    ..fetchGenresTVShows(),
+                ),
                 BlocProvider(
                   create: (context) =>
                       OnTheAirTvShowsCubit(getIt.get<TVShowsRepoImpl>())
@@ -90,11 +93,6 @@ class PageWithTabBarView extends StatelessWidget {
                   create: (context) =>
                       AiringTodayTvShowsCubit(getIt.get<TVShowsRepoImpl>())
                         ..fetchAiringTodayTVShows(),
-                ),
-                BlocProvider(
-                  create: (context) =>
-                      TvShowGenresCubit(getIt.get<TVShowsRepoImpl>())
-                        ..fetchGenreMovies(),
                 ),
               ],
               child: const CustomScrollView(

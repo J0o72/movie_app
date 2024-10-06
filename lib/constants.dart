@@ -34,6 +34,9 @@ const List<Color> genreColor = [
   Color(0xff283747),
   Color(0xff2874A6),
   Color(0xff1F1B24),
+  Colors.blue,
+  Colors.teal,
+  Colors.blueGrey,
 ];
 
 const List<Widget> pages = [

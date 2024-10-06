@@ -31,7 +31,9 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kGenreView,
-        builder: (context, state) => const GenreView(),
+        builder: (context, state) {
+          return GenreView(id: state.extra as int);
+        },
       ),
       GoRoute(
         path: kDetailsView,
