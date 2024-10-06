@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_shows_model.dart';
+import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
 import 'package:movie_app/Features/home_feature/data/repos/collections_repo/collections_repo.dart';
 import 'package:movie_app/core/errors/failure.dart';
 import 'package:movie_app/core/utils/api_service.dart';
@@ -10,16 +10,16 @@ class CollectionsRepoImpl implements CollectionsRepo {
 
   CollectionsRepoImpl(this.apiService);
   @override
-  Future<Either<Failure, List<TvShowsModel>>> fetchCollectionsOf(
+  Future<Either<Failure, List<MovieModel>>> fetchCollectionsOf(
       {required String collectionOf, required String typeOf}) async {
     try {
-      List<TvShowsModel> collection = [];
+      List<MovieModel> collection = [];
       for (int i = 0; i < 5; i++) {
         var data = await apiService.get(
             endPoint: '$typeOf/$collectionOf?language=en-US&page=$i');
 
         for (var item in data['results']) {
-          collection.add(TvShowsModel.fromJson(item));
+          collection.add(MovieModel.fromJson(item));
         }
       }
 
