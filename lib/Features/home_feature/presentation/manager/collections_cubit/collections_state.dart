@@ -10,9 +10,10 @@ sealed class CollectionsState extends Equatable {
 final class CollectionsInitial extends CollectionsState {}
 
 final class CollectionsSuccess extends CollectionsState {
-  final List<MovieModel> collection;
+  final List<MovieModel>? collection;
+  final List<TvShowsModel>? tvCollection;
 
-  const CollectionsSuccess({required this.collection});
+  const CollectionsSuccess({this.collection, this.tvCollection});
 }
 
 final class CollectionsFailure extends CollectionsState {

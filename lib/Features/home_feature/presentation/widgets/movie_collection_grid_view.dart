@@ -45,10 +45,10 @@ class _MovieCollectionGridViewState extends State<MovieCollectionGridView> {
                 mainAxisSpacing: 10,
                 childAspectRatio: 1.3 / 2,
               ),
-              itemCount: state.collection.length,
+              itemCount: state.collection!.length,
               itemBuilder: (context, index) {
                 return CutsomPosterSaved(
-                  movieModel: state.collection[index],
+                  movieModel: state.collection![index],
                 );
               },
             ),
