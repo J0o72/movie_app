@@ -1,6 +1,5 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
-import 'package:movie_app/Features/home_feature/data/models/genres_model/genres_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_shows_model.dart';
 import 'package:movie_app/Features/home_feature/data/repos/tv_shows_repo/tv_shows_repo.dart';
 import 'package:movie_app/core/errors/failure.dart';
@@ -82,25 +81,6 @@ class TVShowsRepoImpl implements TVShowsRepo {
         airingTodayTVShows.add(TvShowsModel.fromJson(item));
       }
       return right(airingTodayTVShows);
-    } catch (e) {
-      if (e is DioException) {
-        return left(ServerFailure.fromDioError(e));
-      } else {
-        return left(ServerFailure(e.toString()));
-      }
-    }
-  }
-
-  @override
-  Future<Either<Failure, List<GenresModel>>> fetchGenresTVShows() async {
-    try {
-      var data = await apiService.get(endPoint: 'genre/tv/list?language=en');
-
-      List<GenresModel> genreTvShows = [];
-      for (var item in data['genres']) {
-        genreTvShows.add(GenresModel.fromJson(item));
-      }
-      return right(genreTvShows);
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));
