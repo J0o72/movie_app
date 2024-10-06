@@ -28,6 +28,7 @@ void setupServerLocator() {
       getIt.get<ApiService>(),
     ),
   );
+
   getIt.registerSingleton<CollectionsRepoImpl>(
     CollectionsRepoImpl(
       getIt.get<ApiService>(),
