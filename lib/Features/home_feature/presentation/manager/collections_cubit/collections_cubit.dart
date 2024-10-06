@@ -10,12 +10,11 @@ class CollectionsCubit extends Cubit<CollectionsState> {
 
   final CollectionsRepo collectionsRepo;
 
-  Future<void> fetchCollectionOf(
-      {required String collectionOf, required String typeOf}) async {
+  Future<void> fetchCollectionOf({required String collectionOf}) async {
     emit(CollectionsLoading());
 
-    var result = await collectionsRepo.fetchCollectionsOf(
-        collectionOf: collectionOf, typeOf: typeOf);
+    var result =
+        await collectionsRepo.fetchCollectionsOf(collectionOf: collectionOf);
 
     result.fold((failure) {
       emit(

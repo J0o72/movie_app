@@ -5,8 +5,31 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circ
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster_saved.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
 
-class MovieCollectionGridView extends StatelessWidget {
-  const MovieCollectionGridView({super.key});
+class MovieCollectionGridView extends StatefulWidget {
+  const MovieCollectionGridView({super.key, required this.fromWhere});
+
+  final String fromWhere;
+
+  @override
+  State<MovieCollectionGridView> createState() =>
+      _MovieCollectionGridViewState();
+}
+
+class _MovieCollectionGridViewState extends State<MovieCollectionGridView> {
+  @override
+  void initState() {
+    super.initState();
+    if (widget.fromWhere == 'now_playing') {
+      BlocProvider.of<CollectionsCubit>(context)
+          .fetchCollectionOf(collectionOf: widget.fromWhere);
+    } else if (widget.fromWhere == 'top_rated') {
+      BlocProvider.of<CollectionsCubit>(context)
+          .fetchCollectionOf(collectionOf: widget.fromWhere);
+    } else if (widget.fromWhere == 'upcoming') {
+      BlocProvider.of<CollectionsCubit>(context)
+          .fetchCollectionOf(collectionOf: widget.fromWhere);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,9 +45,11 @@ class MovieCollectionGridView extends StatelessWidget {
                 mainAxisSpacing: 10,
                 childAspectRatio: 1.3 / 2,
               ),
-              itemCount: 15,
+              itemCount: state.collection.length,
               itemBuilder: (context, index) {
-                return const CutsomPosterSaved();
+                return CutsomPosterSaved(
+                  movieModel: state.collection[index],
+                );
               },
             ),
           );

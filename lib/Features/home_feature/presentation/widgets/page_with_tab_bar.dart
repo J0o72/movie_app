@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/Features/home_feature/data/repos/collections_repo/collections_repo_impl.dart';
 import 'package:movie_app/Features/home_feature/data/repos/genre_repo/genre_repo_impl.dart';
 import 'package:movie_app/Features/home_feature/data/repos/movie_repo/movie_repo_impl.dart';
 import 'package:movie_app/Features/home_feature/data/repos/tv_shows_repo/tv_shows_repo_impl.dart';
-import 'package:movie_app/Features/home_feature/presentation/manager/collections_cubit/collections_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/genre_cubit/genre_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/coming_soon_movie_cubit/coming_soon_movie_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/now_playing_movie_cubit/now_playing_movie_cubit.dart';
@@ -61,10 +59,6 @@ class PageWithTabBarView extends StatelessWidget {
                       NowPlayingMovieCubit(getIt.get<MovieRepoImpl>())
                         ..fetchNowPlayingMovies(),
                 ),
-                BlocProvider(
-                  create: (context) =>
-                      CollectionsCubit(getIt.get<CollectionsRepoImpl>()),
-                ),
               ],
               child: const CustomScrollView(
                 slivers: [
@@ -99,10 +93,6 @@ class PageWithTabBarView extends StatelessWidget {
                   create: (context) =>
                       AiringTodayTvShowsCubit(getIt.get<TVShowsRepoImpl>())
                         ..fetchAiringTodayTVShows(),
-                ),
-                BlocProvider(
-                  create: (context) =>
-                      CollectionsCubit(getIt.get<CollectionsRepoImpl>()),
                 ),
               ],
               child: const CustomScrollView(

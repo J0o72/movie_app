@@ -10,6 +10,7 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/movie_top_r
 import 'package:movie_app/Features/home_feature/presentation/widgets/movie_up_coming_list_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_list_view.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
+import 'package:movie_app/core/utils/collection_model.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
 
 class MovieTabContentView extends StatelessWidget {
@@ -57,7 +58,10 @@ class MovieTabContentView extends StatelessWidget {
         CustomRow(
           leftText: "Now Playing",
           onTap: () {
-            GoRouter.of(context).push(AppRouter.kMovieCollevionView);
+            CollectionModel collectionModel = CollectionModel(
+                collectionName: 'now_playing', collectionTitle: 'Now Playing');
+            GoRouter.of(context)
+                .push(AppRouter.kMovieCollevionView, extra: collectionModel);
           },
         ),
         const NowPlayingListView(),
@@ -67,7 +71,10 @@ class MovieTabContentView extends StatelessWidget {
         CustomRow(
           leftText: "Top Rating",
           onTap: () {
-            GoRouter.of(context).push(AppRouter.kMovieCollevionView);
+            CollectionModel collectionModel = CollectionModel(
+                collectionName: 'top_rated', collectionTitle: 'Top Rating');
+            GoRouter.of(context)
+                .push(AppRouter.kMovieCollevionView, extra: collectionModel);
           },
         ),
         const TopRatingListView(),
@@ -77,7 +84,10 @@ class MovieTabContentView extends StatelessWidget {
         CustomRow(
           leftText: "Upcoming",
           onTap: () {
-            GoRouter.of(context).push(AppRouter.kMovieCollevionView);
+            CollectionModel collectionModel = CollectionModel(
+                collectionName: 'upcoming', collectionTitle: 'Upcoming');
+            GoRouter.of(context)
+                .push(AppRouter.kMovieCollevionView, extra: collectionModel);
           },
         ),
         const UpComingListView(),

@@ -8,6 +8,7 @@ import 'package:movie_app/Features/home_feature/presentation/movies_collection_v
 import 'package:movie_app/Features/home_feature/presentation/review_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/saved_view.dart';
 import 'package:movie_app/Features/welcome_feature/presentation/views/welcome_view.dart';
+import 'package:movie_app/core/utils/collection_model.dart';
 
 abstract class AppRouter {
   static const kHomeView = '/homeView';
@@ -45,7 +46,11 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kMovieCollevionView,
-        builder: (context, state) => const MovieCollecionView(),
+        builder: (context, state) {
+          return MovieCollecionView(
+            collectionModel: state.extra as CollectionModel,
+          );
+        },
       ),
       GoRoute(
         path: kCastView,

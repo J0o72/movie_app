@@ -4,5 +4,5 @@ import 'package:movie_app/core/errors/failure.dart';
 
 abstract class CollectionsRepo {
   Future<Either<Failure, List<MovieModel>>> fetchCollectionsOf(
-      {required String collectionOf, required String typeOf});
+      {required String collectionOf});
 }

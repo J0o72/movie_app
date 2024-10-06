@@ -11,12 +11,12 @@ class CollectionsRepoImpl implements CollectionsRepo {
   CollectionsRepoImpl(this.apiService);
   @override
   Future<Either<Failure, List<MovieModel>>> fetchCollectionsOf(
-      {required String collectionOf, required String typeOf}) async {
+      {required String collectionOf}) async {
     try {
       List<MovieModel> collection = [];
-      for (int i = 0; i < 5; i++) {
+      for (int i = 1; i <= 5; i++) {
         var data = await apiService.get(
-            endPoint: '$typeOf/$collectionOf?language=en-US&page=$i');
+            endPoint: 'movie/$collectionOf?language=en-US&page=$i');
 
         for (var item in data['results']) {
           collection.add(MovieModel.fromJson(item));

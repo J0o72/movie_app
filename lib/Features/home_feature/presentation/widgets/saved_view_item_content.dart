@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_genre_shape_saved.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster_saved.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class SavedViewItemContent extends StatelessWidget {
@@ -12,7 +11,7 @@ class SavedViewItemContent extends StatelessWidget {
       padding: EdgeInsets.all(8.0),
       child: Row(
         children: [
-          CutsomPosterSaved(),
+          // CutsomPosterSaved(),
           SizedBox(
             width: 10,
           ),
