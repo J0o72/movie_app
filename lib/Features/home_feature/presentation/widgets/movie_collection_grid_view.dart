@@ -28,6 +28,15 @@ class _MovieCollectionGridViewState extends State<MovieCollectionGridView> {
     } else if (widget.fromWhere == 'upcoming') {
       BlocProvider.of<CollectionsCubit>(context)
           .fetchCollectionOf(collectionOf: widget.fromWhere);
+    } else if (widget.fromWhere == 'airing_today') {
+      BlocProvider.of<CollectionsCubit>(context)
+          .fetchTVShowsCollectionOf(collectionOf: widget.fromWhere);
+    } else if (widget.fromWhere == 'on_the_air') {
+      BlocProvider.of<CollectionsCubit>(context)
+          .fetchTVShowsCollectionOf(collectionOf: widget.fromWhere);
+    } else if (widget.fromWhere == 'tv_top_rated') {
+      BlocProvider.of<CollectionsCubit>(context)
+          .fetchTVShowsCollectionOf(collectionOf: 'top_rated');
     }
   }
 
@@ -45,11 +54,15 @@ class _MovieCollectionGridViewState extends State<MovieCollectionGridView> {
                 mainAxisSpacing: 10,
                 childAspectRatio: 1.3 / 2,
               ),
-              itemCount: state.collection!.length,
+              itemCount: state.collection?.length ?? state.tvCollection!.length,
               itemBuilder: (context, index) {
-                return CutsomPosterSaved(
-                  movieModel: state.collection![index],
-                );
+                return state.tvCollection == null
+                    ? CutsomPosterSaved(
+                        movieModel: state.collection![index],
+                      )
+                    : CutsomPosterSaved(
+                        tvShowsModel: state.tvCollection![index],
+                      );
               },
             ),
           );

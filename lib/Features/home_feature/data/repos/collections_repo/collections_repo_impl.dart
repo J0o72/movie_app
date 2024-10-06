@@ -41,7 +41,7 @@ class CollectionsRepoImpl implements CollectionsRepo {
       List<TvShowsModel> collection = [];
       for (int i = 1; i <= 5; i++) {
         var data = await apiService.get(
-            endPoint: 'movie/$collectionOf?language=en-US&page=$i');
+            endPoint: 'tv/$collectionOf?language=en-US&page=$i');
 
         for (var item in data['results']) {
           collection.add(TvShowsModel.fromJson(item));

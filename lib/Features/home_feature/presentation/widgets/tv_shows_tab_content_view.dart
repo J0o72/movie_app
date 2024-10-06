@@ -10,6 +10,7 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/tv_shows_ai
 import 'package:movie_app/Features/home_feature/presentation/widgets/tv_shows_on_the_air_list_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/tv_shows_top_rating_list_view.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
+import 'package:movie_app/core/utils/collection_model.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
 
 class TvShowsTabContentView extends StatelessWidget {
@@ -57,21 +58,31 @@ class TvShowsTabContentView extends StatelessWidget {
         CustomRow(
           leftText: "On The Air",
           onTap: () {
-            GoRouter.of(context).push(AppRouter.kMovieCollevionView);
+            CollectionModel collectionModel = CollectionModel(
+                collectionName: 'on_the_air', collectionTitle: 'On The Air');
+            GoRouter.of(context)
+                .push(AppRouter.kMovieCollevionView, extra: collectionModel);
           },
         ),
         const OnTheAirListView(),
         CustomRow(
           leftText: "Top Rating",
           onTap: () {
-            GoRouter.of(context).push(AppRouter.kMovieCollevionView);
+            CollectionModel collectionModel = CollectionModel(
+                collectionName: 'tv_top_rated', collectionTitle: 'Top Rating');
+            GoRouter.of(context)
+                .push(AppRouter.kMovieCollevionView, extra: collectionModel);
           },
         ),
         const TopRatingTvShowsListView(),
         CustomRow(
           leftText: "Airing Today",
           onTap: () {
-            GoRouter.of(context).push(AppRouter.kMovieCollevionView);
+            CollectionModel collectionModel = CollectionModel(
+                collectionName: 'airing_today',
+                collectionTitle: 'Airing Today');
+            GoRouter.of(context)
+                .push(AppRouter.kMovieCollevionView, extra: collectionModel);
           },
         ),
         const AiringTodayListView(),
