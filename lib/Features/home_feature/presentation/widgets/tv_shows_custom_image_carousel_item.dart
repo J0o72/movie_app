@@ -21,8 +21,7 @@ class TvShowsCustomImageCarouselItem extends StatelessWidget {
         GestureDetector(
           onTap: () {
             GoRouter.of(context).push(AppRouter.kDetailsView);
-            BlocProvider.of<DetailsCubit>(context)
-                .fetchDetails(id: tvShow.id!, fromWhere: 'tv');
+            BlocProvider.of<DetailsCubit>(context).fetchDetails(id: tvShow.id!);
           },
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16),
