@@ -1,0 +1,59 @@
+import 'package:equatable/equatable.dart';
+
+class Season extends Equatable {
+  final dynamic airDate;
+  final int? episodeCount;
+  final int? id;
+  final String? name;
+  final String? overview;
+  final dynamic posterPath;
+  final int? seasonNumber;
+  final int? voteAverage;
+
+  const Season({
+    this.airDate,
+    this.episodeCount,
+    this.id,
+    this.name,
+    this.overview,
+    this.posterPath,
+    this.seasonNumber,
+    this.voteAverage,
+  });
+
+  factory Season.fromJson(Map<String, dynamic> json) => Season(
+        airDate: json['air_date'] as dynamic,
+        episodeCount: json['episode_count'] as int?,
+        id: json['id'] as int?,
+        name: json['name'] as String?,
+        overview: json['overview'] as String?,
+        posterPath: json['poster_path'] as dynamic,
+        seasonNumber: json['season_number'] as int?,
+        voteAverage: json['vote_average'] as int?,
+      );
+
+  Map<String, dynamic> toJson() => {
+        'air_date': airDate,
+        'episode_count': episodeCount,
+        'id': id,
+        'name': name,
+        'overview': overview,
+        'poster_path': posterPath,
+        'season_number': seasonNumber,
+        'vote_average': voteAverage,
+      };
+
+  @override
+  List<Object?> get props {
+    return [
+      airDate,
+      episodeCount,
+      id,
+      name,
+      overview,
+      posterPath,
+      seasonNumber,
+      voteAverage,
+    ];
+  }
+}

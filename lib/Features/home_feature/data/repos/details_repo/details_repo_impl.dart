@@ -14,9 +14,11 @@ class DetailsRepoImpl implements DetailsRepo {
 
   DetailsRepoImpl(this.apiService);
   @override
-  Future<Either<Failure, DetailsModel>> fetchDetails({required int id}) async {
+  Future<Either<Failure, DetailsModel>> fetchDetails(
+      {required int id, required String fromWhere}) async {
     try {
-      var data = await apiService.get(endPoint: 'movie/$id?language=en-US');
+      var data =
+          await apiService.get(endPoint: '$fromWhere/$id?language=en-US');
 
       return right(DetailsModel.fromJson(data));
     } catch (e) {

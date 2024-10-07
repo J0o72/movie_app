@@ -10,9 +10,10 @@ class DetailsCubit extends Cubit<DetailsState> {
 
   final DetailsRepo detailsRepo;
 
-  Future<void> fetchDetails({required int id}) async {
+  Future<void> fetchDetails(
+      {required int id, required String fromWhere}) async {
     emit(DetailsLoading());
-    var result = await detailsRepo.fetchDetails(id: id);
+    var result = await detailsRepo.fetchDetails(id: id, fromWhere: fromWhere);
 
     result.fold((failure) {
       emit(

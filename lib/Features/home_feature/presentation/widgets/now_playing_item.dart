@@ -28,8 +28,8 @@ class NowPlayingItem extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                   GoRouter.of(context).push(AppRouter.kDetailsView);
-                  BlocProvider.of<DetailsCubit>(context)
-                      .fetchDetails(id: movieModel!.id ?? 0);
+                  BlocProvider.of<DetailsCubit>(context).fetchDetails(
+                      id: movieModel!.id ?? 0, fromWhere: 'movie');
                   BlocProvider.of<CastCubit>(context)
                       .fetchCasts(id: movieModel!.id ?? 0);
 

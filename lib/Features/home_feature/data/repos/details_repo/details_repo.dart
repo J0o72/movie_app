@@ -6,7 +6,8 @@ import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_mo
 import 'package:movie_app/core/errors/failure.dart';
 
 abstract class DetailsRepo {
-  Future<Either<Failure, DetailsModel>> fetchDetails({required int id});
+  Future<Either<Failure, DetailsModel>> fetchDetails(
+      {required int id, required String fromWhere});
   Future<Either<Failure, List<CastsModel>>> fetchDetailsCast({required int id});
   Future<Either<Failure, List<ResultReviewsModel>>> fetchDetailsReviews(
       {required int id});
