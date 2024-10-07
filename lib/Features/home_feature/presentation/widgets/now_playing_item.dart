@@ -5,6 +5,7 @@ import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_mo
 import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_shows_model.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/cast_cubit/cast_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/details_cubit/details_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/reviews_cubit/reviews_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_released_date.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_rating.dart';
@@ -30,6 +31,9 @@ class NowPlayingItem extends StatelessWidget {
                       .fetchDetails(id: movieModel!.id ?? 0);
                   BlocProvider.of<CastCubit>(context)
                       .fetchCasts(id: movieModel!.id ?? 0);
+
+                  BlocProvider.of<ReviewsCubit>(context)
+                      .fetchReviews(id: movieModel!.id ?? 0);
                 },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
