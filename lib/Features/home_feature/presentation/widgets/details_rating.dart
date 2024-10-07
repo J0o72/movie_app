@@ -1,36 +1,40 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/Features/home_feature/data/models/details_model/details_model/details_model.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class DetailsRating extends StatelessWidget {
   const DetailsRating({
     super.key,
+    required this.detailsModel,
   });
+
+  final DetailsModel detailsModel;
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       children: [
-        Icon(
+        const Icon(
           Icons.star_rate_rounded,
           size: 45,
           color: Colors.yellow,
         ),
-        SizedBox(
+        const SizedBox(
           width: 1,
         ),
         Column(
           children: [
-            Text(
+            const Text(
               "Rating",
               style: Styles.styleText16,
             ),
             Row(
               children: [
                 Text(
-                  "8.5",
+                  detailsModel.voteAverage.toString(),
                   style: Styles.styleText20,
                 ),
-                Text("/10")
+                const Text("/10")
               ],
             ),
           ],

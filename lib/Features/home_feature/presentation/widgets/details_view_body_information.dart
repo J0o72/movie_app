@@ -52,7 +52,9 @@ class DetailsViewBodyInformation extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          const TrailerRatingDurationRow(),
+          TrailerRatingDurationRow(
+            detailsModel: detailsModel,
+          ),
           const SizedBox(
             height: 10,
           ),
