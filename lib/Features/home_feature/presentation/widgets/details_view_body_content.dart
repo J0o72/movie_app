@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/Features/home_feature/presentation/manager/details_cubit/details_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/cubit/details_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_back_arrow_icon.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';

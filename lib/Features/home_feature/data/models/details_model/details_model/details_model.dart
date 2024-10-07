@@ -1,9 +1,8 @@
 import 'package:equatable/equatable.dart';
-
-import 'genre.dart';
-import 'production_company.dart';
-import 'production_country.dart';
-import 'spoken_language.dart';
+import 'package:movie_app/Features/home_feature/data/models/details_model/details_model/genre.dart';
+import 'package:movie_app/Features/home_feature/data/models/details_model/details_model/production_company.dart';
+import 'package:movie_app/Features/home_feature/data/models/details_model/details_model/production_country.dart';
+import 'package:movie_app/Features/home_feature/data/models/details_model/details_model/spoken_language.dart';
 
 class DetailsModel extends Equatable {
   final bool? adult;
