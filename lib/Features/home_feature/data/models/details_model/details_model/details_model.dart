@@ -14,7 +14,7 @@ class DetailsModel extends Equatable {
   final String? homepage;
   final int? id;
   final String? imdbId;
-  final List<String>? originCountry;
+  final List<dynamic>? originCountry;
   final String? originalLanguage;
   final String? originalTitle;
   final String? overview;
@@ -73,7 +73,7 @@ class DetailsModel extends Equatable {
         homepage: json['homepage'] as String?,
         id: json['id'] as int?,
         imdbId: json['imdb_id'] as String?,
-        originCountry: json['origin_country'] as List<String>?,
+        originCountry: json['origin_country'] as List<dynamic>?,
         originalLanguage: json['original_language'] as String?,
         originalTitle: json['original_title'] as String?,
         overview: json['overview'] as String?,

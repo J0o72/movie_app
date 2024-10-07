@@ -79,9 +79,9 @@ class DetailsViewBodyInformation extends StatelessWidget {
             style: Styles.styleText26,
             horizontalPadding: 10,
           ),
-          const NowPlayingListView(
-            horizontalPadding: 10,
-          ),
+          // const NowPlayingListView(
+          //   horizontalPadding: 10,
+          // ),
         ],
       ),
     );

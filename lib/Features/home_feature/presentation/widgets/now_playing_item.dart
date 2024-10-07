@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_shows_model.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/details_cubit/details_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_released_date.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_rating.dart';
@@ -23,6 +25,8 @@ class NowPlayingItem extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                   GoRouter.of(context).push(AppRouter.kDetailsView);
+                  BlocProvider.of<DetailsCubit>(context)
+                      .fetchDetails(id: movieModel!.id ?? 0);
                 },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
