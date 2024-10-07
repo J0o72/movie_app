@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie_app/Features/home_feature/data/models/details_model/details_model/details_model.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_genre_shape_saved.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_row.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_actors_list_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_read_more_text.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_review_list_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_trailer_rating_duration_row.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_list_view.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class DetailsViewBodyInformation extends StatelessWidget {
-  const DetailsViewBodyInformation({super.key});
+  const DetailsViewBodyInformation({super.key, required this.detailsModel});
+
+  final DetailsModel detailsModel;
 
   @override
   Widget build(BuildContext context) {
@@ -19,18 +21,32 @@ class DetailsViewBodyInformation extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         children: [
-          const Text(
-            "Breaking Bad",
+          Text(
+            detailsModel.title!,
             style: Styles.styleText28,
           ),
-          const Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CustomGenreShapeSaved(),
-              SizedBox(
+              CustomGenreShapeSaved(
+                detailsGenre: detailsModel.genres![0].name!,
+              ),
+              const SizedBox(
                 width: 10,
               ),
-              CustomGenreShapeSaved(),
+              detailsModel.genres!.length >= 2
+                  ? CustomGenreShapeSaved(
+                      detailsGenre: detailsModel.genres![1].name!,
+                    )
+                  : Container(),
+              const SizedBox(
+                width: 10,
+              ),
+              detailsModel.genres!.length >= 3
+                  ? CustomGenreShapeSaved(
+                      detailsGenre: detailsModel.genres![2].name!,
+                    )
+                  : Container(),
             ],
           ),
           const SizedBox(

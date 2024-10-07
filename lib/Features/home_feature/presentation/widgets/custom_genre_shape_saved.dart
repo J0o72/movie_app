@@ -5,7 +5,10 @@ import 'package:movie_app/core/utils/styles.dart';
 class CustomGenreShapeSaved extends StatelessWidget {
   const CustomGenreShapeSaved({
     super.key,
+    required this.detailsGenre,
   });
+
+  final String detailsGenre;
 
   @override
   Widget build(BuildContext context) {
@@ -15,8 +18,8 @@ class CustomGenreShapeSaved extends StatelessWidget {
         color: kMainColor.withOpacity(0.5),
         borderRadius: BorderRadius.circular(32),
       ),
-      child: const Text(
-        "Fantasy",
+      child: Text(
+        detailsGenre,
         style: Styles.styleText16,
       ),
     );

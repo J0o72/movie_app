@@ -9,7 +9,6 @@ class CustomBookmarkIcon extends StatelessWidget {
   });
 
   final double? rightPos, topPos;
-
   @override
   Widget build(BuildContext context) {
     return Positioned(

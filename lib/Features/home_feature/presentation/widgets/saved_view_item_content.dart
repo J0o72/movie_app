@@ -26,11 +26,11 @@ class SavedViewItemContent extends StatelessWidget {
               // CustomRating(),
               Row(
                 children: [
-                  CustomGenreShapeSaved(),
+                  // CustomGenreShapeSaved(),
                   SizedBox(
                     width: 5,
                   ),
-                  CustomGenreShapeSaved(),
+                  // CustomGenreShapeSaved(),
                 ],
               ),
               // CustomDurationTime(),

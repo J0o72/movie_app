@@ -21,14 +21,16 @@ class DetailsViewBodyContent extends StatelessWidget {
               SliverToBoxAdapter(
                 child: Column(
                   children: [
-                    const Stack(
+                    Stack(
                       children: [
-                        DetailsCustomPoster(),
-                        CustomBookmarkIcon(
+                        DetailsCustomPoster(
+                          detailsModel: state.detailsModel,
+                        ),
+                        const CustomBookmarkIcon(
                           rightPos: 20,
                           topPos: 40,
                         ),
-                        CustomBackArrowIcon(),
+                        const CustomBackArrowIcon(),
                       ],
                     ),
                     Container(
@@ -38,12 +40,14 @@ class DetailsViewBodyContent extends StatelessWidget {
                           BoxShadow(
                             blurRadius: 150,
                             color: Colors.black,
-                            offset: Offset(0, -100),
-                            spreadRadius: 5,
+                            offset: Offset(0, 0),
+                            spreadRadius: 100,
                           ),
                         ],
                       ),
-                      child: const DetailsViewBodyInformation(),
+                      child: DetailsViewBodyInformation(
+                        detailsModel: state.detailsModel,
+                      ),
                     ),
                   ],
                 ),
