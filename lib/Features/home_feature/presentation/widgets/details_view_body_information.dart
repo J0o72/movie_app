@@ -122,7 +122,7 @@ class DetailsSimilarListView extends StatelessWidget {
       builder: (context, state) {
         if (state is SimilarSuccess) {
           return SizedBox(
-            height: 300,
+            height: state.similartMovies.isNotEmpty ? 300 : 0,
             child: Padding(
               padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
               child: ListView.builder(
