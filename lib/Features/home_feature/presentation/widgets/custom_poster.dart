@@ -32,7 +32,7 @@ class CustomPoster extends StatelessWidget {
                     aspectRatio: 2.8 / 3.5,
                     child: CachedNetworkImage(
                       fit: BoxFit.cover,
-                      imageUrl: movieModel?.posterPath != null
+                      imageUrl: movieModel!.posterPath != null
                           ? '$image${movieModel!.posterPath}'
                           : "",
                       errorWidget: (context, url, error) => Center(
@@ -67,9 +67,16 @@ class CustomPoster extends StatelessWidget {
                     aspectRatio: 2.8 / 3.5,
                     child: CachedNetworkImage(
                       fit: BoxFit.cover,
-                      imageUrl: '$image${tvShowsModel!.posterPath}',
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
+                      imageUrl: tvShowsModel!.posterPath != null
+                          ? '$image${tvShowsModel!.posterPath}'
+                          : "",
+                      errorWidget: (context, url, error) => Center(
+                        child: Text(
+                          "${tvShowsModel?.name}",
+                          style:
+                              Styles.styleText18.copyWith(color: Colors.white),
+                        ),
+                      ),
                       placeholder: (context, url) => const Center(
                         child: CustomCircularLoading(),
                       ),

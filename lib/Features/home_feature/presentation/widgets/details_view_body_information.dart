@@ -32,6 +32,7 @@ class DetailsViewBodyInformation extends StatelessWidget {
             child: Column(
               children: [
                 Text(
+                  textAlign: TextAlign.center,
                   detailsModel!.title!,
                   style: Styles.styleText28,
                 ),
