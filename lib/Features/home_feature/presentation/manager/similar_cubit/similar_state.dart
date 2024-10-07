@@ -10,9 +10,10 @@ sealed class SimilarState extends Equatable {
 final class SimilarInitial extends SimilarState {}
 
 final class SimilarSuccess extends SimilarState {
-  final List<MovieModel> similartMovies;
+  final List<MovieModel>? similartMovies;
+  final List<TvShowsModel>? similartTv;
 
-  const SimilarSuccess({required this.similartMovies});
+  const SimilarSuccess({this.similartTv, this.similartMovies});
 }
 
 final class SimilarLloading extends SimilarState {}

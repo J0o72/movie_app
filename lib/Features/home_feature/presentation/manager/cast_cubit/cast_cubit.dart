@@ -10,10 +10,11 @@ class CastCubit extends Cubit<CastState> {
 
   final DetailsRepo detailsRepo;
 
-  Future<void> fetchCasts({required int id}) async {
+  Future<void> fetchCasts({required int id, required String fromWhere}) async {
     emit(CastLoading());
 
-    var result = await detailsRepo.fetchDetailsCast(id: id);
+    var result =
+        await detailsRepo.fetchDetailsCast(id: id, fromWhere: fromWhere);
     result.fold((failure) {
       emit(
         CastFailure(errorMessage: failure.errMessage),

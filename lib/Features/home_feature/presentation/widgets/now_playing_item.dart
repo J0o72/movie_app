@@ -31,10 +31,10 @@ class NowPlayingItem extends StatelessWidget {
                   BlocProvider.of<DetailsCubit>(context)
                       .fetchDetails(id: movieModel!.id ?? 0);
                   BlocProvider.of<CastCubit>(context)
-                      .fetchCasts(id: movieModel!.id ?? 0);
+                      .fetchCasts(id: movieModel!.id ?? 0, fromWhere: 'movie');
 
-                  BlocProvider.of<ReviewsCubit>(context)
-                      .fetchReviews(id: movieModel!.id ?? 0);
+                  BlocProvider.of<ReviewsCubit>(context).fetchReviews(
+                      id: movieModel!.id ?? 0, fromWhere: 'movie');
                   BlocProvider.of<SimilarCubit>(context)
                       .fetchSimilar(id: movieModel!.id ?? 0);
                 },
@@ -82,6 +82,14 @@ class NowPlayingItem extends StatelessWidget {
               child: GestureDetector(
                 onTap: () {
                   GoRouter.of(context).push(AppRouter.kDetailsView);
+                  BlocProvider.of<DetailsCubit>(context)
+                      .fetchTvShowsDetails(id: tvShowsModel!.id ?? 0);
+                  BlocProvider.of<CastCubit>(context)
+                      .fetchCasts(id: tvShowsModel!.id ?? 0, fromWhere: 'tv');
+                  BlocProvider.of<ReviewsCubit>(context)
+                      .fetchReviews(id: tvShowsModel!.id ?? 0, fromWhere: 'tv');
+                  BlocProvider.of<SimilarCubit>(context)
+                      .fetchSimilarTV(id: tvShowsModel!.id ?? 0);
                 },
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -97,7 +105,7 @@ class NowPlayingItem extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.start,
-                      tvShowsModel!.name ?? "",
+                      tvShowsModel!.name!,
                       style: Styles.styleText18,
                     ),
                     Padding(

@@ -18,20 +18,26 @@ class CustomReleasedDate extends StatelessWidget {
     return tvShowsModel == null
         ? Row(
             children: [
-              Text(
-                '(${movieModel!.releaseDate.toString().substring(0, 4)})',
-                style: Styles.styleText16,
-              ),
+              movieModel!.releaseDate.toString() != ""
+                  ? Text(
+                      '(${movieModel!.releaseDate.toString().substring(0, 4)})',
+                      style: Styles.styleText16,
+                    )
+                  : const Text(
+                      "",
+                    )
             ],
           )
         : Row(
             children: [
-              Text(
-                tvShowsModel?.firstAirDate.toString() == null
-                    ? ""
-                    : tvShowsModel!.firstAirDate.toString().substring(0, 4),
-                style: Styles.styleText16,
-              ),
+              tvShowsModel!.firstAirDate.toString() == ""
+                  ? const Text(
+                      "",
+                    )
+                  : Text(
+                      '(${tvShowsModel!.firstAirDate.toString().substring(0, 4)})',
+                      style: Styles.styleText16,
+                    ),
             ],
           );
   }

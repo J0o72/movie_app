@@ -25,8 +25,10 @@ class MovieCustomImageCarouselItem extends StatelessWidget {
           onTap: () {
             GoRouter.of(context).push(AppRouter.kDetailsView);
             BlocProvider.of<DetailsCubit>(context).fetchDetails(id: movie.id!);
-            BlocProvider.of<CastCubit>(context).fetchCasts(id: movie.id!);
-            BlocProvider.of<ReviewsCubit>(context).fetchReviews(id: movie.id!);
+            BlocProvider.of<CastCubit>(context)
+                .fetchCasts(id: movie.id!, fromWhere: 'movie');
+            BlocProvider.of<ReviewsCubit>(context)
+                .fetchReviews(id: movie.id!, fromWhere: 'movie');
             BlocProvider.of<SimilarCubit>(context).fetchSimilar(id: movie.id!);
           },
           child: ClipRRect(

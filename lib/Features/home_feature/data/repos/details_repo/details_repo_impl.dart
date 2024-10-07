@@ -5,6 +5,7 @@ import 'package:movie_app/Features/home_feature/data/models/details_model/detail
 import 'package:movie_app/Features/home_feature/data/models/details_model/reviews_model/result.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/tv_shows_details/tv_shows_details_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
+import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_shows_model.dart';
 import 'package:movie_app/Features/home_feature/data/repos/details_repo/details_repo.dart';
 import 'package:movie_app/core/errors/failure.dart';
 import 'package:movie_app/core/utils/api_service.dart';
@@ -30,10 +31,10 @@ class DetailsRepoImpl implements DetailsRepo {
 
   @override
   Future<Either<Failure, List<CastsModel>>> fetchDetailsCast(
-      {required int id}) async {
+      {required int id, required String fromWhere}) async {
     try {
-      var data =
-          await apiService.get(endPoint: 'movie/$id/credits?language=en-US');
+      var data = await apiService.get(
+          endPoint: '$fromWhere/$id/credits?language=en-US');
 
       List<CastsModel> casts = [];
 
@@ -53,10 +54,10 @@ class DetailsRepoImpl implements DetailsRepo {
 
   @override
   Future<Either<Failure, List<ResultReviewsModel>>> fetchDetailsReviews(
-      {required int id}) async {
+      {required int id, required String fromWhere}) async {
     try {
       var data = await apiService.get(
-          endPoint: 'movie/$id/reviews?language=en-US&page=1');
+          endPoint: '$fromWhere/$id/reviews?language=en-US&page=1');
 
       List<ResultReviewsModel> reviewsList = [];
 
@@ -87,6 +88,28 @@ class DetailsRepoImpl implements DetailsRepo {
       }
 
       return right(similarMovies);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<TvShowsModel>>> fetchSimilarTv(
+      {required int id}) async {
+    try {
+      var data = await apiService.get(
+          endPoint: 'tv/$id/similar?language=en-US&page=1');
+
+      List<TvShowsModel> similarTv = [];
+      for (var item in data['results']) {
+        similarTv.add(TvShowsModel.fromJson(item));
+      }
+
+      return right(similarTv);
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));

@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_shows_model.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/cast_cubit/cast_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/details_cubit/details_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/reviews_cubit/reviews_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/similar_cubit/similar_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
@@ -23,6 +26,12 @@ class TvShowsCustomImageCarouselItem extends StatelessWidget {
             GoRouter.of(context).push(AppRouter.kDetailsView);
             BlocProvider.of<DetailsCubit>(context)
                 .fetchTvShowsDetails(id: tvShow.id!);
+            BlocProvider.of<CastCubit>(context)
+                .fetchCasts(id: tvShow.id!, fromWhere: 'tv');
+            BlocProvider.of<ReviewsCubit>(context)
+                .fetchReviews(id: tvShow.id!, fromWhere: 'tv');
+            BlocProvider.of<SimilarCubit>(context)
+                .fetchSimilarTV(id: tvShow.id!);
           },
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16),

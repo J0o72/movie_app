@@ -10,10 +10,12 @@ class ReviewsCubit extends Cubit<ReviewsState> {
 
   final DetailsRepo detailsRepo;
 
-  Future<void> fetchReviews({required int id}) async {
+  Future<void> fetchReviews(
+      {required int id, required String fromWhere}) async {
     emit(ReviewsLoading());
 
-    var result = await detailsRepo.fetchDetailsReviews(id: id);
+    var result =
+        await detailsRepo.fetchDetailsReviews(id: id, fromWhere: fromWhere);
     result.fold((failure) {
       emit(
         ReviewsFailure(errorMessage: failure.errMessage),
