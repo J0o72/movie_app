@@ -24,7 +24,7 @@ class DetailsViewBodyContent extends StatelessWidget {
                     Stack(
                       children: [
                         DetailsCustomPoster(
-                          detailsModel: state.detailsModel,
+                          detailsModel: state.detailsModel!,
                         ),
                         const CustomBookmarkIcon(
                           rightPos: 20,
@@ -46,7 +46,7 @@ class DetailsViewBodyContent extends StatelessWidget {
                         ],
                       ),
                       child: DetailsViewBodyInformation(
-                        detailsModel: state.detailsModel,
+                        detailsModel: state.detailsModel!,
                       ),
                     ),
                   ],
@@ -55,7 +55,6 @@ class DetailsViewBodyContent extends StatelessWidget {
             ],
           );
         } else if (state is DetailsFailure) {
-          print(state.errorMessage);
           return const CustomErrorFailure();
         } else {
           return const CustomCircularLoading();
