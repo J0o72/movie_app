@@ -30,9 +30,6 @@ class TrailerRatingDurationRow extends StatelessWidget {
         DetailsDurationTime(
           detailsModel: detailsModel,
         ),
-        const SizedBox(
-          width: 15,
-        ),
       ],
     );
   }

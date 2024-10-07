@@ -13,12 +13,16 @@ class CustomGenreShapeSaved extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       decoration: BoxDecoration(
+        border: Border.all(
+          color: Colors.white,
+        ),
         color: kMainColor.withOpacity(0.5),
         borderRadius: BorderRadius.circular(32),
       ),
       child: Text(
+        textAlign: TextAlign.center,
         detailsGenre,
         style: Styles.styleText16,
       ),

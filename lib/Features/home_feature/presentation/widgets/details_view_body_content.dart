@@ -41,7 +41,7 @@ class DetailsViewBodyContent extends StatelessWidget {
                             blurRadius: 150,
                             color: Colors.black,
                             offset: Offset(0, 0),
-                            spreadRadius: 100,
+                            spreadRadius: 70,
                           ),
                         ],
                       ),

@@ -31,7 +31,7 @@ class DetailsRating extends StatelessWidget {
             Row(
               children: [
                 Text(
-                  detailsModel.voteAverage.toString(),
+                  detailsModel.voteAverage.toString().substring(0, 3),
                   style: Styles.styleText20,
                 ),
                 const Text("/10")
