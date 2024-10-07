@@ -14,10 +14,10 @@ class DetailsReviewItem extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          DetailsCustomPersonPhoto(
-            height: 70,
-            width: 70,
-          ),
+          // DetailsCustomPersonPhoto(
+          //   height: 70,
+          //   width: 70,
+          // ),
           SizedBox(
             width: 10,
           ),

@@ -10,10 +10,8 @@ sealed class DetailsState extends Equatable {
 final class DetailsInitial extends DetailsState {}
 
 final class DetailsSuccess extends DetailsState {
-  final DetailsModel? detailsModel;
-  final List<CastsModel>? castsModel;
-
-  const DetailsSuccess({this.castsModel, this.detailsModel});
+  final DetailsModel detailsModel;
+  const DetailsSuccess({required this.detailsModel});
 }
 
 final class DetailsLoading extends DetailsState {}

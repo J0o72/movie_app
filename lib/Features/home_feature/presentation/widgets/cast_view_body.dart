@@ -36,7 +36,7 @@ class CastGridView extends StatelessWidget {
       ),
       itemCount: 15,
       itemBuilder: (context, index) {
-        return const ActorsItem();
+        // return const ActorsItem();
       },
     );
   }

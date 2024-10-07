@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
-import 'package:movie_app/Features/home_feature/presentation/manager/cubit/details_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/cast_cubit/cast_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/details_cubit/details_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
@@ -22,6 +23,7 @@ class MovieCustomImageCarouselItem extends StatelessWidget {
           onTap: () {
             GoRouter.of(context).push(AppRouter.kDetailsView);
             BlocProvider.of<DetailsCubit>(context).fetchDetails(id: movie.id!);
+            BlocProvider.of<CastCubit>(context).fetchCasts(id: movie.id!);
           },
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16),

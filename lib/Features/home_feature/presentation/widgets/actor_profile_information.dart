@@ -18,11 +18,11 @@ class ActorProfileInformation extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            const DetailsCustomPersonPhoto(
-              width: 250,
-              height: 250,
-              borderRadius: 150,
-            ),
+            // const DetailsCustomPersonPhoto(
+            //   width: 250,
+            //   height: 250,
+            //   borderRadius: 150,
+            // ),
             const SizedBox(
               height: 10,
             ),
