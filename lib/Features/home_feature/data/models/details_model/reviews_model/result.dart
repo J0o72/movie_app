@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 
 import 'author_details.dart';
 
-class Result extends Equatable {
+class ResultReviewsModel extends Equatable {
   final String? author;
   final AuthorDetails? authorDetails;
   final String? content;
@@ -11,7 +11,7 @@ class Result extends Equatable {
   final DateTime? updatedAt;
   final String? url;
 
-  const Result({
+  const ResultReviewsModel({
     this.author,
     this.authorDetails,
     this.content,
@@ -21,7 +21,8 @@ class Result extends Equatable {
     this.url,
   });
 
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
+  factory ResultReviewsModel.fromJson(Map<String, dynamic> json) =>
+      ResultReviewsModel(
         author: json['author'] as String?,
         authorDetails: json['author_details'] == null
             ? null

@@ -5,7 +5,7 @@ import 'result.dart';
 class ReviewsModel extends Equatable {
   final int? id;
   final int? page;
-  final List<Result>? results;
+  final List<ResultReviewsModel>? results;
   final int? totalPages;
   final int? totalResults;
 
@@ -21,7 +21,7 @@ class ReviewsModel extends Equatable {
         id: json['id'] as int?,
         page: json['page'] as int?,
         results: (json['results'] as List<dynamic>?)
-            ?.map((e) => Result.fromJson(e as Map<String, dynamic>))
+            ?.map((e) => ResultReviewsModel.fromJson(e as Map<String, dynamic>))
             .toList(),
         totalPages: json['total_pages'] as int?,
         totalResults: json['total_results'] as int?,
