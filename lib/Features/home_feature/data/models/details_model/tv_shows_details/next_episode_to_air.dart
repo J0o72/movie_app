@@ -4,7 +4,7 @@ class NextEpisodeToAir extends Equatable {
   final int? id;
   final String? name;
   final String? overview;
-  final int? voteAverage;
+  final double? voteAverage;
   final int? voteCount;
   final String? airDate;
   final int? episodeNumber;
@@ -36,7 +36,7 @@ class NextEpisodeToAir extends Equatable {
       id: json['id'] as int?,
       name: json['name'] as String?,
       overview: json['overview'] as String?,
-      voteAverage: json['vote_average'] as int?,
+      voteAverage: json['vote_average'] as double?,
       voteCount: json['vote_count'] as int?,
       airDate: json['air_date'] as String?,
       episodeNumber: json['episode_number'] as int?,

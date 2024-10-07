@@ -16,45 +16,87 @@ class DetailsViewBodyContent extends StatelessWidget {
     return BlocBuilder<DetailsCubit, DetailsState>(
       builder: (context, state) {
         if (state is DetailsSuccess) {
-          return CustomScrollView(
-            slivers: [
-              SliverToBoxAdapter(
-                child: Column(
-                  children: [
-                    Stack(
-                      children: [
-                        DetailsCustomPoster(
-                          detailsModel: state.detailsModel,
-                        ),
-                        const CustomBookmarkIcon(
-                          rightPos: 20,
-                          topPos: 40,
-                        ),
-                        const CustomBackArrowIcon(),
-                      ],
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.5),
-                        boxShadow: const [
-                          BoxShadow(
-                            blurRadius: 150,
-                            color: Colors.black,
-                            offset: Offset(0, 0),
-                            spreadRadius: 70,
+          if (state.detailsModel != null) {
+            return CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: Column(
+                    children: [
+                      Stack(
+                        children: [
+                          DetailsCustomPoster(
+                            detailsModel: state.detailsModel!,
                           ),
+                          const CustomBookmarkIcon(
+                            rightPos: 20,
+                            topPos: 40,
+                          ),
+                          const CustomBackArrowIcon(),
                         ],
                       ),
-                      child: DetailsViewBodyInformation(
-                        detailsModel: state.detailsModel,
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(0.5),
+                          boxShadow: const [
+                            BoxShadow(
+                              blurRadius: 150,
+                              color: Colors.black,
+                              offset: Offset(0, 0),
+                              spreadRadius: 70,
+                            ),
+                          ],
+                        ),
+                        child: DetailsViewBodyInformation(
+                          detailsModel: state.detailsModel!,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-              ),
-            ],
-          );
+              ],
+            );
+          } else {
+            return CustomScrollView(
+              slivers: [
+                SliverToBoxAdapter(
+                  child: Column(
+                    children: [
+                      Stack(
+                        children: [
+                          DetailsCustomPoster(
+                            tvShowsDetailsModel: state.tvShowsDetailsModel,
+                          ),
+                          const CustomBookmarkIcon(
+                            rightPos: 20,
+                            topPos: 40,
+                          ),
+                          const CustomBackArrowIcon(),
+                        ],
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.black.withOpacity(0.5),
+                          boxShadow: const [
+                            BoxShadow(
+                              blurRadius: 150,
+                              color: Colors.black,
+                              offset: Offset(0, 0),
+                              spreadRadius: 70,
+                            ),
+                          ],
+                        ),
+                        child: DetailsViewBodyInformation(
+                          tvShowsDetailsModel: state.tvShowsDetailsModel,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            );
+          }
         } else if (state is DetailsFailure) {
+          print(state.errorMessage);
           return const CustomErrorFailure();
         } else {
           return const CustomCircularLoading();

@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/casts_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/details_model/details_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/reviews_model/result.dart';
-import 'package:movie_app/Features/home_feature/data/models/details_model/tv_shows_details/tv_shows_details.dart';
+import 'package:movie_app/Features/home_feature/data/models/details_model/tv_shows_details/tv_shows_details_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
 import 'package:movie_app/core/errors/failure.dart';
 

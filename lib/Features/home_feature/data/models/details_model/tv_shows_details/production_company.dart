@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class ProductionCompany extends Equatable {
-  final int? id;
+  final num? id;
   final dynamic logoPath;
   final String? name;
   final String? originCountry;
@@ -15,7 +15,7 @@ class ProductionCompany extends Equatable {
 
   factory ProductionCompany.fromJson(Map<String, dynamic> json) {
     return ProductionCompany(
-      id: json['id'] as int?,
+      id: json['id'] as num?,
       logoPath: json['logo_path'] as dynamic,
       name: json['name'] as String?,
       originCountry: json['origin_country'] as String?,
