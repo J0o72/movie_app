@@ -3,7 +3,9 @@ import 'package:dio/dio.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/casts_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/details_model/details_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/reviews_model/result.dart';
+import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
 import 'package:movie_app/Features/home_feature/data/repos/details_repo/details_repo.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/popular_movie_cubit/popular_movie_cubit.dart';
 import 'package:movie_app/core/errors/failure.dart';
 import 'package:movie_app/core/utils/api_service.dart';
 
@@ -63,6 +65,28 @@ class DetailsRepoImpl implements DetailsRepo {
       }
 
       return right(reviewsList);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<MovieModel>>> fetchSimilar(
+      {required int id}) async {
+    try {
+      var data = await apiService.get(
+          endPoint: 'movie/$id/similar?language=en-US&page=1');
+
+      List<MovieModel> similarMovies = [];
+      for (var item in data['results']) {
+        similarMovies.add(MovieModel.fromJson(item));
+      }
+
+      return right(similarMovies);
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));

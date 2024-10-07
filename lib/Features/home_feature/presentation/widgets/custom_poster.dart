@@ -4,6 +4,7 @@ import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_mo
 import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_shows_model.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
+import 'package:movie_app/core/utils/styles.dart';
 
 class CustomPoster extends StatelessWidget {
   const CustomPoster({
@@ -31,9 +32,16 @@ class CustomPoster extends StatelessWidget {
                     aspectRatio: 2.8 / 3.5,
                     child: CachedNetworkImage(
                       fit: BoxFit.cover,
-                      imageUrl: '$image${movieModel!.posterPath}',
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
+                      imageUrl: movieModel?.posterPath != null
+                          ? '$image${movieModel!.posterPath}'
+                          : "",
+                      errorWidget: (context, url, error) => Center(
+                        child: Text(
+                          "${movieModel?.title}",
+                          style:
+                              Styles.styleText18.copyWith(color: Colors.white),
+                        ),
+                      ),
                       placeholder: (context, url) => const Center(
                         child: CustomCircularLoading(),
                       ),

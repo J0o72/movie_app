@@ -1,14 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/details_model/details_model.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/details_cubit/details_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/similar_cubit/similar_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_genre_shape_saved.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_row.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_actors_list_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_read_more_text.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_review_list_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_trailer_rating_duration_row.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_item.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/styles.dart';
+import 'package:movie_app/core/widgets/custom_error_failure.dart';
 
 class DetailsViewBodyInformation extends StatelessWidget {
   const DetailsViewBodyInformation({super.key, required this.detailsModel});
@@ -96,11 +102,46 @@ class DetailsViewBodyInformation extends StatelessWidget {
             style: Styles.styleText26,
             horizontalPadding: 10,
           ),
-          // const NowPlayingListView(
-          //   horizontalPadding: 10,
-          // ),
+          const DetailsSimilarListView(
+            horizontalPadding: 10,
+          ),
         ],
       ),
+    );
+  }
+}
+
+class DetailsSimilarListView extends StatelessWidget {
+  const DetailsSimilarListView({super.key, required this.horizontalPadding});
+
+  final double horizontalPadding;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<SimilarCubit, SimilarState>(
+      builder: (context, state) {
+        if (state is SimilarSuccess) {
+          return SizedBox(
+            height: 300,
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemCount: state.similartMovies.length,
+                itemBuilder: (context, index) {
+                  return NowPlayingItem(
+                    movieModel: state.similartMovies[index],
+                  );
+                },
+              ),
+            ),
+          );
+        } else if (state is DetailsFailure) {
+          return const CustomErrorFailure();
+        } else {
+          return const CustomCircularLoading();
+        }
+      },
     );
   }
 }

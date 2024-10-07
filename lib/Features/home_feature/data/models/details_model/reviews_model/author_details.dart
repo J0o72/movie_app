@@ -4,7 +4,7 @@ class AuthorDetails extends Equatable {
   final String? name;
   final String? username;
   final dynamic avatarPath;
-  final int? rating;
+  final double? rating;
 
   const AuthorDetails({
     this.name,
@@ -17,7 +17,7 @@ class AuthorDetails extends Equatable {
         name: json['name'] as String?,
         username: json['username'] as String?,
         avatarPath: json['avatar_path'] as dynamic,
-        rating: json['rating'] as int?,
+        rating: json['rating'] as double?,
       );
 
   Map<String, dynamic> toJson() => {

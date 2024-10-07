@@ -1,27 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/Features/home_feature/data/models/details_model/reviews_model/result.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_custom_person_photo.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_reviewer_content.dart';
 
 class DetailsReviewItem extends StatelessWidget {
-  const DetailsReviewItem({super.key});
+  const DetailsReviewItem({super.key, required this.reviewsModel});
+
+  final ResultReviewsModel reviewsModel;
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.only(
+    return Padding(
+      padding: const EdgeInsets.only(
         bottom: 10,
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // DetailsCustomPersonPhoto(
-          //   height: 70,
-          //   width: 70,
-          // ),
-          SizedBox(
+          DetailsReviewsCustomPersonPhoto(
+            reviewsModel: reviewsModel,
+            height: 70,
+            width: 70,
+          ),
+          const SizedBox(
             width: 10,
           ),
-          DetailsReviewerContent(),
+          DetailsReviewerContent(
+            resultReviewsModel: reviewsModel,
+          ),
         ],
       ),
     );

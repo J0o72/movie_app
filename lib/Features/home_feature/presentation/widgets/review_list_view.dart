@@ -10,7 +10,7 @@ class ReviewListView extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: ListView.builder(
         itemBuilder: (context, index) {
-          return const DetailsReviewItem();
+          // return const DetailsReviewItem();
         },
       ),
     );

@@ -5,6 +5,7 @@ import 'package:movie_app/Features/home_feature/data/repos/details_repo/details_
 import 'package:movie_app/Features/home_feature/presentation/manager/cast_cubit/cast_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/details_cubit/details_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/reviews_cubit/reviews_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/similar_cubit/similar_cubit.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/bloc_observer.dart';
 import 'package:movie_app/core/utils/service_locator.dart';
@@ -22,6 +23,9 @@ void main() {
       ),
       BlocProvider(
         create: (context) => ReviewsCubit(getIt.get<DetailsRepoImpl>()),
+      ),
+      BlocProvider(
+        create: (context) => SimilarCubit(getIt.get<DetailsRepoImpl>()),
       ),
     ],
     child: const MovieApp(),
