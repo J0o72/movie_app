@@ -2,20 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/Features/home_feature/data/models/genres_model/genres_model.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
+import 'package:movie_app/core/utils/collection_model.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class GenreItemHome extends StatelessWidget {
   const GenreItemHome(
-      {super.key, required this.genresModel, required this.gerneColor});
+      {super.key,
+      required this.genresModel,
+      required this.gerneColor,
+      required this.whichTab});
 
   final GenresModel genresModel;
   final Color gerneColor;
+  final String whichTab;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kMovieCollevionView);
+        CollectionModel collectionModel = CollectionModel(
+          collectionName: whichTab,
+          collectionTitle: genresModel.name!,
+          id: genresModel.id.toString(),
+        );
+        GoRouter.of(context)
+            .push(AppRouter.kMovieCollevionView, extra: collectionModel);
       },
       child: Container(
         width: 130,

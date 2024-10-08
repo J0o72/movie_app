@@ -9,4 +9,8 @@ abstract class CollectionsRepo {
   Future<Either<Failure, List<MovieModel>>> fetchComingSoonMoviesCollection();
   Future<Either<Failure, List<TvShowsModel>>> fetchTvShowsCollectionsOf(
       {required String collectionOf});
+  Future<Either<Failure, List<MovieModel>>> fetchSpecificGenreMovies(
+      {required String genreId});
+  Future<Either<Failure, List<TvShowsModel>>> fetchSpecificGenreTvShows(
+      {required String genreId});
 }

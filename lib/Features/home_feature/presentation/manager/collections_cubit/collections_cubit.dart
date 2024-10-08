@@ -60,4 +60,38 @@ class CollectionsCubit extends Cubit<CollectionsState> {
       );
     });
   }
+
+  Future<void> fetchSpecificGenreMovies({required String genreId}) async {
+    emit(CollectionsLoading());
+
+    var result =
+        await collectionsRepo.fetchSpecificGenreMovies(genreId: genreId);
+
+    result.fold((failure) {
+      emit(
+        CollectionsFailure(errorMessage: failure.errMessage),
+      );
+    }, (genreMovies) {
+      emit(
+        CollectionsSuccess(collection: genreMovies),
+      );
+    });
+  }
+
+  Future<void> fetchSpecificGenreTvShows({required String genreId}) async {
+    emit(CollectionsLoading());
+
+    var result =
+        await collectionsRepo.fetchSpecificGenreTvShows(genreId: genreId);
+
+    result.fold((failure) {
+      emit(
+        CollectionsFailure(errorMessage: failure.errMessage),
+      );
+    }, (genreTv) {
+      emit(
+        CollectionsSuccess(tvCollection: genreTv),
+      );
+    });
+  }
 }

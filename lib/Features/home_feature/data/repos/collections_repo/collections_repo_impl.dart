@@ -83,4 +83,54 @@ class CollectionsRepoImpl implements CollectionsRepo {
       }
     }
   }
+
+  @override
+  Future<Either<Failure, List<MovieModel>>> fetchSpecificGenreMovies(
+      {required String genreId}) async {
+    try {
+      List<MovieModel> genreMovies = [];
+      for (int i = 1; i <= 10; i++) {
+        var data = await apiService.get(
+            endPoint:
+                'discover/movie?include_adult=false&include_video=false&language=en-US&sort_by=popularity.desc&with_genres=$genreId&page=$i');
+
+        for (var item in data['results']) {
+          genreMovies.add(MovieModel.fromJson(item));
+        }
+      }
+
+      return right(genreMovies);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<TvShowsModel>>> fetchSpecificGenreTvShows(
+      {required String genreId}) async {
+    try {
+      List<TvShowsModel> genreTvShows = [];
+      for (int i = 1; i <= 10; i++) {
+        var data = await apiService.get(
+            endPoint:
+                'discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=$i&sort_by=popularity.desc&with_genres=$genreId');
+
+        for (var item in data['results']) {
+          genreTvShows.add(TvShowsModel.fromJson(item));
+        }
+      }
+
+      return right(genreTvShows);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
 }

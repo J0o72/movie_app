@@ -13,6 +13,7 @@ class MovieCollecionView extends StatelessWidget {
       child: MovieCollecionViewBody(
         fromWhere: collectionModel.collectionName,
         title: collectionModel.collectionTitle,
+        id: collectionModel.id == null ? '' : collectionModel.id!,
       ),
     );
   }

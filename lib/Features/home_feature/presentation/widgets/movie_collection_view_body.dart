@@ -8,9 +8,13 @@ import 'package:movie_app/core/utils/styles.dart';
 
 class MovieCollecionViewBody extends StatelessWidget {
   const MovieCollecionViewBody(
-      {super.key, required this.fromWhere, required this.title});
+      {super.key,
+      required this.fromWhere,
+      required this.title,
+      required this.id});
 
   final String fromWhere, title;
+  final String id;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +33,7 @@ class MovieCollecionViewBody extends StatelessWidget {
         ),
         body: MovieCollectionGridView(
           fromWhere: fromWhere,
+          id: id,
         ),
       ),
     );

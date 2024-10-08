@@ -51,7 +51,9 @@ class TvShowsTabContentView extends StatelessWidget {
         const SizedBox(
           height: 10,
         ),
-        const GenresHomeListView(),
+        const GenresHomeListView(
+          whichTab: 'TvShows',
+        ),
         const SizedBox(
           height: 20,
         ),

@@ -6,9 +6,10 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/custom_post
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
 
 class MovieCollectionGridView extends StatefulWidget {
-  const MovieCollectionGridView({super.key, required this.fromWhere});
+  const MovieCollectionGridView({super.key, required this.fromWhere, this.id});
 
   final String fromWhere;
+  final String? id;
 
   @override
   State<MovieCollectionGridView> createState() =>
@@ -37,6 +38,12 @@ class _MovieCollectionGridViewState extends State<MovieCollectionGridView> {
     } else if (widget.fromWhere == 'tv_top_rated') {
       BlocProvider.of<CollectionsCubit>(context)
           .fetchTVShowsCollectionOf(collectionOf: 'top_rated');
+    } else if (widget.fromWhere == 'movie') {
+      BlocProvider.of<CollectionsCubit>(context)
+          .fetchSpecificGenreMovies(genreId: widget.id!);
+    } else if (widget.fromWhere == 'TvShows') {
+      BlocProvider.of<CollectionsCubit>(context)
+          .fetchSpecificGenreTvShows(genreId: widget.id!);
     }
   }
 

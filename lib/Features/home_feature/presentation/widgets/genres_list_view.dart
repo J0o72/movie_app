@@ -7,7 +7,9 @@ import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
 
 class GenresHomeListView extends StatelessWidget {
-  const GenresHomeListView({super.key});
+  const GenresHomeListView({super.key, required this.whichTab});
+
+  final String whichTab;
 
   @override
   Widget build(BuildContext context) {
@@ -25,6 +27,7 @@ class GenresHomeListView extends StatelessWidget {
                   return GenreItemHome(
                     genresModel: state.genre[index],
                     gerneColor: genreColor[index],
+                    whichTab: whichTab,
                   );
                 },
               ),
