@@ -27,7 +27,7 @@ class _MovieCollectionGridViewState extends State<MovieCollectionGridView> {
           .fetchCollectionOf(collectionOf: widget.fromWhere);
     } else if (widget.fromWhere == 'upcoming') {
       BlocProvider.of<CollectionsCubit>(context)
-          .fetchCollectionOf(collectionOf: widget.fromWhere);
+          .fetchComingSoonMoviesCollection();
     } else if (widget.fromWhere == 'airing_today') {
       BlocProvider.of<CollectionsCubit>(context)
           .fetchTVShowsCollectionOf(collectionOf: widget.fromWhere);

@@ -6,6 +6,7 @@ import 'package:movie_app/core/errors/failure.dart';
 abstract class CollectionsRepo {
   Future<Either<Failure, List<MovieModel>>> fetchCollectionsOf(
       {required String collectionOf});
+  Future<Either<Failure, List<MovieModel>>> fetchComingSoonMoviesCollection();
   Future<Either<Failure, List<TvShowsModel>>> fetchTvShowsCollectionsOf(
       {required String collectionOf});
 }

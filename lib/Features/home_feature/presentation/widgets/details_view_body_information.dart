@@ -39,9 +39,11 @@ class DetailsViewBodyInformation extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CustomGenreShapeSaved(
-                      detailsGenre: detailsModel!.genres![0].name!,
-                    ),
+                    detailsModel!.genres!.isNotEmpty
+                        ? CustomGenreShapeSaved(
+                            detailsGenre: detailsModel!.genres![0].name!,
+                          )
+                        : Container(),
                     const SizedBox(
                       width: 10,
                     ),

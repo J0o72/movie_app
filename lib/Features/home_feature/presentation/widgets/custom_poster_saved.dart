@@ -5,6 +5,7 @@ import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_mo
 import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_shows_model.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
+import 'package:movie_app/core/utils/styles.dart';
 
 class CutsomPosterSaved extends StatelessWidget {
   const CutsomPosterSaved({super.key, this.movieModel, this.tvShowsModel});
@@ -28,9 +29,16 @@ class CutsomPosterSaved extends StatelessWidget {
                   aspectRatio: 2.8 / 3.5,
                   child: CachedNetworkImage(
                     fit: BoxFit.cover,
-                    imageUrl: '$imageUrl${movieModel!.posterPath}',
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
+                    imageUrl: movieModel!.posterPath != null
+                        ? '$imageUrl${movieModel!.posterPath}'
+                        : "",
+                    errorWidget: (context, url, error) => Center(
+                      child: Text(
+                        textAlign: TextAlign.center,
+                        "${movieModel?.title}",
+                        style: Styles.styleText18.copyWith(color: Colors.white),
+                      ),
+                    ),
                     placeholder: (context, url) => const Center(
                       child: CustomCircularLoading(),
                     ),
@@ -51,9 +59,16 @@ class CutsomPosterSaved extends StatelessWidget {
                   aspectRatio: 2.8 / 3.5,
                   child: CachedNetworkImage(
                     fit: BoxFit.cover,
-                    imageUrl: '$imageUrl${tvShowsModel!.posterPath}',
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
+                    imageUrl: tvShowsModel!.posterPath != null
+                        ? '$imageUrl${tvShowsModel!.posterPath}'
+                        : "",
+                    errorWidget: (context, url, error) => Center(
+                      child: Text(
+                        textAlign: TextAlign.center,
+                        "${tvShowsModel?.name}",
+                        style: Styles.styleText18.copyWith(color: Colors.white),
+                      ),
+                    ),
                     placeholder: (context, url) => const Center(
                       child: CustomCircularLoading(),
                     ),

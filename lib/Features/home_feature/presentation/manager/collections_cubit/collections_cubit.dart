@@ -28,6 +28,22 @@ class CollectionsCubit extends Cubit<CollectionsState> {
     });
   }
 
+  Future<void> fetchComingSoonMoviesCollection() async {
+    emit(CollectionsLoading());
+
+    var result = await collectionsRepo.fetchComingSoonMoviesCollection();
+
+    result.fold((failure) {
+      emit(
+        CollectionsFailure(errorMessage: failure.errMessage),
+      );
+    }, (collections) {
+      emit(
+        CollectionsSuccess(collection: collections),
+      );
+    });
+  }
+
   Future<void> fetchTVShowsCollectionOf({required String collectionOf}) async {
     emit(CollectionsLoading());
 

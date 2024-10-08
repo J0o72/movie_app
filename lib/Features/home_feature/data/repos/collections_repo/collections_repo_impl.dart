@@ -57,4 +57,30 @@ class CollectionsRepoImpl implements CollectionsRepo {
       }
     }
   }
+
+  @override
+  Future<Either<Failure, List<MovieModel>>>
+      fetchComingSoonMoviesCollection() async {
+    try {
+      List<MovieModel> collection = [];
+      for (int i = 1; i <= 10; i++) {
+        var data = await apiService.get(
+          endPoint:
+              'discover/movie?include_adult=false&include_video=false&language=en-US&page=$i&primary_release_date.gte=2025-01-01&sort_by=popularity.desc&with_genres=28%7C12%7C878%7C53',
+        );
+
+        for (var item in data['results']) {
+          collection.add(MovieModel.fromJson(item));
+        }
+      }
+
+      return right(collection);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
 }

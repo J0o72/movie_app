@@ -72,6 +72,7 @@ class CustomPoster extends StatelessWidget {
                           : "",
                       errorWidget: (context, url, error) => Center(
                         child: Text(
+                          textAlign: TextAlign.center,
                           "${tvShowsModel?.name}",
                           style:
                               Styles.styleText18.copyWith(color: Colors.white),

@@ -14,7 +14,8 @@ class MovieRepoImpl implements MovieRepo {
   Future<Either<Failure, List<MovieModel>>> fetchComingSoonMovies() async {
     try {
       var data = await apiService.get(
-          endPoint: 'movie/upcoming?language=en-US&page=1');
+          endPoint:
+              'discover/movie?include_adult=false&include_video=false&language=en-US&page=1&primary_release_date.gte=2025-01-01&sort_by=popularity.desc&with_genres=28%7C12%7C878%7C53');
 
       List<MovieModel> comingSoonMovies = [];
       for (var item in data['results']) {
