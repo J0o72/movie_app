@@ -13,23 +13,7 @@ import 'package:movie_app/core/utils/service_locator.dart';
 void main() {
   Bloc.observer = SimpleBlocObserver();
   setupServerLocator();
-  runApp(MultiBlocProvider(
-    providers: [
-      BlocProvider(
-        create: (context) => DetailsCubit(getIt.get<DetailsRepoImpl>()),
-      ),
-      BlocProvider(
-        create: (context) => CastCubit(getIt.get<DetailsRepoImpl>()),
-      ),
-      BlocProvider(
-        create: (context) => ReviewsCubit(getIt.get<DetailsRepoImpl>()),
-      ),
-      BlocProvider(
-        create: (context) => SimilarCubit(getIt.get<DetailsRepoImpl>()),
-      ),
-    ],
-    child: const MovieApp(),
-  ));
+  runApp(const MovieApp());
 }
 
 class MovieApp extends StatelessWidget {

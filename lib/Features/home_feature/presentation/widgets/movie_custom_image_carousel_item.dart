@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
+import 'package:movie_app/Features/home_feature/presentation/details_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/cast_cubit/cast_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/details_cubit/details_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/reviews_cubit/reviews_cubit.dart';
@@ -23,13 +24,22 @@ class MovieCustomImageCarouselItem extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            GoRouter.of(context).push(AppRouter.kDetailsView);
-            BlocProvider.of<DetailsCubit>(context).fetchDetails(id: movie.id!);
-            BlocProvider.of<CastCubit>(context)
-                .fetchCasts(id: movie.id!, fromWhere: 'movie');
-            BlocProvider.of<ReviewsCubit>(context)
-                .fetchReviews(id: movie.id!, fromWhere: 'movie');
-            BlocProvider.of<SimilarCubit>(context).fetchSimilar(id: movie.id!);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DetailsView(
+                  fromWhere: 'movie',
+                  id: movie.id!,
+                ),
+              ),
+            );
+            // GoRouter.of(context).push(AppRouter.kDetailsView);
+            // BlocProvider.of<DetailsCubit>(context).fetchDetails(id: movie.id!);
+            // BlocProvider.of<CastCubit>(context)
+            //     .fetchCasts(id: movie.id!, fromWhere: 'movie');
+            // BlocProvider.of<ReviewsCubit>(context)
+            //     .fetchReviews(id: movie.id!, fromWhere: 'movie');
+            // BlocProvider.of<SimilarCubit>(context).fetchSimilar(id: movie.id!);
           },
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16),

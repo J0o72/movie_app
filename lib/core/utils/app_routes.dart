@@ -13,7 +13,7 @@ import 'package:movie_app/core/utils/collection_model.dart';
 abstract class AppRouter {
   static const kHomeView = '/homeView';
   static const kGenreView = '/genreView';
-  static const kDetailsView = '/detailsView';
+  static const kDetailsView = '/detailsView/:index';
   static const kSavedView = '/savedView';
   static const kMovieCollevionView = '/movieCollevionView';
   static const kCastView = '/castView';
@@ -36,10 +36,10 @@ abstract class AppRouter {
           return GenreView(id: state.extra as int);
         },
       ),
-      GoRoute(
-        path: kDetailsView,
-        builder: (context, state) => const DetailsView(),
-      ),
+      // GoRoute(
+      //   path: kDetailsView,
+      //   builder: (context, state) => const DetailsView(),
+      // ),
       GoRoute(
         path: kSavedView,
         builder: (context, state) => const SavedView(),

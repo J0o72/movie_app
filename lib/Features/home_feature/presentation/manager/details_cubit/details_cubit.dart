@@ -10,6 +10,7 @@ class DetailsCubit extends Cubit<DetailsState> {
   DetailsCubit(this.detailsRepo) : super(DetailsInitial());
 
   final DetailsRepo detailsRepo;
+  final List<DetailsState> movieStates = [];
 
   Future<void> fetchDetails({required int id}) async {
     emit(DetailsLoading());

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_shows_model.dart';
+import 'package:movie_app/Features/home_feature/presentation/details_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/cast_cubit/cast_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/details_cubit/details_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/reviews_cubit/reviews_cubit.dart';
@@ -23,15 +24,16 @@ class TvShowsCustomImageCarouselItem extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            GoRouter.of(context).push(AppRouter.kDetailsView);
-            BlocProvider.of<DetailsCubit>(context)
-                .fetchTvShowsDetails(id: tvShow.id!);
-            BlocProvider.of<CastCubit>(context)
-                .fetchCasts(id: tvShow.id!, fromWhere: 'tv');
-            BlocProvider.of<ReviewsCubit>(context)
-                .fetchReviews(id: tvShow.id!, fromWhere: 'tv');
-            BlocProvider.of<SimilarCubit>(context)
-                .fetchSimilarTV(id: tvShow.id!);
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => DetailsView(
+                  fromWhere: 'movie',
+                  id: tvShow.id!,
+                ),
+              ),
+            );
+            // GoRouter.of(context).push(AppRouter.kDetailsView);
           },
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16),
