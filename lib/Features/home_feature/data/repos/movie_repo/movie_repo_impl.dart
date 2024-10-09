@@ -94,27 +94,4 @@ class MovieRepoImpl implements MovieRepo {
       }
     }
   }
-
-  @override
-  Future<Either<Failure, List<MovieModel>>> fetchSpecificGenreMovies(
-      {required int genreId}) async {
-    try {
-      var data = await apiService.get(
-          endPoint:
-              'discover/movie?include_adult=false&include_video=false&language=en-US&sort_by=popularity.desc&with_genres=$genreId');
-
-      List<MovieModel> topRatingMovies = [];
-      for (var item in data['results']) {
-        topRatingMovies.add(MovieModel.fromJson(item));
-      }
-
-      return right(topRatingMovies);
-    } catch (e) {
-      if (e is DioException) {
-        return left(ServerFailure.fromDioError(e));
-      } else {
-        return left(ServerFailure(e.toString()));
-      }
-    }
-  }
 }
