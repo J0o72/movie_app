@@ -6,8 +6,9 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/genre_gird_
 import 'package:movie_app/core/utils/service_locator.dart';
 
 class GenreViewBody extends StatelessWidget {
-  const GenreViewBody({super.key, required this.id});
+  const GenreViewBody({super.key, required this.id, required this.fromWhere});
   final int id;
+  final String fromWhere;
 
   @override
   Widget build(BuildContext context) {
@@ -16,6 +17,7 @@ class GenreViewBody extends StatelessWidget {
       child: Scaffold(
         body: GenreGirdViewGenres(
           id: id,
+          fromWhere: fromWhere,
         ),
       ),
     );

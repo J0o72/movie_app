@@ -34,7 +34,9 @@ abstract class AppRouter {
       GoRoute(
         path: kGenreView,
         builder: (context, state) {
-          return GenreView(id: state.extra as int);
+          return GenreView(
+              detailsViewNavigatorModel:
+                  state.extra as DetailsViewNavigatorModel);
         },
       ),
       GoRoute(

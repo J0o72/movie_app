@@ -7,9 +7,11 @@ import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
 
 class GenreGirdViewGenres extends StatefulWidget {
-  const GenreGirdViewGenres({super.key, required this.id});
+  const GenreGirdViewGenres(
+      {super.key, required this.id, required this.fromWhere});
 
   final int id;
+  final String fromWhere;
   @override
   State<GenreGirdViewGenres> createState() => _GenreGirdViewGenresState();
 }
@@ -47,6 +49,7 @@ class _GenreGirdViewGenresState extends State<GenreGirdViewGenres> {
                 return GenreItemGenres(
                   genre: state.genre[index],
                   genreColor: genreColor[index],
+                  fromWhere: widget.fromWhere,
                 );
               },
             );

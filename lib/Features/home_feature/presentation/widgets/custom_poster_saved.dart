@@ -56,7 +56,7 @@ class CutsomPosterSaved extends StatelessWidget {
             onTap: () {
               DetailsViewNavigatorModel detailsViewNavigatorModel =
                   DetailsViewNavigatorModel(
-                      fromWhere: 'movie', id: tvShowsModel!.id!);
+                      fromWhere: 'tv', id: tvShowsModel!.id!);
               GoRouter.of(context).push(AppRouter.kDetailsView,
                   extra: detailsViewNavigatorModel);
             },

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie_app/Features/home_feature/data/models/details_model/details_view_navigator_model.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/popular_movie_cubit/popular_movie_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_carousel_slider.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
@@ -45,7 +46,10 @@ class MovieTabContentView extends StatelessWidget {
         CustomRow(
           leftText: "Genres",
           onTap: () {
-            GoRouter.of(context).push(AppRouter.kGenreView, extra: 1);
+            DetailsViewNavigatorModel detailsViewNavigatorModel =
+                DetailsViewNavigatorModel(fromWhere: 'genreMovie', id: 1);
+            GoRouter.of(context)
+                .push(AppRouter.kGenreView, extra: detailsViewNavigatorModel);
           },
         ),
         const SizedBox(
