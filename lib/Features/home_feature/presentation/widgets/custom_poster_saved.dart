@@ -1,13 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie_app/Features/home_feature/data/models/details_model/details_view_navigator_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_shows_model.dart';
-import 'package:movie_app/Features/home_feature/presentation/manager/cast_cubit/cast_cubit.dart';
-import 'package:movie_app/Features/home_feature/presentation/manager/details_cubit/details_cubit.dart';
-import 'package:movie_app/Features/home_feature/presentation/manager/reviews_cubit/reviews_cubit.dart';
-import 'package:movie_app/Features/home_feature/presentation/manager/similar_cubit/similar_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/styles.dart';
@@ -24,16 +20,11 @@ class CutsomPosterSaved extends StatelessWidget {
     return tvShowsModel == null
         ? InkWell(
             onTap: () {
-              GoRouter.of(context).push(AppRouter.kDetailsView);
-              BlocProvider.of<DetailsCubit>(context)
-                  .fetchDetails(id: movieModel!.id!);
-              BlocProvider.of<CastCubit>(context)
-                  .fetchCasts(id: movieModel!.id ?? 0, fromWhere: 'movie');
-
-              BlocProvider.of<ReviewsCubit>(context)
-                  .fetchReviews(id: movieModel!.id ?? 0, fromWhere: 'movie');
-              BlocProvider.of<SimilarCubit>(context)
-                  .fetchSimilar(id: movieModel!.id ?? 0);
+              DetailsViewNavigatorModel detailsViewNavigatorModel =
+                  DetailsViewNavigatorModel(
+                      fromWhere: 'movie', id: movieModel!.id!);
+              GoRouter.of(context).push(AppRouter.kDetailsView,
+                  extra: detailsViewNavigatorModel);
             },
             child: SizedBox(
               height: MediaQuery.of(context).size.height * 0.25,
@@ -63,15 +54,11 @@ class CutsomPosterSaved extends StatelessWidget {
           )
         : InkWell(
             onTap: () {
-              GoRouter.of(context).push(AppRouter.kDetailsView);
-              BlocProvider.of<DetailsCubit>(context)
-                  .fetchTvShowsDetails(id: tvShowsModel!.id!);
-              BlocProvider.of<CastCubit>(context)
-                  .fetchCasts(id: tvShowsModel!.id ?? 0, fromWhere: 'tv');
-              BlocProvider.of<ReviewsCubit>(context)
-                  .fetchReviews(id: tvShowsModel!.id ?? 0, fromWhere: 'tv');
-              BlocProvider.of<SimilarCubit>(context)
-                  .fetchSimilarTV(id: tvShowsModel!.id ?? 0);
+              DetailsViewNavigatorModel detailsViewNavigatorModel =
+                  DetailsViewNavigatorModel(
+                      fromWhere: 'movie', id: tvShowsModel!.id!);
+              GoRouter.of(context).push(AppRouter.kDetailsView,
+                  extra: detailsViewNavigatorModel);
             },
             child: SizedBox(
               height: MediaQuery.of(context).size.height * 0.25,
