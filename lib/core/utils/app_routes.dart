@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:movie_app/Features/home_feature/data/models/details_model/details_view_navigator_model.dart';
 import 'package:movie_app/Features/home_feature/presentation/actors_profile_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/cast_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/details_view.dart';
@@ -36,10 +37,12 @@ abstract class AppRouter {
           return GenreView(id: state.extra as int);
         },
       ),
-      // GoRoute(
-      //   path: kDetailsView,
-      //   builder: (context, state) => const DetailsView(),
-      // ),
+      GoRoute(
+        path: kDetailsView,
+        builder: (context, state) => DetailsView(
+          detailsViewNavigatorModel: state.extra as DetailsViewNavigatorModel,
+        ),
+      ),
       GoRoute(
         path: kSavedView,
         builder: (context, state) => const SavedView(),
