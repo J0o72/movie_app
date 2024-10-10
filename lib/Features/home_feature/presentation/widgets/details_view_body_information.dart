@@ -15,6 +15,7 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/details_rev
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_trailer_rating_duration_row.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_item.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
+import 'package:movie_app/core/utils/collection_model.dart';
 import 'package:movie_app/core/utils/styles.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
 
@@ -113,7 +114,12 @@ class DetailsViewBodyInformation extends StatelessWidget {
                 CustomRow(
                   leftText: "More Like This",
                   onTap: () {
-                    GoRouter.of(context).push(AppRouter.kMovieCollevionView);
+                    CollectionModel collectionModel = CollectionModel(
+                        collectionName: 'moreMovieLikeThis',
+                        collectionTitle: 'More Like This',
+                        id: detailsModel!.id.toString());
+                    GoRouter.of(context).push(AppRouter.kMovieCollevionView,
+                        extra: collectionModel);
                   },
                   style: Styles.styleText26,
                   horizontalPadding: 10,
@@ -196,7 +202,12 @@ class DetailsViewBodyInformation extends StatelessWidget {
                 CustomRow(
                   leftText: "More Like This",
                   onTap: () {
-                    GoRouter.of(context).push(AppRouter.kMovieCollevionView);
+                    CollectionModel collectionModel = CollectionModel(
+                        collectionName: 'moreTvLikeThis',
+                        collectionTitle: 'More Like This',
+                        id: tvShowsDetailsModel!.id.toString());
+                    GoRouter.of(context).push(AppRouter.kMovieCollevionView,
+                        extra: collectionModel);
                   },
                   style: Styles.styleText26,
                   horizontalPadding: 10,

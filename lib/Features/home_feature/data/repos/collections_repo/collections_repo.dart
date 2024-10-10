@@ -13,4 +13,8 @@ abstract class CollectionsRepo {
       {required String genreId});
   Future<Either<Failure, List<TvShowsModel>>> fetchSpecificGenreTvShows(
       {required String genreId});
+  Future<Either<Failure, List<MovieModel>>> fetchMovieMoreLikeThis(
+      {required int id});
+  Future<Either<Failure, List<TvShowsModel>>> fetchTvMoreLikeThis(
+      {required String id});
 }

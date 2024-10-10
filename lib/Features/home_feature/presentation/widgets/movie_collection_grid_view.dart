@@ -50,6 +50,12 @@ class _MovieCollectionGridViewState extends State<MovieCollectionGridView> {
     } else if (widget.fromWhere == 'genreTv') {
       BlocProvider.of<CollectionsCubit>(context)
           .fetchSpecificGenreTvShows(genreId: widget.id!);
+    } else if (widget.fromWhere == 'moreTvLikeThis') {
+      BlocProvider.of<CollectionsCubit>(context)
+          .fetchTvMoreLikeThis(id: widget.id!);
+    } else if (widget.fromWhere == 'moreMovieLikeThis') {
+      BlocProvider.of<CollectionsCubit>(context)
+          .fetchMovieMoreLikeThis(id: int.parse(widget.id!));
     }
   }
 

@@ -94,4 +94,36 @@ class CollectionsCubit extends Cubit<CollectionsState> {
       );
     });
   }
+
+  Future<void> fetchMovieMoreLikeThis({required int id}) async {
+    emit(CollectionsLoading());
+
+    var result = await collectionsRepo.fetchMovieMoreLikeThis(id: id);
+
+    result.fold((failure) {
+      emit(
+        CollectionsFailure(errorMessage: failure.errMessage),
+      );
+    }, (movieMore) {
+      emit(
+        CollectionsSuccess(collection: movieMore),
+      );
+    });
+  }
+
+  Future<void> fetchTvMoreLikeThis({required String id}) async {
+    emit(CollectionsLoading());
+
+    var result = await collectionsRepo.fetchTvMoreLikeThis(id: id);
+
+    result.fold((failure) {
+      emit(
+        CollectionsFailure(errorMessage: failure.errMessage),
+      );
+    }, (tvMore) {
+      emit(
+        CollectionsSuccess(tvCollection: tvMore),
+      );
+    });
+  }
 }

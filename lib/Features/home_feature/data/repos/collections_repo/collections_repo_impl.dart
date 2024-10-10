@@ -133,4 +133,52 @@ class CollectionsRepoImpl implements CollectionsRepo {
       }
     }
   }
+
+  @override
+  Future<Either<Failure, List<MovieModel>>> fetchMovieMoreLikeThis(
+      {required int id}) async {
+    try {
+      List<MovieModel> movieMoreLikeThis = [];
+      for (int i = 1; i <= 10; i++) {
+        var data = await apiService.get(
+            endPoint: 'movie/$id/similar?language=en-US&page=$i');
+
+        for (var item in data['results']) {
+          movieMoreLikeThis.add(MovieModel.fromJson(item));
+        }
+      }
+
+      return right(movieMoreLikeThis);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<TvShowsModel>>> fetchTvMoreLikeThis(
+      {required String id}) async {
+    try {
+      List<TvShowsModel> tvMoreLikeThis = [];
+      for (int i = 1; i <= 10; i++) {
+        var data = await apiService.get(
+            endPoint: 'tv/$id/similar?language=en-US&page=$i');
+
+        for (var item in data['results']) {
+          tvMoreLikeThis.add(TvShowsModel.fromJson(item));
+        }
+      }
+
+      return right(tvMoreLikeThis);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
 }
