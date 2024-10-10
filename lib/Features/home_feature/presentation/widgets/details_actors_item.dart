@@ -13,7 +13,7 @@ class ActorsItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(right: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: InkWell(
         onTap: () {
           GoRouter.of(context).push(AppRouter.kActorProfileView);
@@ -28,7 +28,7 @@ class ActorsItem extends StatelessWidget {
                 width: 93,
               ),
               const SizedBox(
-                height: 10,
+                height: 5,
               ),
               Center(
                 child: Text(
@@ -36,7 +36,9 @@ class ActorsItem extends StatelessWidget {
                   textAlign: TextAlign.center,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: Styles.styleText16.copyWith(height: 1),
+                  style: Styles.styleText16.copyWith(
+                    height: 1,
+                  ),
                 ),
               )
             ],

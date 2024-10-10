@@ -162,4 +162,27 @@ class DetailsRepoImpl implements DetailsRepo {
       }
     }
   }
+
+  @override
+  Future<Either<Failure, List<CastsModel>>> fetchCastList(
+      {required int id, required String fromWhere}) async {
+    try {
+      var data = await apiService.get(
+          endPoint: '$fromWhere/$id/credits?language=en-US');
+
+      List<CastsModel> casts = [];
+
+      for (var item in data['cast']) {
+        casts.add(CastsModel.fromJson(item));
+      }
+
+      return right(casts);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
 }

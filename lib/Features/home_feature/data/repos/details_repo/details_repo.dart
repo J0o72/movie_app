@@ -20,4 +20,6 @@ abstract class DetailsRepo {
   Future<Either<Failure, List<TvShowsModel>>> fetchSimilarTv({required int id});
   Future<Either<Failure, List<ResultReviewsModel>>> fetchReviewsList(
       {required int id, required String fromWhere});
+  Future<Either<Failure, List<CastsModel>>> fetchCastList(
+      {required int id, required String fromWhere});
 }

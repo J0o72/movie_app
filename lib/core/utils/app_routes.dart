@@ -59,7 +59,9 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kCastView,
-        builder: (context, state) => const CastView(),
+        builder: (context, state) => CastView(
+          detailsViewNavigatorModel: state.extra as DetailsViewNavigatorModel,
+        ),
       ),
       GoRoute(
         path: kReviewView,

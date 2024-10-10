@@ -25,4 +25,20 @@ class CastCubit extends Cubit<CastState> {
       );
     });
   }
+
+  Future<void> fetchCastsList(
+      {required int id, required String fromWhere}) async {
+    emit(CastLoading());
+
+    var result = await detailsRepo.fetchCastList(id: id, fromWhere: fromWhere);
+    result.fold((failure) {
+      emit(
+        CastFailure(errorMessage: failure.errMessage),
+      );
+    }, (casts) {
+      emit(
+        CastSuccess(castsModel: casts),
+      );
+    });
+  }
 }

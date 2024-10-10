@@ -78,7 +78,11 @@ class DetailsViewBodyInformation extends StatelessWidget {
                 CustomRow(
                   leftText: "Casts",
                   onTap: () {
-                    GoRouter.of(context).push(AppRouter.kCastView);
+                    DetailsViewNavigatorModel detailsViewNavigatorModel =
+                        DetailsViewNavigatorModel(
+                            fromWhere: 'movie', id: detailsModel!.id!);
+                    GoRouter.of(context).push(AppRouter.kCastView,
+                        extra: detailsViewNavigatorModel);
                   },
                   style: Styles.styleText26,
                   horizontalPadding: 10,
@@ -157,7 +161,11 @@ class DetailsViewBodyInformation extends StatelessWidget {
                 CustomRow(
                   leftText: "Casts",
                   onTap: () {
-                    GoRouter.of(context).push(AppRouter.kCastView);
+                    DetailsViewNavigatorModel detailsViewNavigatorModel =
+                        DetailsViewNavigatorModel(
+                            fromWhere: 'tv', id: tvShowsDetailsModel!.id!);
+                    GoRouter.of(context).push(AppRouter.kCastView,
+                        extra: detailsViewNavigatorModel);
                   },
                   style: Styles.styleText26,
                   horizontalPadding: 10,
