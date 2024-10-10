@@ -1,63 +1,48 @@
 import 'package:equatable/equatable.dart';
 
-import 'author_details.dart';
+import 'result.dart';
 
 class ReviewsModel extends Equatable {
-  final String? author;
-  final AuthorDetails? authorDetails;
-  final String? content;
-  final DateTime? createdAt;
-  final String? id;
-  final DateTime? updatedAt;
-  final String? url;
+  final int? id;
+  final int? page;
+  final List<ReviewsModelResult>? results;
+  final int? totalPages;
+  final int? totalResults;
 
   const ReviewsModel({
-    this.author,
-    this.authorDetails,
-    this.content,
-    this.createdAt,
     this.id,
-    this.updatedAt,
-    this.url,
+    this.page,
+    this.results,
+    this.totalPages,
+    this.totalResults,
   });
 
   factory ReviewsModel.fromJson(Map<String, dynamic> json) => ReviewsModel(
-        author: json['author'] as String?,
-        authorDetails: json['author_details'] == null
-            ? null
-            : AuthorDetails.fromJson(
-                json['author_details'] as Map<String, dynamic>),
-        content: json['content'] as String?,
-        createdAt: json['created_at'] == null
-            ? null
-            : DateTime.parse(json['created_at'] as String),
-        id: json['id'] as String?,
-        updatedAt: json['updated_at'] == null
-            ? null
-            : DateTime.parse(json['updated_at'] as String),
-        url: json['url'] as String?,
+        id: json['id'] as int?,
+        page: json['page'] as int?,
+        results: (json['results'] as List<dynamic>?)
+            ?.map((e) => ReviewsModelResult.fromJson(e as Map<String, dynamic>))
+            .toList(),
+        totalPages: json['total_pages'] as int?,
+        totalResults: json['total_results'] as int?,
       );
 
   Map<String, dynamic> toJson() => {
-        'author': author,
-        'author_details': authorDetails?.toJson(),
-        'content': content,
-        'created_at': createdAt?.toIso8601String(),
         'id': id,
-        'updated_at': updatedAt?.toIso8601String(),
-        'url': url,
+        'page': page,
+        'results': results?.map((e) => e.toJson()).toList(),
+        'total_pages': totalPages,
+        'total_results': totalResults,
       };
 
   @override
   List<Object?> get props {
     return [
-      author,
-      authorDetails,
-      content,
-      createdAt,
       id,
-      updatedAt,
-      url,
+      page,
+      results,
+      totalPages,
+      totalResults,
     ];
   }
 }

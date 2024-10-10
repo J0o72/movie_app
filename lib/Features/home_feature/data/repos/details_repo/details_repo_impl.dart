@@ -3,8 +3,10 @@ import 'package:dio/dio.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/casts_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/details_model/details_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/reviews_model/result.dart';
+import 'package:movie_app/Features/home_feature/data/models/details_model/reviews_model/reviews_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/tv_shows_details/tv_shows_details_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
+import 'package:movie_app/Features/home_feature/data/models/reviews_model/result.dart';
 import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_shows_model.dart';
 import 'package:movie_app/Features/home_feature/data/repos/details_repo/details_repo.dart';
 import 'package:movie_app/core/errors/failure.dart';
@@ -126,6 +128,34 @@ class DetailsRepoImpl implements DetailsRepo {
       var data = await apiService.get(endPoint: 'tv/$id?language=en-US');
 
       return right(TvShowsDetailsModel.fromJson(data));
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ReviewsModelResult>>> fetchReviewsList(
+      {required int id}) async {
+    try {
+      List<ReviewsModelResult> reviewsList = [];
+
+      var data = await apiService.get(
+          endPoint: 'movie/933260/reviews?language=en-US&page=1');
+
+      for (int i = data['page']; i <= data['total_pages']; i++) {
+        var allData = await apiService.get(
+            endPoint: 'movie/933260/reviews?language=en-US&page=$i');
+
+        for (var item in allData['results']) {
+          reviewsList.add(ReviewsModelResult.fromJson(item));
+        }
+      }
+
+      return right(reviewsList);
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));
