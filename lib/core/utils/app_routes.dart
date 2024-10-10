@@ -63,7 +63,9 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kReviewView,
-        builder: (context, state) => const ReviewView(),
+        builder: (context, state) => ReviewView(
+          detailsViewNavigatorModel: state.extra as DetailsViewNavigatorModel,
+        ),
       ),
       GoRoute(
         path: kActorProfileView,

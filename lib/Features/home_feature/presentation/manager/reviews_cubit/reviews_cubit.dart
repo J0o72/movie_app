@@ -26,4 +26,21 @@ class ReviewsCubit extends Cubit<ReviewsState> {
       );
     });
   }
+
+  Future<void> fetchReviewsList(
+      {required int id, required String fromWhere}) async {
+    emit(ReviewsLoading());
+
+    var result =
+        await detailsRepo.fetchReviewsList(id: id, fromWhere: fromWhere);
+    result.fold((failure) {
+      emit(
+        ReviewsFailure(errorMessage: failure.errMessage),
+      );
+    }, (reviews) {
+      emit(
+        ReviewsSuccess(review: reviews),
+      );
+    });
+  }
 }

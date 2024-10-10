@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/details_model/details_model.dart';
+import 'package:movie_app/Features/home_feature/data/models/details_model/details_view_navigator_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/tv_shows_details/tv_shows_details_model.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/details_cubit/details_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/similar_cubit/similar_cubit.dart';
@@ -89,7 +90,11 @@ class DetailsViewBodyInformation extends StatelessWidget {
                 CustomRow(
                   leftText: "Reviews",
                   onTap: () {
-                    GoRouter.of(context).push(AppRouter.kReviewView);
+                    DetailsViewNavigatorModel detailsViewNavigatorModel =
+                        DetailsViewNavigatorModel(
+                            fromWhere: 'movie', id: detailsModel!.id!);
+                    GoRouter.of(context).push(AppRouter.kReviewView,
+                        extra: detailsViewNavigatorModel);
                   },
                   style: Styles.styleText26,
                   horizontalPadding: 10,
@@ -164,7 +169,11 @@ class DetailsViewBodyInformation extends StatelessWidget {
                 CustomRow(
                   leftText: "Reviews",
                   onTap: () {
-                    GoRouter.of(context).push(AppRouter.kReviewView);
+                    DetailsViewNavigatorModel detailsViewNavigatorModel =
+                        DetailsViewNavigatorModel(
+                            fromWhere: 'tv', id: tvShowsDetailsModel!.id!);
+                    GoRouter.of(context).push(AppRouter.kReviewView,
+                        extra: detailsViewNavigatorModel);
                   },
                   style: Styles.styleText26,
                   horizontalPadding: 10,
