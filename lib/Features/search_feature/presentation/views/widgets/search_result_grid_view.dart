@@ -20,9 +20,11 @@ class SearchResultGridView extends StatelessWidget {
               crossAxisSpacing: 10,
               childAspectRatio: 1.5 / 2,
             ),
-            itemCount: 30,
+            itemCount: state.searchResult.length,
             itemBuilder: (context, index) {
-              return const CustomSearchImage();
+              return CustomSearchImage(
+                searchResultsModel: state.searchResult[index],
+              );
             },
           );
         } else if (state is SearchFailure) {

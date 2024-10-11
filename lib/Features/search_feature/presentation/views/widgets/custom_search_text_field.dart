@@ -28,6 +28,7 @@ class _CustomSearchTextFieldState extends State<CustomSearchTextField> {
       onSubmitted: (value) {
         BlocProvider.of<SearchCubit>(context)
             .fetchSearchResults(searchWord: value);
+        myController.clear();
       },
       cursorColor: kMainColor,
       decoration: InputDecoration(
@@ -46,7 +47,11 @@ class _CustomSearchTextFieldState extends State<CustomSearchTextField> {
           color: Colors.white.withOpacity(0.5),
         ),
         suffixIcon: IconButton(
-          onPressed: () {},
+          onPressed: () {
+            BlocProvider.of<SearchCubit>(context)
+                .fetchSearchResults(searchWord: text!);
+            myController.clear();
+          },
           icon: const Icon(
             Icons.search,
             color: kMainColor,
