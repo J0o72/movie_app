@@ -5,6 +5,7 @@ import 'package:movie_app/Features/home_feature/data/repos/details_repo/details_
 import 'package:movie_app/Features/home_feature/data/repos/genre_repo/genre_repo_impl.dart';
 import 'package:movie_app/Features/home_feature/data/repos/movie_repo/movie_repo_impl.dart';
 import 'package:movie_app/Features/home_feature/data/repos/tv_shows_repo/tv_shows_repo_impl.dart';
+import 'package:movie_app/Features/search_feature/data/repos/search_repo_impl.dart';
 import 'package:movie_app/core/utils/api_service.dart';
 
 final getIt = GetIt.instance;
@@ -38,6 +39,12 @@ void setupServerLocator() {
 
   getIt.registerSingleton<DetailsRepoImpl>(
     DetailsRepoImpl(
+      getIt.get<ApiService>(),
+    ),
+  );
+
+  getIt.registerSingleton<SearchRepoImpl>(
+    SearchRepoImpl(
       getIt.get<ApiService>(),
     ),
   );
