@@ -1,7 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:movie_app/Features/home_feature/data/models/details_model/details_view_navigator_model.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/Features/search_feature/data/models/search_model/search_results.dart';
+import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class CustomSearchImage extends StatelessWidget {
@@ -14,18 +17,31 @@ class CustomSearchImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // DetailsViewNavigatorModel detailsViewNavigatorModel =
-        //     DetailsViewNavigatorModel(fromWhere: 'movie', id: movieModel!.id!);
-        // GoRouter.of(context)
-        //     .push(AppRouter.kDetailsView, extra: detailsViewNavigatorModel);
+        if (searchResultsModel.mediaType == 'movie' ||
+            searchResultsModel.mediaType == 'tv') {
+          DetailsViewNavigatorModel detailsViewNavigatorModel =
+              DetailsViewNavigatorModel(
+                  fromWhere: searchResultsModel.mediaType!,
+                  id: searchResultsModel.id!);
+          GoRouter.of(context)
+              .push(AppRouter.kDetailsView, extra: detailsViewNavigatorModel);
+        } else if (searchResultsModel.mediaType == 'person') {
+          GoRouter.of(context).push(
+            AppRouter.kActorProfileView,
+          );
+        }
       },
       child: ClipRRect(
         borderRadius: BorderRadius.circular(16),
         child: CachedNetworkImage(
           fit: BoxFit.cover,
-          imageUrl: searchResultsModel.posterPath != null
-              ? '$imageUrl${searchResultsModel.posterPath}'
-              : "",
+          imageUrl: searchResultsModel.mediaType != 'person'
+              ? searchResultsModel.posterPath != null
+                  ? '$imageUrl${searchResultsModel.posterPath}'
+                  : ""
+              : searchResultsModel.profilePath != null
+                  ? '$imageUrl${searchResultsModel.profilePath}'
+                  : "",
           errorWidget: (context, url, error) => Center(
             child: Text(
               textAlign: TextAlign.center,

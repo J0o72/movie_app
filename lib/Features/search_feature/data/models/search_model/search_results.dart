@@ -16,6 +16,7 @@ class SearchResultsModel extends Equatable {
   final double? voteAverage;
   final int? voteCount;
   final String? mediaType;
+  final String? profilePath;
 
   const SearchResultsModel({
     this.adult,
@@ -33,26 +34,27 @@ class SearchResultsModel extends Equatable {
     this.voteAverage,
     this.voteCount,
     this.mediaType,
+    this.profilePath,
   });
 
   factory SearchResultsModel.fromJson(Map<String, dynamic> json) =>
       SearchResultsModel(
-        adult: json['adult'] as bool?,
-        backdropPath: json['backdrop_path'] as String?,
-        genreIds: json['genre_ids'] as List<dynamic>?,
-        id: json['id'] as int?,
-        originalLanguage: json['original_language'] as String?,
-        originalTitle: json['original_title'] as String?,
-        overview: json['overview'] as String?,
-        popularity: (json['popularity'] as num?)?.toDouble(),
-        posterPath: json['poster_path'] as String?,
-        releaseDate: json['release_date'] as String?,
-        title: json['title'] as String?,
-        video: json['video'] as bool?,
-        voteAverage: (json['vote_average'] as num?)?.toDouble(),
-        voteCount: json['vote_count'] as int?,
-        mediaType: json['media_type'] as String?,
-      );
+          adult: json['adult'] as bool?,
+          backdropPath: json['backdrop_path'] as String?,
+          genreIds: json['genre_ids'] as List<dynamic>?,
+          id: json['id'] as int?,
+          originalLanguage: json['original_language'] as String?,
+          originalTitle: json['original_title'] as String?,
+          overview: json['overview'] as String?,
+          popularity: (json['popularity'] as num?)?.toDouble(),
+          posterPath: json['poster_path'] as String?,
+          releaseDate: json['release_date'] as String?,
+          title: json['title'] as String?,
+          video: json['video'] as bool?,
+          voteAverage: (json['vote_average'] as num?)?.toDouble(),
+          voteCount: json['vote_count'] as int?,
+          mediaType: json['media_type'] as String?,
+          profilePath: json['profile_path'] as String?);
 
   Map<String, dynamic> toJson() => {
         'adult': adult,
@@ -70,6 +72,7 @@ class SearchResultsModel extends Equatable {
         'vote_average': voteAverage,
         'vote_count': voteCount,
         'media_type': mediaType,
+        'profile_path': profilePath,
       };
 
   @override
@@ -90,6 +93,7 @@ class SearchResultsModel extends Equatable {
       voteAverage,
       voteCount,
       mediaType,
+      profilePath,
     ];
   }
 }
