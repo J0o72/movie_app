@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:movie_app/Features/home_feature/data/models/actor_model/actor_known_for.dart';
 import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_shows_model.dart';
 import 'package:movie_app/core/errors/failure.dart';
@@ -17,4 +18,6 @@ abstract class CollectionsRepo {
       {required int id});
   Future<Either<Failure, List<TvShowsModel>>> fetchTvMoreLikeThis(
       {required String id});
+  Future<Either<Failure, List<ActorKnownFor>>> fetchActorCredits(
+      {required String actorID});
 }

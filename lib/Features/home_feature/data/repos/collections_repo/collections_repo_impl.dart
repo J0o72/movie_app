@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:movie_app/Features/home_feature/data/models/actor_model/actor_known_for.dart';
 import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_shows_model.dart';
 import 'package:movie_app/Features/home_feature/data/repos/collections_repo/collections_repo.dart';
@@ -173,6 +174,29 @@ class CollectionsRepoImpl implements CollectionsRepo {
       }
 
       return right(tvMoreLikeThis);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<ActorKnownFor>>> fetchActorCredits(
+      {required String actorID}) async {
+    try {
+      List<ActorKnownFor> actorCredits = [];
+
+      var data = await apiService.get(
+          endPoint: 'person/$actorID/combined_credits?language=en-US');
+
+      for (var item in data['cast']) {
+        actorCredits.add(ActorKnownFor.fromJson(item));
+      }
+
+      return right(actorCredits);
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));

@@ -12,12 +12,10 @@ final class ActorProfileInitial extends ActorProfileState {}
 final class ActorProfileSuccess extends ActorProfileState {
   final ActorModel? actorDetails;
   final ActorSocialMedia? actorSocialMedia;
-  final List<ActorKnownFor>? actorCredits;
 
   const ActorProfileSuccess({
     this.actorDetails,
     this.actorSocialMedia,
-    this.actorCredits,
   });
 }
 

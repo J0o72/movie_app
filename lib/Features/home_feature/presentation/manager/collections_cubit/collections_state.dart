@@ -12,8 +12,10 @@ final class CollectionsInitial extends CollectionsState {}
 final class CollectionsSuccess extends CollectionsState {
   final List<MovieModel>? collection;
   final List<TvShowsModel>? tvCollection;
+  final List<ActorKnownFor>? actorCredits;
 
-  const CollectionsSuccess({this.collection, this.tvCollection});
+  const CollectionsSuccess(
+      {this.actorCredits, this.collection, this.tvCollection});
 }
 
 final class CollectionsFailure extends CollectionsState {

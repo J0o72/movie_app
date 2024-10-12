@@ -2,7 +2,7 @@ import 'package:equatable/equatable.dart';
 
 class ActorModel extends Equatable {
   final bool? adult;
-  final List<String>? alsoKnownAs;
+  final List<dynamic>? alsoKnownAs;
   final String? biography;
   final String? birthday;
   final dynamic deathday;
@@ -35,7 +35,7 @@ class ActorModel extends Equatable {
 
   factory ActorModel.fromJson(Map<String, dynamic> json) => ActorModel(
         adult: json['adult'] as bool?,
-        alsoKnownAs: json['also_known_as'] as List<String>?,
+        alsoKnownAs: json['also_known_as'] as List<dynamic>?,
         biography: json['biography'] as String?,
         birthday: json['birthday'] as String?,
         deathday: json['deathday'] as dynamic,

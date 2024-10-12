@@ -107,7 +107,7 @@ class CustomPoster extends StatelessWidget {
                         aspectRatio: 2.8 / 3.5,
                         child: CachedNetworkImage(
                           fit: BoxFit.cover,
-                          imageUrl: tvShowsModel!.posterPath != null
+                          imageUrl: actorCredits!.posterPath != null
                               ? '$image${actorCredits!.posterPath}'
                               : "",
                           errorWidget: (context, url, error) => Center(

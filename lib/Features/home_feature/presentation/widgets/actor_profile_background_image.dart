@@ -9,6 +9,7 @@ class ActorProfileBackgroundImage extends StatelessWidget {
   });
 
   final ActorModel actorDetails;
+  final String image = "https://image.tmdb.org/t/p/original";
 
   @override
   Widget build(BuildContext context) {
@@ -18,8 +19,7 @@ class ActorProfileBackgroundImage extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         child: CachedNetworkImage(
           fit: BoxFit.cover,
-          imageUrl:
-              'https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcQVvw9wM-vic6DpsytCKxIPryMNkHemJMjGyWfxL4Mu4Q7giMB9AbbMgQFRMdygvAj-xxNDjKnzL_iG9cc',
+          imageUrl: '$image${actorDetails.profilePath!}',
         ),
       ),
     );

@@ -6,8 +6,8 @@ import 'package:movie_app/core/errors/failure.dart';
 
 abstract class ActorRepo {
   Future<Either<Failure, ActorModel>> fetchActorDetails({required int actorID});
-  Future<Either<Failure, ActorSocialMedia>> fetchActorSocialMedia(
-      {required int actorID});
+  // Future<Either<Failure, ActorSocialMedia>> fetchActorSocialMedia(
+  //     {required int actorID});
   Future<Either<Failure, List<ActorKnownFor>>> fetchActorCredits(
       {required String actorID});
 }

@@ -56,6 +56,9 @@ class _MovieCollectionGridViewState extends State<MovieCollectionGridView> {
     } else if (widget.fromWhere == 'moreMovieLikeThis') {
       BlocProvider.of<CollectionsCubit>(context)
           .fetchMovieMoreLikeThis(id: int.parse(widget.id!));
+    } else if (widget.fromWhere == 'actor') {
+      BlocProvider.of<CollectionsCubit>(context)
+          .fetchActorCredits(actorID: widget.id!);
     }
   }
 
@@ -73,15 +76,21 @@ class _MovieCollectionGridViewState extends State<MovieCollectionGridView> {
                 mainAxisSpacing: 10,
                 childAspectRatio: 1.3 / 2,
               ),
-              itemCount: state.collection?.length ?? state.tvCollection!.length,
+              itemCount: state.collection?.length ??
+                  state.tvCollection?.length ??
+                  state.actorCredits!.length,
               itemBuilder: (context, index) {
-                return state.tvCollection == null
+                return state.collection != null
                     ? CutsomPosterSaved(
                         movieModel: state.collection![index],
                       )
-                    : CutsomPosterSaved(
-                        tvShowsModel: state.tvCollection![index],
-                      );
+                    : state.tvCollection != null
+                        ? CutsomPosterSaved(
+                            tvShowsModel: state.tvCollection![index],
+                          )
+                        : CutsomPosterSaved(
+                            actorCredits: state.actorCredits![index],
+                          );
               },
             ),
           );

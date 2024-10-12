@@ -16,7 +16,9 @@ class ActorsItem extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: InkWell(
         onTap: () {
-          GoRouter.of(context).push(AppRouter.kActorProfileView);
+          print(castsModel.id);
+          GoRouter.of(context)
+              .push(AppRouter.kActorProfileView, extra: castsModel.id);
         },
         child: SizedBox(
           width: 100,
