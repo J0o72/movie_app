@@ -5,17 +5,22 @@ class ActorProfileSocialIcon extends StatelessWidget {
     super.key,
     required this.icon,
     required this.iconColor,
+    this.onTap,
   });
 
   final IconData icon;
   final Color iconColor;
+  final Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Icon(
-      icon,
-      color: iconColor,
-      size: 36,
+    return InkWell(
+      onTap: onTap,
+      child: Icon(
+        icon,
+        color: iconColor,
+        size: 36,
+      ),
     );
   }
 }
