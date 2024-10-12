@@ -29,6 +29,7 @@ class CustomSearchImage extends StatelessWidget {
         } else if (searchResultsModel.mediaType == 'person') {
           GoRouter.of(context).push(
             AppRouter.kActorProfileView,
+            extra: searchResultsModel.id,
           );
         }
       },

@@ -58,7 +58,7 @@ class ActorProfileInformation extends StatelessWidget {
             //   actorSocialMedia: actorSocialMedia!,
             // ),
             // const SizedBox(
-            //   height: 20,
+            //   height: 20,s
             // ),
             Container(
               width: MediaQuery.of(context).size.width,

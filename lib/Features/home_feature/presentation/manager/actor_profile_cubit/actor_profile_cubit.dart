@@ -30,6 +30,8 @@ class ActorProfileCubit extends Cubit<ActorProfileState> {
   //   emit(ActorProfileLoading());
   //   var result = await actorRepo.fetchActorSocialMedia(actorID: actorID);
 
+  //   print('Social Media =>  $result');
+
   //   result.fold((failure) {
   //     emit(
   //       ActorProfileFailure(errorMessage: failure.errMessage),

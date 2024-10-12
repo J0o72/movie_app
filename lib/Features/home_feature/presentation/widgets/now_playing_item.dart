@@ -141,13 +141,21 @@ class NowPlayingItem extends StatelessWidget {
                         const SizedBox(
                           height: 10,
                         ),
-                        Text(
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          textAlign: TextAlign.start,
-                          actorCredits!.originalTitle!,
-                          style: Styles.styleText18,
-                        ),
+                        actorCredits!.originalTitle != null
+                            ? Text(
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.start,
+                                actorCredits!.originalTitle!,
+                                style: Styles.styleText18,
+                              )
+                            : Text(
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.start,
+                                actorCredits!.name!,
+                                style: Styles.styleText18,
+                              ),
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 5),
                           child: Row(

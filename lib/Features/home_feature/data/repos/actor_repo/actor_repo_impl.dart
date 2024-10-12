@@ -52,19 +52,19 @@ class ActorRepoImpl implements ActorRepo {
     }
   }
 
-  // @override
-  // Future<Either<Failure, ActorSocialMedia>> fetchActorSocialMedia(
-  //     {required int actorID}) async {
-  //   try {
-  //     var data = await apiService.get(endPoint: 'person/$actorID/external_ids');
+  @override
+  Future<Either<Failure, ActorSocialMedia>> fetchActorSocialMedia(
+      {required int actorID}) async {
+    try {
+      var data = await apiService.get(endPoint: 'person/$actorID/external_ids');
 
-  //     return right(ActorSocialMedia.fromJson(data));
-  //   } catch (e) {
-  //     if (e is DioException) {
-  //       return left(ServerFailure.fromDioError(e));
-  //     } else {
-  //       return left(ServerFailure(e.toString()));
-  //     }
-  //   }
-  // }
+      return right(ActorSocialMedia.fromJson(data));
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
 }

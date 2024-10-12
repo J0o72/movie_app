@@ -42,7 +42,6 @@ class _ActorProfileViewBodyState extends State<ActorProfileViewBody> {
                 ),
                 ActorProfileInformation(
                   actorDetails: state.actorDetails!,
-                  // actorSocialMedia: state.actorSocialMedia,
                 ),
               ],
             );
