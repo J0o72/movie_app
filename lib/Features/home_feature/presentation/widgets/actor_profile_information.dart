@@ -1,16 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie_app/Features/home_feature/data/models/actor_model/actor_known_for.dart';
+import 'package:movie_app/Features/home_feature/data/models/actor_model/actor_model.dart';
+import 'package:movie_app/Features/home_feature/data/models/actor_model/actor_social_media.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/actor_profile_birth_location.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/actor_profile_social_media_icons.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_row.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_custom_person_photo.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_read_more_text.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_list_view.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_item.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class ActorProfileInformation extends StatelessWidget {
-  const ActorProfileInformation({super.key});
+  const ActorProfileInformation({
+    super.key,
+    required this.actorDetails,
+    required this.actorSocialMedia,
+    required this.actorCredits,
+  });
+
+  final ActorModel actorDetails;
+  final ActorSocialMedia actorSocialMedia;
+  final List<ActorKnownFor> actorCredits;
 
   @override
   Widget build(BuildContext context) {
@@ -18,32 +30,37 @@ class ActorProfileInformation extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            // const DetailsCustomPersonPhoto(
-            //   width: 250,
-            //   height: 250,
-            //   borderRadius: 150,
-            // ),
+            DetailsCustomPersonPhoto(
+              width: 250,
+              height: 250,
+              borderRadius: 150,
+              actorDetails: actorDetails,
+            ),
             const SizedBox(
               height: 10,
             ),
-            const Text(
-              "Chris Hemsworth",
+            Text(
+              actorDetails.name!,
               style: Styles.styleText26,
             ),
-            const ActorProfileBirthLocation(),
+            ActorProfileBirthLocation(
+              actorBirthLocation: actorDetails.placeOfBirth!,
+            ),
             const SizedBox(
               height: 10,
             ),
-            const ActorProfileSocialMediaIcons(),
+            ActorProfileSocialMediaIcons(
+              actorSocialMedia: actorSocialMedia,
+            ),
             const SizedBox(
               height: 20,
             ),
             Container(
               width: MediaQuery.of(context).size.width,
               padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: const ReadMoreText(
-                  text:
-                      "Christopher \"Chris\" Hemsworth was born on August 11, 1983 in Melbourne, Victoria, Australia to Leonie Hemsworth (née van Os), an English teacher & Craig Hemsworth, a social-services counselor. His brothers are actors, Liam Hemsworth & Luke Hemsworth; he is of Dutch (from his immigrant maternal grandfather), Irish, English, Scottish, and German ancestry. His uncle, by marriage, was Rod Ansell, the bushman who inspired the comedy film Crocodile Dundee (1986).Chris saw quite a bit of the country in his youth"),
+              child: ReadMoreText(
+                text: actorDetails.biography!,
+              ),
             ),
             CustomRow(
               leftText: "Known For",
@@ -52,8 +69,36 @@ class ActorProfileInformation extends StatelessWidget {
               },
               horizontalPadding: 20,
             ),
-            const NowPlayingListView(),
+            ActorProfileKnownFor(
+              actorCredits: actorCredits,
+            ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class ActorProfileKnownFor extends StatelessWidget {
+  const ActorProfileKnownFor({super.key, required this.actorCredits});
+
+  final List<ActorKnownFor> actorCredits;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 300,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: actorCredits.length,
+          itemBuilder: (context, index) {
+            return NowPlayingItem(
+              // movieModel: actorCredits[index],
+              actorCredits: actorCredits[index],
+            );
+          },
         ),
       ),
     );

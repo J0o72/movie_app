@@ -1,10 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:movie_app/Features/home_feature/data/models/actor_model/actor_model.dart';
 
 class ActorProfileBackgroundImage extends StatelessWidget {
   const ActorProfileBackgroundImage({
     super.key,
+    required this.actorDetails,
   });
+
+  final ActorModel actorDetails;
 
   @override
   Widget build(BuildContext context) {

@@ -71,7 +71,9 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kActorProfileView,
-        builder: (context, state) => const ActorProfileView(),
+        builder: (context, state) => ActorProfileView(
+          actorID: state.extra as int,
+        ),
       ),
     ],
   );

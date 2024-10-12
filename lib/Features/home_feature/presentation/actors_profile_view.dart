@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/actor_profile_view_body.dart';
 
 class ActorProfileView extends StatelessWidget {
-  const ActorProfileView({super.key});
+  const ActorProfileView({super.key, required this.actorID});
+  final int actorID;
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(
-      child: ActorProfileViewBody(),
+    return SafeArea(
+      child: ActorProfileViewBody(
+        actorID: actorID,
+      ),
     );
   }
 }
