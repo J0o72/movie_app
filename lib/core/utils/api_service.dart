@@ -14,6 +14,6 @@ class ApiService {
   }
 
   Future<void> post({required String endPoint, @required dynamic body}) async {
-    await _dio.post('$_baseURL$endPoint&api_key=$_apiKey', data: body);
+    await _dio.post('$_baseURL$endPoint"api_key="$_apiKey', data: body);
   }
 }
