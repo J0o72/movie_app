@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 class ApiService {
   final String _baseURL = 'https://api.themoviedb.org/3/';
@@ -10,5 +11,9 @@ class ApiService {
   Future<Map<String, dynamic>> get({required String endPoint}) async {
     var response = await _dio.get('$_baseURL$endPoint&api_key=$_apiKey');
     return response.data;
+  }
+
+  Future<void> post({required String endPoint, @required dynamic body}) async {
+    await _dio.post(endPoint, data: body);
   }
 }

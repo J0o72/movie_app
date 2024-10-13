@@ -127,7 +127,8 @@ class NowPlayingItem extends StatelessWidget {
                     onTap: () {
                       DetailsViewNavigatorModel detailsViewNavigatorModel =
                           DetailsViewNavigatorModel(
-                              fromWhere: 'actor', id: actorCredits!.id!);
+                              fromWhere: actorCredits!.mediaType!,
+                              id: actorCredits!.id!);
                       GoRouter.of(context).push(AppRouter.kDetailsView,
                           extra: detailsViewNavigatorModel);
                     },
