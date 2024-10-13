@@ -1,56 +1,74 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:movie_app/Features/home_feature/data/models/actor_model/actor_social_media.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/actor_social_media_cubit/actor_social_media_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/actor_profile_social_icon.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/functions/url_launcher.dart';
+import 'package:movie_app/core/widgets/custom_error_failure.dart';
 
 class ActorProfileSocialMediaIcons extends StatelessWidget {
   const ActorProfileSocialMediaIcons({
     super.key,
-    required this.actorSocialMedia,
   });
 
-  final ActorSocialMedia actorSocialMedia;
   final String facebookLink = 'https://www.facebook.com/';
   final String instagramLink = 'https://www.instagram.com/';
   final String xLink = 'https://x.com/';
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        ActorProfileSocialIcon(
-          icon: FontAwesomeIcons.facebook,
-          iconColor: kMainColor,
-          onTap: () async {
-            await urllauncher(
-                context, '$facebookLink${actorSocialMedia.facebookId}');
-          },
-        ),
-        const SizedBox(
-          width: 20,
-        ),
-        ActorProfileSocialIcon(
-          icon: FontAwesomeIcons.instagram,
-          iconColor: Colors.red,
-          onTap: () async {
-            await urllauncher(
-                context, '$instagramLink${actorSocialMedia.instagramId}');
-          },
-        ),
-        const SizedBox(
-          width: 20,
-        ),
-        ActorProfileSocialIcon(
-          icon: FontAwesomeIcons.xTwitter,
-          iconColor: Colors.grey,
-          onTap: () async {
-            await urllauncher(context, '$xLink${actorSocialMedia.twitterId}');
-          },
-        ),
-      ],
+    return BlocBuilder<ActorSocialMediaCubit, ActorSocialMediaState>(
+      builder: (context, state) {
+        if (state is ActorSocialMediaSuccess) {
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ActorProfileSocialIcon(
+                icon: FontAwesomeIcons.facebook,
+                iconColor: kMainColor,
+                onTap: () async {
+                  if (state.actorSocialMedia.facebookId != null) {
+                    await urllauncher(context,
+                        '$facebookLink${state.actorSocialMedia.facebookId}');
+                  }
+                },
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              ActorProfileSocialIcon(
+                icon: FontAwesomeIcons.instagram,
+                iconColor: Colors.red,
+                onTap: () async {
+                  if (state.actorSocialMedia.instagramId != null) {
+                    await urllauncher(context,
+                        '$instagramLink${state.actorSocialMedia.instagramId}');
+                  }
+                },
+              ),
+              const SizedBox(
+                width: 20,
+              ),
+              ActorProfileSocialIcon(
+                icon: FontAwesomeIcons.xTwitter,
+                iconColor: Colors.grey,
+                onTap: () async {
+                  if (state.actorSocialMedia.twitterId != null) {
+                    await urllauncher(
+                        context, '$xLink${state.actorSocialMedia.twitterId}');
+                  }
+                },
+              ),
+            ],
+          );
+        } else if (state is ActorSocialMediaFailure) {
+          return const CustomErrorFailure();
+        } else {
+          return const CustomCircularLoading();
+        }
+      },
     );
   }
 }

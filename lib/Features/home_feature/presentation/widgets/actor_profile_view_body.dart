@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/Features/home_feature/data/repos/actor_repo/actor_repo_impl.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/actor_known_for_cubit/actor_known_for_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/actor_profile_cubit/actor_profile_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/actor_social_media_cubit/actor_social_media_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/actor_profile_Information.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/actor_profile_background_image.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
-import 'package:movie_app/core/utils/service_locator.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
 
 class ActorProfileViewBody extends StatefulWidget {
@@ -23,8 +22,8 @@ class _ActorProfileViewBodyState extends State<ActorProfileViewBody> {
     super.initState();
     BlocProvider.of<ActorProfileCubit>(context)
         .fetchActorDetails(actorID: widget.actorID);
-    // BlocProvider.of<ActorProfileCubit>(context)
-    //     .fetchActorSocialMedia(actorID: widget.actorID);
+    BlocProvider.of<ActorSocialMediaCubit>(context)
+        .fetchActorSocialMedia(actorID: widget.actorID);
     BlocProvider.of<ActorKnownForCubit>(context)
         .fetchActorCredits(actorID: widget.actorID.toString());
   }
@@ -46,7 +45,6 @@ class _ActorProfileViewBodyState extends State<ActorProfileViewBody> {
               ],
             );
           } else if (state is ActorProfileFailure) {
-            print(state.errorMessage);
             return const CustomErrorFailure();
           } else {
             return const CustomCircularLoading();

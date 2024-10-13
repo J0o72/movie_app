@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movie_app/Features/home_feature/presentation/manager/details_cubit/details_cubit.dart';
 import 'package:movie_app/constants.dart';
 
 class CustomBackArrowIcon extends StatelessWidget {
@@ -20,8 +18,7 @@ class CustomBackArrowIcon extends StatelessWidget {
           padding: EdgeInsets.zero,
           alignment: Alignment.center,
           onPressed: () {
-            // GoRouter.of(context).pop();
-            Navigator.pop(context);
+            GoRouter.of(context).pop();
           },
           icon: const Icon(
             Icons.arrow_back,

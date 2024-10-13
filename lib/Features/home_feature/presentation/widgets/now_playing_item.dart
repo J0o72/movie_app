@@ -141,7 +141,7 @@ class NowPlayingItem extends StatelessWidget {
                         const SizedBox(
                           height: 10,
                         ),
-                        actorCredits!.originalTitle != null
+                        actorCredits!.mediaType == 'movie'
                             ? Text(
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,

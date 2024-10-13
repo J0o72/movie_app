@@ -56,8 +56,8 @@ class ActorRepoImpl implements ActorRepo {
   Future<Either<Failure, ActorSocialMedia>> fetchActorSocialMedia(
       {required int actorID}) async {
     try {
-      var data = await apiService.get(endPoint: 'person/$actorID/external_ids');
-
+      var data =
+          await apiService.get(endPoint: 'person/$actorID/external_ids?');
       return right(ActorSocialMedia.fromJson(data));
     } catch (e) {
       if (e is DioException) {

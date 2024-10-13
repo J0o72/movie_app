@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:movie_app/Features/home_feature/data/models/actor_model/actor_known_for.dart';
 import 'package:movie_app/Features/home_feature/data/models/actor_model/actor_model.dart';
-import 'package:movie_app/Features/home_feature/data/models/actor_model/actor_social_media.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/actor_known_for_cubit/actor_known_for_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/actor_profile_birth_location.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/actor_profile_social_media_icons.dart';
@@ -21,13 +19,9 @@ class ActorProfileInformation extends StatelessWidget {
   const ActorProfileInformation({
     super.key,
     this.actorDetails,
-    this.actorSocialMedia,
-    this.actorCredits,
   });
 
   final ActorModel? actorDetails;
-  final ActorSocialMedia? actorSocialMedia;
-  final List<ActorKnownFor>? actorCredits;
 
   @override
   Widget build(BuildContext context) {
@@ -54,12 +48,10 @@ class ActorProfileInformation extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            // ActorProfileSocialMediaIcons(
-            //   actorSocialMedia: actorSocialMedia!,
-            // ),
-            // const SizedBox(
-            //   height: 20,s
-            // ),
+            const ActorProfileSocialMediaIcons(),
+            const SizedBox(
+              height: 20,
+            ),
             Container(
               width: MediaQuery.of(context).size.width,
               padding: const EdgeInsets.symmetric(horizontal: 16),
