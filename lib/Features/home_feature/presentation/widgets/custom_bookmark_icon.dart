@@ -4,7 +4,7 @@ import 'package:movie_app/Features/home_feature/presentation/manager/save_to_fav
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/constants.dart';
 
-class CustomBookmarkIcon extends StatelessWidget {
+class CustomBookmarkIcon extends StatefulWidget {
   const CustomBookmarkIcon({
     super.key,
     required this.rightPos,
@@ -18,19 +18,24 @@ class CustomBookmarkIcon extends StatelessWidget {
   final bool? isBookmarked;
 
   @override
+  State<CustomBookmarkIcon> createState() => _CustomBookmarkIconState();
+}
+
+class _CustomBookmarkIconState extends State<CustomBookmarkIcon> {
+  @override
   Widget build(BuildContext context) {
     return BlocBuilder<SaveToFavCubit, SaveToFavState>(
       builder: (context, state) {
         return Positioned(
-          right: rightPos,
-          top: topPos,
+          right: widget.rightPos,
+          top: widget.topPos,
           child: CircleAvatar(
             backgroundColor: kMainColor.withOpacity(0.8),
             child: IconButton(
                 padding: EdgeInsets.zero,
                 alignment: Alignment.center,
-                onPressed: onPressed,
-                icon: isBookmarked!
+                onPressed: widget.onPressed,
+                icon: widget.isBookmarked!
                     ? const Icon(
                         Icons.bookmark,
                         color: Colors.white,
@@ -40,27 +45,7 @@ class CustomBookmarkIcon extends StatelessWidget {
                         Icons.bookmark_border,
                         color: Colors.white,
                         size: 32,
-                      )
-                // state is SaveToFavInitial
-                //     ? const Icon(
-                //         Icons.bookmark_border,
-                //         color: Colors.white,
-                //         size: 32,
-                //       )
-                //     : state is SaveToFavSuccess
-                //         ? const Icon(
-                //             Icons.bookmark,
-                //             color: Colors.white,
-                //             size: 32,
-                //           )
-                //         : state is SaveToFavFailure
-                //             ? const Icon(
-                //                 Icons.bookmark_border,
-                //                 color: Colors.white,
-                //                 size: 32,
-                //               )
-                //             : const CustomCircularLoading(),
-                ),
+                      )),
           ),
         );
       },

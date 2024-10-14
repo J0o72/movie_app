@@ -11,6 +11,7 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circ
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_custom_poster.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_view_body_information.dart';
 import 'package:movie_app/constants.dart';
+import 'package:movie_app/core/utils/shared_preference.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
 
 class DetailsViewBodyContent extends StatefulWidget {
@@ -78,6 +79,7 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
                                 BlocProvider.of<SaveToFavCubit>(context)
                                     .saveToFav(body: body);
                                 savedMovies.remove(state.detailsModel!.id);
+                                saveItems();
                                 print('${state.detailsModel!.id} removed');
                                 setState(() {});
                               } else {
@@ -89,6 +91,7 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
                                 BlocProvider.of<SaveToFavCubit>(context)
                                     .saveToFav(body: body);
                                 savedMovies.add(state.detailsModel!.id!);
+                                saveItems();
                                 print('${state.detailsModel!.id} added');
                                 setState(() {});
                               }
@@ -147,6 +150,8 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
                                     .saveToFav(body: body);
                                 savedTvShows
                                     .remove(state.tvShowsDetailsModel!.id);
+                                saveItems();
+
                                 print(
                                     '${state.tvShowsDetailsModel!.id} removed');
                                 setState(() {});
@@ -160,6 +165,8 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
                                     .saveToFav(body: body);
                                 savedTvShows
                                     .add(state.tvShowsDetailsModel!.id!);
+                                saveItems();
+
                                 print('${state.tvShowsDetailsModel!.id} added');
                                 setState(() {});
                               }

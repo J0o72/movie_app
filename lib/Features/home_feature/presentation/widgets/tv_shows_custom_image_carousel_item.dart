@@ -9,6 +9,7 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/custom_book
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
+import 'package:movie_app/core/utils/shared_preference.dart';
 
 class TvShowsCustomImageCarouselItem extends StatefulWidget {
   const TvShowsCustomImageCarouselItem({super.key, required this.tvShow});
@@ -62,6 +63,8 @@ class _TvShowsCustomImageCarouselItemState
               };
               BlocProvider.of<SaveToFavCubit>(context).saveToFav(body: body);
               savedTvShows.remove(widget.tvShow.id);
+              saveItems();
+
               print('${widget.tvShow.id} removed');
               setState(() {});
             } else {
@@ -72,6 +75,8 @@ class _TvShowsCustomImageCarouselItemState
               };
               BlocProvider.of<SaveToFavCubit>(context).saveToFav(body: body);
               savedTvShows.add(widget.tvShow.id!);
+              saveItems();
+
               print('${widget.tvShow.id} added');
               setState(() {});
             }

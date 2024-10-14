@@ -9,6 +9,7 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/custom_book
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
+import 'package:movie_app/core/utils/shared_preference.dart';
 
 class MovieCustomImageCarouselItem extends StatefulWidget {
   const MovieCustomImageCarouselItem({super.key, required this.movie});
@@ -61,6 +62,8 @@ class _MovieCustomImageCarouselItemState
               };
               BlocProvider.of<SaveToFavCubit>(context).saveToFav(body: body);
               savedMovies.remove(widget.movie.id);
+              saveItems();
+
               print('${widget.movie.id} removed');
               setState(() {});
             } else {
@@ -71,6 +74,8 @@ class _MovieCustomImageCarouselItemState
               };
               BlocProvider.of<SaveToFavCubit>(context).saveToFav(body: body);
               savedMovies.add(widget.movie.id!);
+              saveItems();
+
               print('${widget.movie.id} added');
               setState(() {});
             }
