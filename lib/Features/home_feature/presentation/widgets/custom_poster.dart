@@ -14,6 +14,7 @@ class CustomPoster extends StatelessWidget {
     this.movieModel,
     this.tvShowsModel,
     this.actorCredits,
+    this.onPressed,
   });
 
   final String image = "https://image.tmdb.org/t/p/original";
@@ -21,6 +22,7 @@ class CustomPoster extends StatelessWidget {
   final MovieModel? movieModel;
   final TvShowsModel? tvShowsModel;
   final ActorKnownFor? actorCredits;
+  final Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -53,9 +55,10 @@ class CustomPoster extends StatelessWidget {
                 ),
               ),
               isThereBookmark
-                  ? const CustomBookmarkIcon(
+                  ? CustomBookmarkIcon(
                       rightPos: 5,
                       topPos: 5,
+                      onPressed: onPressed,
                     )
                   : Container(),
             ],
@@ -90,9 +93,10 @@ class CustomPoster extends StatelessWidget {
                     ),
                   ),
                   isThereBookmark
-                      ? const CustomBookmarkIcon(
+                      ? CustomBookmarkIcon(
                           rightPos: 5,
                           topPos: 5,
+                          onPressed: onPressed,
                         )
                       : Container(),
                 ],
@@ -126,9 +130,10 @@ class CustomPoster extends StatelessWidget {
                     ),
                   ),
                   isThereBookmark
-                      ? const CustomBookmarkIcon(
+                      ? CustomBookmarkIcon(
                           rightPos: 5,
                           topPos: 5,
+                          onPressed: onPressed,
                         )
                       : Container(),
                 ],

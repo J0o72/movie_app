@@ -3,20 +3,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/save_to_fav_cubit/save_to_fav_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/constants.dart';
-import 'package:movie_app/core/widgets/custom_error_failure.dart';
 
 class CustomBookmarkIcon extends StatelessWidget {
   const CustomBookmarkIcon({
     super.key,
     required this.rightPos,
     required this.topPos,
-    this.mediaID,
-    this.mediaType,
+    this.onPressed,
   });
 
   final double? rightPos, topPos;
-  final int? mediaID;
-  final String? mediaType;
+  final Function()? onPressed;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SaveToFavCubit, SaveToFavState>(
@@ -29,15 +26,7 @@ class CustomBookmarkIcon extends StatelessWidget {
             child: IconButton(
               padding: EdgeInsets.zero,
               alignment: Alignment.center,
-              onPressed: () {
-                print('Id => $mediaID');
-                Map<String, dynamic> body = {
-                  'media_id': mediaID,
-                  'media_type': mediaType,
-                  'favorite': true,
-                };
-                BlocProvider.of<SaveToFavCubit>(context).saveToFav(body: body);
-              },
+              onPressed: onPressed,
               icon: state is SaveToFavInitial
                   ? const Icon(
                       Icons.bookmark_border,

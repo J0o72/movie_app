@@ -59,9 +59,12 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
                           DetailsCustomPoster(
                             detailsModel: state.detailsModel!,
                           ),
-                          const CustomBookmarkIcon(
+                          CustomBookmarkIcon(
                             rightPos: 20,
                             topPos: 40,
+                            onPressed: () {
+                              print(state.detailsModel!.id);
+                            },
                           ),
                           const CustomBackArrowIcon(),
                         ],
@@ -98,9 +101,12 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
                           DetailsCustomPoster(
                             tvShowsDetailsModel: state.tvShowsDetailsModel,
                           ),
-                          const CustomBookmarkIcon(
+                          CustomBookmarkIcon(
                             rightPos: 20,
                             topPos: 40,
+                            onPressed: () {
+                              print(state.tvShowsDetailsModel!.id);
+                            },
                           ),
                           const CustomBackArrowIcon(),
                         ],

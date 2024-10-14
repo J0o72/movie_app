@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/Features/home_feature/data/models/actor_model/actor_known_for.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/details_view_navigator_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_shows_model.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/save_to_fav_cubit/save_to_fav_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_released_date.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_rating.dart';
@@ -38,6 +40,16 @@ class NowPlayingItem extends StatelessWidget {
                     CustomPoster(
                       isThereBookmark: true,
                       movieModel: movieModel!,
+                      onPressed: () {
+                        print(movieModel!.id);
+                        // Map<String, dynamic> body = {
+                        //   'media_id': movieModel!.id,
+                        //   'media_type': 'movie',
+                        //   'favorite': true,
+                        // };
+                        // BlocProvider.of<SaveToFavCubit>(context)
+                        //     .saveToFav(body: body);
+                      },
                     ),
                     const SizedBox(
                       height: 10,
@@ -88,6 +100,16 @@ class NowPlayingItem extends StatelessWidget {
                         CustomPoster(
                           isThereBookmark: true,
                           tvShowsModel: tvShowsModel!,
+                          onPressed: () {
+                            print(tvShowsModel!.id);
+                            // Map<String, dynamic> body = {
+                            //   'media_id': tvShowsModel!.id,
+                            //   'media_type': 'tv',
+                            //   'favorite': true,
+                            // };
+                            // BlocProvider.of<SaveToFavCubit>(context)
+                            //     .saveToFav(body: body);
+                          },
                         ),
                         const SizedBox(
                           height: 10,
@@ -138,6 +160,16 @@ class NowPlayingItem extends StatelessWidget {
                         CustomPoster(
                           isThereBookmark: true,
                           actorCredits: actorCredits!,
+                          onPressed: () {
+                            print(actorCredits!.id);
+                            // Map<String, dynamic> body = {
+                            //   'media_id': actorCredits!.id,
+                            //   'media_type': actorCredits!.mediaType,
+                            //   'favorite': true,
+                            // };
+                            // BlocProvider.of<SaveToFavCubit>(context)
+                            //     .saveToFav(body: body);
+                          },
                         ),
                         const SizedBox(
                           height: 10,

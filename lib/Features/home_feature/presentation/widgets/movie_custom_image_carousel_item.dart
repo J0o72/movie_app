@@ -1,8 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/details_view_navigator_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/save_to_fav_cubit/save_to_fav_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
@@ -39,8 +41,14 @@ class MovieCustomImageCarouselItem extends StatelessWidget {
         CustomBookmarkIcon(
           rightPos: 5,
           topPos: 5,
-          mediaID: movie.id,
-          mediaType: 'movie',
+          onPressed: () {
+            Map<String, dynamic> body = {
+              'media_id': movie.id,
+              'media_type': 'movie',
+              'favorite': true,
+            };
+            BlocProvider.of<SaveToFavCubit>(context).saveToFav(body: body);
+          },
         ),
       ],
     );
