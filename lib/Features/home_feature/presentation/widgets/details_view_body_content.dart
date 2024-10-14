@@ -3,12 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/cast_cubit/cast_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/details_cubit/details_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/reviews_cubit/reviews_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/save_to_fav_cubit/save_to_fav_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/similar_cubit/similar_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_back_arrow_icon.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_custom_poster.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_view_body_information.dart';
+import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
 
 class DetailsViewBodyContent extends StatefulWidget {
@@ -62,8 +64,34 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
                           CustomBookmarkIcon(
                             rightPos: 20,
                             topPos: 40,
+                            isBookmarked:
+                                savedMovies.contains(state.detailsModel!.id),
                             onPressed: () {
-                              print(state.detailsModel!.id);
+                              // print(widget.movieModel!.id);
+                              if (savedMovies
+                                  .contains(state.detailsModel!.id)) {
+                                Map<String, dynamic> body = {
+                                  'media_id': state.detailsModel!.id,
+                                  'media_type': 'movie',
+                                  'favorite': false,
+                                };
+                                BlocProvider.of<SaveToFavCubit>(context)
+                                    .saveToFav(body: body);
+                                savedMovies.remove(state.detailsModel!.id);
+                                print('${state.detailsModel!.id} removed');
+                                setState(() {});
+                              } else {
+                                Map<String, dynamic> body = {
+                                  'media_id': state.detailsModel!.id,
+                                  'media_type': 'movie',
+                                  'favorite': true,
+                                };
+                                BlocProvider.of<SaveToFavCubit>(context)
+                                    .saveToFav(body: body);
+                                savedMovies.add(state.detailsModel!.id!);
+                                print('${state.detailsModel!.id} added');
+                                setState(() {});
+                              }
                             },
                           ),
                           const CustomBackArrowIcon(),
@@ -104,8 +132,37 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
                           CustomBookmarkIcon(
                             rightPos: 20,
                             topPos: 40,
+                            isBookmarked: savedTvShows
+                                .contains(state.tvShowsDetailsModel!.id),
                             onPressed: () {
-                              print(state.tvShowsDetailsModel!.id);
+                              // print(widget.tvShowsModel!.id);
+                              if (savedTvShows
+                                  .contains(state.tvShowsDetailsModel!.id)) {
+                                Map<String, dynamic> body = {
+                                  'media_id': state.tvShowsDetailsModel!.id,
+                                  'media_type': 'tv',
+                                  'favorite': false,
+                                };
+                                BlocProvider.of<SaveToFavCubit>(context)
+                                    .saveToFav(body: body);
+                                savedTvShows
+                                    .remove(state.tvShowsDetailsModel!.id);
+                                print(
+                                    '${state.tvShowsDetailsModel!.id} removed');
+                                setState(() {});
+                              } else {
+                                Map<String, dynamic> body = {
+                                  'media_id': state.tvShowsDetailsModel!.id,
+                                  'media_type': 'tv',
+                                  'favorite': true,
+                                };
+                                BlocProvider.of<SaveToFavCubit>(context)
+                                    .saveToFav(body: body);
+                                savedTvShows
+                                    .add(state.tvShowsDetailsModel!.id!);
+                                print('${state.tvShowsDetailsModel!.id} added');
+                                setState(() {});
+                              }
                             },
                           ),
                           const CustomBackArrowIcon(),
