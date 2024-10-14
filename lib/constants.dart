@@ -45,3 +45,6 @@ List<Widget> pages = [
   const SavedView(),
   const Center(child: Text('Page 4')),
 ];
+
+List<int> savedMovies = [];
+List<int> savedTvShows = [];

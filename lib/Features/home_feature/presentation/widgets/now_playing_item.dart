@@ -9,10 +9,11 @@ import 'package:movie_app/Features/home_feature/presentation/manager/save_to_fav
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_released_date.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_rating.dart';
+import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
-class NowPlayingItem extends StatelessWidget {
+class NowPlayingItem extends StatefulWidget {
   const NowPlayingItem(
       {super.key, this.movieModel, this.tvShowsModel, this.actorCredits});
   final MovieModel? movieModel;
@@ -20,8 +21,13 @@ class NowPlayingItem extends StatelessWidget {
   final ActorKnownFor? actorCredits;
 
   @override
+  State<NowPlayingItem> createState() => _NowPlayingItemState();
+}
+
+class _NowPlayingItemState extends State<NowPlayingItem> {
+  @override
   Widget build(BuildContext context) {
-    return movieModel != null
+    return widget.movieModel != null
         ? Padding(
             padding: const EdgeInsets.only(right: 15),
             child: SizedBox(
@@ -30,7 +36,7 @@ class NowPlayingItem extends StatelessWidget {
                 onTap: () {
                   DetailsViewNavigatorModel detailsViewNavigatorModel =
                       DetailsViewNavigatorModel(
-                          fromWhere: 'movie', id: movieModel!.id!);
+                          fromWhere: 'movie', id: widget.movieModel!.id!);
                   GoRouter.of(context).push(AppRouter.kDetailsView,
                       extra: detailsViewNavigatorModel);
                 },
@@ -39,16 +45,33 @@ class NowPlayingItem extends StatelessWidget {
                   children: [
                     CustomPoster(
                       isThereBookmark: true,
-                      movieModel: movieModel!,
+                      movieModel: widget.movieModel!,
+                      isBookmarked: savedMovies.contains(widget.movieModel!.id),
                       onPressed: () {
-                        print(movieModel!.id);
-                        // Map<String, dynamic> body = {
-                        //   'media_id': movieModel!.id,
-                        //   'media_type': 'movie',
-                        //   'favorite': true,
-                        // };
-                        // BlocProvider.of<SaveToFavCubit>(context)
-                        //     .saveToFav(body: body);
+                        // print(widget.movieModel!.id);
+                        if (savedMovies.contains(widget.movieModel!.id)) {
+                          Map<String, dynamic> body = {
+                            'media_id': widget.movieModel!.id,
+                            'media_type': 'movie',
+                            'favorite': false,
+                          };
+                          BlocProvider.of<SaveToFavCubit>(context)
+                              .saveToFav(body: body);
+                          savedMovies.remove(widget.movieModel!.id);
+                          print('${widget.movieModel!.id} removed');
+                          setState(() {});
+                        } else {
+                          Map<String, dynamic> body = {
+                            'media_id': widget.movieModel!.id,
+                            'media_type': 'movie',
+                            'favorite': true,
+                          };
+                          BlocProvider.of<SaveToFavCubit>(context)
+                              .saveToFav(body: body);
+                          savedMovies.add(widget.movieModel!.id!);
+                          print('${widget.movieModel!.id} added');
+                          setState(() {});
+                        }
                       },
                     ),
                     const SizedBox(
@@ -58,7 +81,7 @@ class NowPlayingItem extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.start,
-                      movieModel!.title ?? "",
+                      widget.movieModel!.title ?? "",
                       style: Styles.styleText18,
                     ),
                     Padding(
@@ -67,11 +90,11 @@ class NowPlayingItem extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           CustomRating(
-                            movieModel: movieModel!,
+                            movieModel: widget.movieModel!,
                           ),
                           const Spacer(),
                           CustomReleasedDate(
-                            movieModel: movieModel!,
+                            movieModel: widget.movieModel!,
                           ),
                         ],
                       ),
@@ -81,7 +104,7 @@ class NowPlayingItem extends StatelessWidget {
               ),
             ),
           )
-        : tvShowsModel != null
+        : widget.tvShowsModel != null
             ? Padding(
                 padding: const EdgeInsets.only(right: 15),
                 child: SizedBox(
@@ -90,7 +113,7 @@ class NowPlayingItem extends StatelessWidget {
                     onTap: () {
                       DetailsViewNavigatorModel detailsViewNavigatorModel =
                           DetailsViewNavigatorModel(
-                              fromWhere: 'tv', id: tvShowsModel!.id!);
+                              fromWhere: 'tv', id: widget.tvShowsModel!.id!);
                       GoRouter.of(context).push(AppRouter.kDetailsView,
                           extra: detailsViewNavigatorModel);
                     },
@@ -99,16 +122,35 @@ class NowPlayingItem extends StatelessWidget {
                       children: [
                         CustomPoster(
                           isThereBookmark: true,
-                          tvShowsModel: tvShowsModel!,
+                          tvShowsModel: widget.tvShowsModel!,
+                          isBookmarked:
+                              savedTvShows.contains(widget.tvShowsModel!.id),
                           onPressed: () {
-                            print(tvShowsModel!.id);
-                            // Map<String, dynamic> body = {
-                            //   'media_id': tvShowsModel!.id,
-                            //   'media_type': 'tv',
-                            //   'favorite': true,
-                            // };
-                            // BlocProvider.of<SaveToFavCubit>(context)
-                            //     .saveToFav(body: body);
+                            // print(widget.tvShowsModel!.id);
+                            if (savedTvShows
+                                .contains(widget.tvShowsModel!.id)) {
+                              Map<String, dynamic> body = {
+                                'media_id': widget.tvShowsModel!.id,
+                                'media_type': 'tv',
+                                'favorite': false,
+                              };
+                              BlocProvider.of<SaveToFavCubit>(context)
+                                  .saveToFav(body: body);
+                              savedTvShows.remove(widget.tvShowsModel!.id);
+                              print('${widget.tvShowsModel!.id} removed');
+                              setState(() {});
+                            } else {
+                              Map<String, dynamic> body = {
+                                'media_id': widget.tvShowsModel!.id,
+                                'media_type': 'tv',
+                                'favorite': true,
+                              };
+                              BlocProvider.of<SaveToFavCubit>(context)
+                                  .saveToFav(body: body);
+                              savedTvShows.add(widget.tvShowsModel!.id!);
+                              print('${widget.tvShowsModel!.id} added');
+                              setState(() {});
+                            }
                           },
                         ),
                         const SizedBox(
@@ -118,7 +160,7 @@ class NowPlayingItem extends StatelessWidget {
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           textAlign: TextAlign.start,
-                          tvShowsModel!.name!,
+                          widget.tvShowsModel!.name!,
                           style: Styles.styleText18,
                         ),
                         Padding(
@@ -127,11 +169,11 @@ class NowPlayingItem extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               CustomRating(
-                                tvShowsModel: tvShowsModel!,
+                                tvShowsModel: widget.tvShowsModel!,
                               ),
                               const Spacer(),
                               CustomReleasedDate(
-                                tvShowsModel: tvShowsModel!,
+                                tvShowsModel: widget.tvShowsModel!,
                               ),
                             ],
                           ),
@@ -149,8 +191,8 @@ class NowPlayingItem extends StatelessWidget {
                     onTap: () {
                       DetailsViewNavigatorModel detailsViewNavigatorModel =
                           DetailsViewNavigatorModel(
-                              fromWhere: actorCredits!.mediaType!,
-                              id: actorCredits!.id!);
+                              fromWhere: widget.actorCredits!.mediaType!,
+                              id: widget.actorCredits!.id!);
                       GoRouter.of(context).push(AppRouter.kDetailsView,
                           extra: detailsViewNavigatorModel);
                     },
@@ -159,34 +201,56 @@ class NowPlayingItem extends StatelessWidget {
                       children: [
                         CustomPoster(
                           isThereBookmark: true,
-                          actorCredits: actorCredits!,
+                          actorCredits: widget.actorCredits!,
+                          isBookmarked: savedMovies
+                                  .contains(widget.actorCredits!.id) ||
+                              savedTvShows.contains(widget.actorCredits!.id),
                           onPressed: () {
-                            print(actorCredits!.id);
-                            // Map<String, dynamic> body = {
-                            //   'media_id': actorCredits!.id,
-                            //   'media_type': actorCredits!.mediaType,
-                            //   'favorite': true,
-                            // };
-                            // BlocProvider.of<SaveToFavCubit>(context)
-                            //     .saveToFav(body: body);
+                            if (savedMovies.contains(widget.actorCredits!.id) ||
+                                savedTvShows
+                                    .contains(widget.actorCredits!.id)) {
+                              Map<String, dynamic> body = {
+                                'media_id': widget.actorCredits!.id,
+                                'media_type': widget.actorCredits!.mediaType,
+                                'favorite': false,
+                              };
+                              BlocProvider.of<SaveToFavCubit>(context)
+                                  .saveToFav(body: body);
+                              savedMovies.remove(widget.actorCredits!.id);
+                              savedTvShows.remove(widget.actorCredits!.id);
+                              print('${widget.actorCredits!.id} removed');
+                              setState(() {});
+                            } else {
+                              Map<String, dynamic> body = {
+                                'media_id': widget.actorCredits!.id,
+                                'media_type': widget.actorCredits!.mediaType,
+                                'favorite': true,
+                              };
+                              BlocProvider.of<SaveToFavCubit>(context)
+                                  .saveToFav(body: body);
+                              savedMovies.add(widget.actorCredits!.id!);
+                              savedTvShows.add(widget.actorCredits!.id!);
+                              print('${widget.actorCredits!.id} added');
+                              setState(() {});
+                            }
                           },
                         ),
                         const SizedBox(
                           height: 10,
                         ),
-                        actorCredits!.mediaType == 'movie'
+                        widget.actorCredits!.mediaType == 'movie'
                             ? Text(
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.start,
-                                actorCredits!.originalTitle!,
+                                widget.actorCredits!.originalTitle!,
                                 style: Styles.styleText18,
                               )
                             : Text(
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.start,
-                                actorCredits!.name!,
+                                widget.actorCredits!.name!,
                                 style: Styles.styleText18,
                               ),
                         Padding(
@@ -195,11 +259,11 @@ class NowPlayingItem extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               CustomRating(
-                                actorCredits: actorCredits!,
+                                actorCredits: widget.actorCredits!,
                               ),
                               const Spacer(),
                               CustomReleasedDate(
-                                actorCredits: actorCredits!,
+                                actorCredits: widget.actorCredits!,
                               ),
                             ],
                           ),

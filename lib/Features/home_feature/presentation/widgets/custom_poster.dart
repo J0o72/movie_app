@@ -15,6 +15,7 @@ class CustomPoster extends StatelessWidget {
     this.tvShowsModel,
     this.actorCredits,
     this.onPressed,
+    this.isBookmarked = false,
   });
 
   final String image = "https://image.tmdb.org/t/p/original";
@@ -23,6 +24,7 @@ class CustomPoster extends StatelessWidget {
   final TvShowsModel? tvShowsModel;
   final ActorKnownFor? actorCredits;
   final Function()? onPressed;
+  final bool? isBookmarked;
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +61,7 @@ class CustomPoster extends StatelessWidget {
                       rightPos: 5,
                       topPos: 5,
                       onPressed: onPressed,
+                      isBookmarked: isBookmarked,
                     )
                   : Container(),
             ],
@@ -97,6 +100,7 @@ class CustomPoster extends StatelessWidget {
                           rightPos: 5,
                           topPos: 5,
                           onPressed: onPressed,
+                          isBookmarked: isBookmarked,
                         )
                       : Container(),
                 ],
@@ -134,6 +138,7 @@ class CustomPoster extends StatelessWidget {
                           rightPos: 5,
                           topPos: 5,
                           onPressed: onPressed,
+                          isBookmarked: isBookmarked,
                         )
                       : Container(),
                 ],

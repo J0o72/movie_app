@@ -7,13 +7,22 @@ import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_mo
 import 'package:movie_app/Features/home_feature/presentation/manager/save_to_fav_cubit/save_to_fav_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
+import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 
-class MovieCustomImageCarouselItem extends StatelessWidget {
+class MovieCustomImageCarouselItem extends StatefulWidget {
   const MovieCustomImageCarouselItem({super.key, required this.movie});
 
-  final String imageUrl = "https://image.tmdb.org/t/p/original";
   final MovieModel movie;
+
+  @override
+  State<MovieCustomImageCarouselItem> createState() =>
+      _MovieCustomImageCarouselItemState();
+}
+
+class _MovieCustomImageCarouselItemState
+    extends State<MovieCustomImageCarouselItem> {
+  final String imageUrl = "https://image.tmdb.org/t/p/original";
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +31,8 @@ class MovieCustomImageCarouselItem extends StatelessWidget {
         GestureDetector(
           onTap: () {
             DetailsViewNavigatorModel detailsViewNavigatorModel =
-                DetailsViewNavigatorModel(fromWhere: 'movie', id: movie.id!);
+                DetailsViewNavigatorModel(
+                    fromWhere: 'movie', id: widget.movie.id!);
             GoRouter.of(context)
                 .push(AppRouter.kDetailsView, extra: detailsViewNavigatorModel);
           },
@@ -34,20 +44,36 @@ class MovieCustomImageCarouselItem extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.4,
               errorWidget: (context, url, error) => const Icon(Icons.error),
               placeholder: (context, url) => const CustomCircularLoading(),
-              imageUrl: "$imageUrl${movie.posterPath}",
+              imageUrl: "$imageUrl${widget.movie.posterPath}",
             ),
           ),
         ),
         CustomBookmarkIcon(
           rightPos: 5,
           topPos: 5,
+          isBookmarked: savedMovies.contains(widget.movie.id),
           onPressed: () {
-            Map<String, dynamic> body = {
-              'media_id': movie.id,
-              'media_type': 'movie',
-              'favorite': true,
-            };
-            BlocProvider.of<SaveToFavCubit>(context).saveToFav(body: body);
+            if (savedMovies.contains(widget.movie.id)) {
+              Map<String, dynamic> body = {
+                'media_id': widget.movie.id,
+                'media_type': 'movie',
+                'favorite': false,
+              };
+              BlocProvider.of<SaveToFavCubit>(context).saveToFav(body: body);
+              savedMovies.remove(widget.movie.id);
+              print('${widget.movie.id} removed');
+              setState(() {});
+            } else {
+              Map<String, dynamic> body = {
+                'media_id': widget.movie.id,
+                'media_type': 'movie',
+                'favorite': true,
+              };
+              BlocProvider.of<SaveToFavCubit>(context).saveToFav(body: body);
+              savedMovies.add(widget.movie.id!);
+              print('${widget.movie.id} added');
+              setState(() {});
+            }
           },
         ),
       ],

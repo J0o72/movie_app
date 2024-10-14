@@ -7,13 +7,22 @@ import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_sh
 import 'package:movie_app/Features/home_feature/presentation/manager/save_to_fav_cubit/save_to_fav_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
+import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 
-class TvShowsCustomImageCarouselItem extends StatelessWidget {
+class TvShowsCustomImageCarouselItem extends StatefulWidget {
   const TvShowsCustomImageCarouselItem({super.key, required this.tvShow});
 
-  final String imageUrl = "https://image.tmdb.org/t/p/original";
   final TvShowsModel tvShow;
+
+  @override
+  State<TvShowsCustomImageCarouselItem> createState() =>
+      _TvShowsCustomImageCarouselItemState();
+}
+
+class _TvShowsCustomImageCarouselItemState
+    extends State<TvShowsCustomImageCarouselItem> {
+  final String imageUrl = "https://image.tmdb.org/t/p/original";
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +31,8 @@ class TvShowsCustomImageCarouselItem extends StatelessWidget {
         GestureDetector(
           onTap: () {
             DetailsViewNavigatorModel detailsViewNavigatorModel =
-                DetailsViewNavigatorModel(fromWhere: 'tv', id: tvShow.id!);
+                DetailsViewNavigatorModel(
+                    fromWhere: 'tv', id: widget.tvShow.id!);
             GoRouter.of(context)
                 .push(AppRouter.kDetailsView, extra: detailsViewNavigatorModel);
           },
@@ -34,20 +44,37 @@ class TvShowsCustomImageCarouselItem extends StatelessWidget {
               height: MediaQuery.of(context).size.height * 0.4,
               errorWidget: (context, url, error) => const Icon(Icons.error),
               placeholder: (context, url) => const CustomCircularLoading(),
-              imageUrl: "$imageUrl${tvShow.posterPath}",
+              imageUrl: "$imageUrl${widget.tvShow.posterPath}",
             ),
           ),
         ),
         CustomBookmarkIcon(
           rightPos: 5,
           topPos: 5,
+          isBookmarked: savedTvShows.contains(widget.tvShow.id),
           onPressed: () {
-            Map<String, dynamic> body = {
-              'media_id': tvShow.id,
-              'media_type': 'tv',
-              'favorite': true,
-            };
-            BlocProvider.of<SaveToFavCubit>(context).saveToFav(body: body);
+            // print(widget.tvShowsModel!.id);
+            if (savedTvShows.contains(widget.tvShow.id)) {
+              Map<String, dynamic> body = {
+                'media_id': widget.tvShow.id,
+                'media_type': 'tv',
+                'favorite': false,
+              };
+              BlocProvider.of<SaveToFavCubit>(context).saveToFav(body: body);
+              savedTvShows.remove(widget.tvShow.id);
+              print('${widget.tvShow.id} removed');
+              setState(() {});
+            } else {
+              Map<String, dynamic> body = {
+                'media_id': widget.tvShow.id,
+                'media_type': 'tv',
+                'favorite': true,
+              };
+              BlocProvider.of<SaveToFavCubit>(context).saveToFav(body: body);
+              savedTvShows.add(widget.tvShow.id!);
+              print('${widget.tvShow.id} added');
+              setState(() {});
+            }
           },
         ),
       ],

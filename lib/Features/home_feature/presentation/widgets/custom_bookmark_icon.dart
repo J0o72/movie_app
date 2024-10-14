@@ -10,10 +10,13 @@ class CustomBookmarkIcon extends StatelessWidget {
     required this.rightPos,
     required this.topPos,
     this.onPressed,
+    this.isBookmarked = false,
   });
 
   final double? rightPos, topPos;
   final Function()? onPressed;
+  final bool? isBookmarked;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SaveToFavCubit, SaveToFavState>(
@@ -24,29 +27,40 @@ class CustomBookmarkIcon extends StatelessWidget {
           child: CircleAvatar(
             backgroundColor: kMainColor.withOpacity(0.8),
             child: IconButton(
-              padding: EdgeInsets.zero,
-              alignment: Alignment.center,
-              onPressed: onPressed,
-              icon: state is SaveToFavInitial
-                  ? const Icon(
-                      Icons.bookmark_border,
-                      color: Colors.white,
-                      size: 32,
-                    )
-                  : state is SaveToFavSuccess
-                      ? const Icon(
-                          Icons.bookmark,
-                          color: Colors.white,
-                          size: 32,
-                        )
-                      : state is SaveToFavFailure
-                          ? const Icon(
-                              Icons.bookmark_border,
-                              color: Colors.white,
-                              size: 32,
-                            )
-                          : const CustomCircularLoading(),
-            ),
+                padding: EdgeInsets.zero,
+                alignment: Alignment.center,
+                onPressed: onPressed,
+                icon: isBookmarked!
+                    ? const Icon(
+                        Icons.bookmark,
+                        color: Colors.white,
+                        size: 32,
+                      )
+                    : const Icon(
+                        Icons.bookmark_border,
+                        color: Colors.white,
+                        size: 32,
+                      )
+                // state is SaveToFavInitial
+                //     ? const Icon(
+                //         Icons.bookmark_border,
+                //         color: Colors.white,
+                //         size: 32,
+                //       )
+                //     : state is SaveToFavSuccess
+                //         ? const Icon(
+                //             Icons.bookmark,
+                //             color: Colors.white,
+                //             size: 32,
+                //           )
+                //         : state is SaveToFavFailure
+                //             ? const Icon(
+                //                 Icons.bookmark_border,
+                //                 color: Colors.white,
+                //                 size: 32,
+                //               )
+                //             : const CustomCircularLoading(),
+                ),
           ),
         );
       },
