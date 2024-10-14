@@ -5,11 +5,16 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circ
 import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_item.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
 
-class NowPlayingListView extends StatelessWidget {
+class NowPlayingListView extends StatefulWidget {
   const NowPlayingListView({super.key, this.horizontalPadding = 20});
 
   final double horizontalPadding;
 
+  @override
+  State<NowPlayingListView> createState() => _NowPlayingListViewState();
+}
+
+class _NowPlayingListViewState extends State<NowPlayingListView> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<NowPlayingMovieCubit, NowPlayingMovieState>(
@@ -18,7 +23,8 @@ class NowPlayingListView extends StatelessWidget {
           return SizedBox(
             height: 300,
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+              padding:
+                  EdgeInsets.symmetric(horizontal: widget.horizontalPadding),
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
                 itemCount: state.nowPlayingMovies.length,

@@ -4,11 +4,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/bloc_observer.dart';
 import 'package:movie_app/core/utils/service_locator.dart';
+import 'package:movie_app/core/utils/shared_preference.dart';
 
 void main() {
   Bloc.observer = SimpleBlocObserver();
   setupServerLocator();
   runApp(const MovieApp());
+  loadSaveditems();
 }
 
 class MovieApp extends StatelessWidget {

@@ -11,6 +11,7 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/custom_post
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_rating.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
+import 'package:movie_app/core/utils/shared_preference.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class NowPlayingItem extends StatefulWidget {
@@ -58,6 +59,7 @@ class _NowPlayingItemState extends State<NowPlayingItem> {
                           BlocProvider.of<SaveToFavCubit>(context)
                               .saveToFav(body: body);
                           savedMovies.remove(widget.movieModel!.id);
+                          saveItems();
                           print('${widget.movieModel!.id} removed');
                           setState(() {});
                         } else {
@@ -69,6 +71,7 @@ class _NowPlayingItemState extends State<NowPlayingItem> {
                           BlocProvider.of<SaveToFavCubit>(context)
                               .saveToFav(body: body);
                           savedMovies.add(widget.movieModel!.id!);
+                          saveItems();
                           print('${widget.movieModel!.id} added');
                           setState(() {});
                         }
@@ -137,6 +140,8 @@ class _NowPlayingItemState extends State<NowPlayingItem> {
                               BlocProvider.of<SaveToFavCubit>(context)
                                   .saveToFav(body: body);
                               savedTvShows.remove(widget.tvShowsModel!.id);
+                              saveItems();
+
                               print('${widget.tvShowsModel!.id} removed');
                               setState(() {});
                             } else {
@@ -148,6 +153,8 @@ class _NowPlayingItemState extends State<NowPlayingItem> {
                               BlocProvider.of<SaveToFavCubit>(context)
                                   .saveToFav(body: body);
                               savedTvShows.add(widget.tvShowsModel!.id!);
+                              saveItems();
+
                               print('${widget.tvShowsModel!.id} added');
                               setState(() {});
                             }
@@ -218,6 +225,8 @@ class _NowPlayingItemState extends State<NowPlayingItem> {
                                   .saveToFav(body: body);
                               savedMovies.remove(widget.actorCredits!.id);
                               savedTvShows.remove(widget.actorCredits!.id);
+                              saveItems();
+
                               print('${widget.actorCredits!.id} removed');
                               setState(() {});
                             } else {
@@ -230,6 +239,8 @@ class _NowPlayingItemState extends State<NowPlayingItem> {
                                   .saveToFav(body: body);
                               savedMovies.add(widget.actorCredits!.id!);
                               savedTvShows.add(widget.actorCredits!.id!);
+                              saveItems();
+
                               print('${widget.actorCredits!.id} added');
                               setState(() {});
                             }
