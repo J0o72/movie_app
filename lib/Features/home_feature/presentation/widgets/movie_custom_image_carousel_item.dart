@@ -36,9 +36,11 @@ class MovieCustomImageCarouselItem extends StatelessWidget {
             ),
           ),
         ),
-        const CustomBookmarkIcon(
+        CustomBookmarkIcon(
           rightPos: 5,
           topPos: 5,
+          mediaID: movie.id,
+          mediaType: 'movie',
         ),
       ],
     );

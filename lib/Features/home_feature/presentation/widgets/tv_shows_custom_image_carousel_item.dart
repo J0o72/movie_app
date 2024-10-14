@@ -36,9 +36,11 @@ class TvShowsCustomImageCarouselItem extends StatelessWidget {
             ),
           ),
         ),
-        const CustomBookmarkIcon(
+        CustomBookmarkIcon(
           rightPos: 5,
           topPos: 5,
+          mediaID: tvShow.id,
+          mediaType: 'tv',
         ),
       ],
     );
