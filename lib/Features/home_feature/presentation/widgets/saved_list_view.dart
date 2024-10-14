@@ -14,9 +14,11 @@ class SavedListView extends StatelessWidget {
       builder: (context, state) {
         if (state is SavedSuccess) {
           return ListView.builder(
-            itemCount: 5,
+            itemCount: state.favList.length,
             itemBuilder: (context, index) {
-              return const SavedViewItem();
+              return SavedViewItem(
+                favItem: state.favList[index],
+              );
             },
           );
         } else if (state is SavedFailure) {

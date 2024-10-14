@@ -13,7 +13,8 @@ class SavedViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SavedCubit(getIt.get<SavedRepoImpl>()),
+      create: (context) =>
+          SavedCubit(getIt.get<SavedRepoImpl>())..fetchFavList(),
       child: Scaffold(
         appBar: AppBar(
           title: const Text(
