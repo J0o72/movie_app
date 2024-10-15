@@ -20,10 +20,12 @@ class _HomeViewBodyState extends State<HomeViewBody> {
         blur: 3,
         frostColor: Colors.black.withOpacity(0),
       ),
-      body: IndexedStack(
-        index: currentIndex,
-        children: pages,
-      ),
+      body: currentIndex == 2
+          ? pages[currentIndex]
+          : IndexedStack(
+              index: currentIndex,
+              children: pages,
+            ),
     );
   }
 

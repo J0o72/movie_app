@@ -59,10 +59,11 @@ class _NowPlayingItemState extends State<NowPlayingItem> {
                           };
                           BlocProvider.of<SaveToFavCubit>(context)
                               .saveToFav(body: body);
-                          BlocProvider.of<SavedCubit>(context).fetchFavList();
 
                           savedMovies.remove(widget.movieModel!.id);
                           saveItems();
+                          BlocProvider.of<SavedCubit>(context).fetchFavList();
+
                           print('${widget.movieModel!.id} removed');
                           setState(() {});
                         } else {
@@ -74,9 +75,10 @@ class _NowPlayingItemState extends State<NowPlayingItem> {
                           BlocProvider.of<SaveToFavCubit>(context)
                               .saveToFav(body: body);
                           savedMovies.add(widget.movieModel!.id!);
-                          BlocProvider.of<SavedCubit>(context).fetchFavList();
 
                           saveItems();
+                          BlocProvider.of<SavedCubit>(context).fetchFavList();
+
                           print('${widget.movieModel!.id} added');
                           setState(() {});
                         }
@@ -144,11 +146,12 @@ class _NowPlayingItemState extends State<NowPlayingItem> {
                               };
                               BlocProvider.of<SaveToFavCubit>(context)
                                   .saveToFav(body: body);
-                              BlocProvider.of<SavedCubit>(context)
-                                  .fetchFavList();
 
                               savedTvShows.remove(widget.tvShowsModel!.id);
                               saveItems();
+
+                              BlocProvider.of<SavedCubit>(context)
+                                  .fetchFavList();
 
                               print('${widget.tvShowsModel!.id} removed');
                               setState(() {});
@@ -160,11 +163,12 @@ class _NowPlayingItemState extends State<NowPlayingItem> {
                               };
                               BlocProvider.of<SaveToFavCubit>(context)
                                   .saveToFav(body: body);
-                              BlocProvider.of<SavedCubit>(context)
-                                  .fetchFavList();
 
                               savedTvShows.add(widget.tvShowsModel!.id!);
                               saveItems();
+
+                              BlocProvider.of<SavedCubit>(context)
+                                  .fetchFavList();
 
                               print('${widget.tvShowsModel!.id} added');
                               setState(() {});
@@ -234,12 +238,13 @@ class _NowPlayingItemState extends State<NowPlayingItem> {
                               };
                               BlocProvider.of<SaveToFavCubit>(context)
                                   .saveToFav(body: body);
-                              BlocProvider.of<SavedCubit>(context)
-                                  .fetchFavList();
 
                               savedMovies.remove(widget.actorCredits!.id);
                               savedTvShows.remove(widget.actorCredits!.id);
                               saveItems();
+
+                              BlocProvider.of<SavedCubit>(context)
+                                  .fetchFavList();
 
                               print('${widget.actorCredits!.id} removed');
                               setState(() {});
@@ -257,6 +262,9 @@ class _NowPlayingItemState extends State<NowPlayingItem> {
                               savedMovies.add(widget.actorCredits!.id!);
                               savedTvShows.add(widget.actorCredits!.id!);
                               saveItems();
+
+                              BlocProvider.of<SavedCubit>(context)
+                                  .fetchFavList();
 
                               print('${widget.actorCredits!.id} added');
                               setState(() {});

@@ -32,7 +32,7 @@ class SavedViewItemContent extends StatelessWidget {
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   favItem.originalTitle != null
-                      ? '${favItem.originalTitle}'
+                      ? '${favItem.title}'
                       : '${favItem.originalName}',
                   style: Styles.styleText22,
                 ),

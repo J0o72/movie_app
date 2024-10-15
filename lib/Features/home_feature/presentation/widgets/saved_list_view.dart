@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/saved_cubit/saved_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/saved_view_item.dart';
+import 'package:movie_app/core/utils/styles.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
 
 class SavedListView extends StatelessWidget {
@@ -13,14 +14,22 @@ class SavedListView extends StatelessWidget {
     return BlocBuilder<SavedCubit, SavedState>(
       builder: (context, state) {
         if (state is SavedSuccess) {
-          return ListView.builder(
-            itemCount: state.favList.length,
-            itemBuilder: (context, index) {
-              return SavedViewItem(
-                favItem: state.favList[index],
-              );
-            },
-          );
+          if (state.favList.isNotEmpty) {
+            return ListView.builder(
+              itemCount: state.favList.length,
+              itemBuilder: (context, index) {
+                return SavedViewItem(
+                  favItem: state.favList[index],
+                );
+              },
+            );
+          } else {
+            return const Center(
+                child: Text(
+              'No Saved Movies/TvShows yet',
+              style: Styles.styleText20,
+            ));
+          }
         } else if (state is SavedFailure) {
           return const CustomErrorFailure();
         } else {

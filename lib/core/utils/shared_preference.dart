@@ -27,7 +27,7 @@ Future<void> saveItems() async {
   List<String> moviesStringList =
       savedMovies.map((movieId) => movieId.toString()).toList();
   List<String> tvStringList =
-      savedMovies.map((tvId) => tvId.toString()).toList();
+      savedTvShows.map((tvId) => tvId.toString()).toList();
 
   // Save the list to SharedPreferences
   await prefs.setStringList('savedMovies', moviesStringList);
