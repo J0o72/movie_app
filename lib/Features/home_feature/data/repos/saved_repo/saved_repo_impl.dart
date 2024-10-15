@@ -34,7 +34,7 @@ class SavedRepoImpl implements SavedRepo {
           endPoint:
               'account/21536210/favorite/tv?language=en-US&page=1&sort_by=created_at.asc');
 
-      for (int i = 1; i < favTvShows['total_pages']; i++) {
+      for (int i = 1; i <= favTvShows['total_pages']; i++) {
         var allData = await apiService.get(
             endPoint:
                 'account/21536210/favorite/tv?language=en-US&page=$i&sort_by=created_at.asc');
@@ -48,7 +48,7 @@ class SavedRepoImpl implements SavedRepo {
           endPoint:
               'account/21536210/favorite/movies?language=en-US&page=1&sort_by=created_at.asc');
 
-      for (int i = 1; i < favMovies['total_pages']; i++) {
+      for (int i = 1; i <= favMovies['total_pages']; i++) {
         var allData = await apiService.get(
             endPoint:
                 'account/21536210/favorite/movies?language=en-US&page=$i&sort_by=created_at.asc');

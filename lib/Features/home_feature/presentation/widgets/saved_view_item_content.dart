@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/Features/home_feature/data/models/favorite_model/favorite_model/fav_result.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_genre_shape_saved.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster_saved.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/custom_rating.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class SavedViewItemContent extends StatelessWidget {
@@ -21,22 +22,30 @@ class SavedViewItemContent extends StatelessWidget {
           const SizedBox(
             width: 10,
           ),
-          const Column(
+          Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Breaking Bad (2020)",
+                favItem.originalTitle != null
+                    ? '${favItem.originalTitle}'
+                    : '${favItem.originalName}',
                 style: Styles.styleText18,
               ),
-              // CustomRating(),
-              Row(
+              CustomRating(
+                favItem: favItem,
+              ),
+              const Row(
                 children: [
-                  // CustomGenreShapeSaved(),
+                  CustomGenreShapeSaved(
+                    detailsGenre: 'Action',
+                  ),
                   SizedBox(
                     width: 5,
                   ),
-                  // CustomGenreShapeSaved(),
+                  CustomGenreShapeSaved(
+                    detailsGenre: 'war',
+                  ),
                 ],
               ),
               // CustomDurationTime(),
