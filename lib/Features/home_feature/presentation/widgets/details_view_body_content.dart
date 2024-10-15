@@ -37,20 +37,13 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
       BlocProvider.of<ReviewsCubit>(context)
           .fetchReviews(id: widget.id, fromWhere: 'movie');
       BlocProvider.of<SimilarCubit>(context).fetchSimilar(id: widget.id);
-    } else if (widget.fromWhere == 'tv') {
+    } else {
       BlocProvider.of<DetailsCubit>(context).fetchTvShowsDetails(id: widget.id);
       BlocProvider.of<CastCubit>(context)
           .fetchCasts(id: widget.id, fromWhere: 'tv');
       BlocProvider.of<ReviewsCubit>(context)
           .fetchReviews(id: widget.id, fromWhere: 'tv');
       BlocProvider.of<SimilarCubit>(context).fetchSimilarTV(id: widget.id);
-    } else {
-      BlocProvider.of<DetailsCubit>(context).fetchDetails(id: widget.id);
-      BlocProvider.of<CastCubit>(context)
-          .fetchCasts(id: widget.id, fromWhere: 'movie');
-      BlocProvider.of<ReviewsCubit>(context)
-          .fetchReviews(id: widget.id, fromWhere: 'movie');
-      BlocProvider.of<SimilarCubit>(context).fetchSimilar(id: widget.id);
     }
   }
 

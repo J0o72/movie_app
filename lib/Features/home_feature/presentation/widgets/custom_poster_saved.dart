@@ -136,11 +136,19 @@ class CutsomPosterSaved extends StatelessWidget {
                   )
                 : InkWell(
                     onTap: () {
-                      // DetailsViewNavigatorModel detailsViewNavigatorModel =
-                      //     DetailsViewNavigatorModel(
-                      //         fromWhere: 'saved', id: favItem!.id!);
-                      // GoRouter.of(context).push(AppRouter.kDetailsView,
-                      //     extra: detailsViewNavigatorModel);
+                      if (favItem!.title != null) {
+                        DetailsViewNavigatorModel detailsViewNavigatorModel =
+                            DetailsViewNavigatorModel(
+                                fromWhere: 'movie', id: favItem!.id!);
+                        GoRouter.of(context).push(AppRouter.kDetailsView,
+                            extra: detailsViewNavigatorModel);
+                      } else {
+                        DetailsViewNavigatorModel detailsViewNavigatorModel =
+                            DetailsViewNavigatorModel(
+                                fromWhere: 'tv', id: favItem!.id!);
+                        GoRouter.of(context).push(AppRouter.kDetailsView,
+                            extra: detailsViewNavigatorModel);
+                      }
                     },
                     child: SizedBox(
                       height: MediaQuery.of(context).size.height * 0.25,
@@ -149,7 +157,7 @@ class CutsomPosterSaved extends StatelessWidget {
                         child: AspectRatio(
                           aspectRatio: 2.8 / 3.5,
                           child: CachedNetworkImage(
-                            fit: BoxFit.cover,
+                            fit: BoxFit.fill,
                             imageUrl: favItem!.posterPath != null
                                 ? '$imageUrl${favItem!.posterPath}'
                                 : "",

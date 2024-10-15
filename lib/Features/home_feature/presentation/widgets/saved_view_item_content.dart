@@ -3,6 +3,7 @@ import 'package:movie_app/Features/home_feature/data/models/favorite_model/favor
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_genre_shape_saved.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster_saved.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_rating.dart';
+import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class SavedViewItemContent extends StatelessWidget {
@@ -40,17 +41,23 @@ class SavedViewItemContent extends StatelessWidget {
               CustomRating(
                 favItem: favItem,
               ),
-              const Row(
+              Row(
                 children: [
-                  CustomGenreShapeSaved(
-                    detailsGenre: 'Action',
-                  ),
-                  SizedBox(
+                  favItem.genreIds!.isNotEmpty
+                      ? CustomGenreShapeSaved(
+                          detailsGenre:
+                              genresForSaved[favItem.genreIds![0].toString()]!,
+                        )
+                      : Container(),
+                  const SizedBox(
                     width: 5,
                   ),
-                  CustomGenreShapeSaved(
-                    detailsGenre: 'war',
-                  ),
+                  favItem.genreIds!.length > 1
+                      ? CustomGenreShapeSaved(
+                          detailsGenre:
+                              genresForSaved[favItem.genreIds![1].toString()]!,
+                        )
+                      : Container(),
                 ],
               ),
               // CustomDurationTime(),
