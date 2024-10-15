@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/Features/home_feature/data/repos/saved_repo/saved_repo_impl.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/save_to_fav_cubit/save_to_fav_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/saved_cubit/saved_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/saved_list_view.dart';
 import 'package:movie_app/core/utils/service_locator.dart';
@@ -12,9 +13,16 @@ class SavedViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          SavedCubit(getIt.get<SavedRepoImpl>())..fetchFavList(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              SavedCubit(getIt.get<SavedRepoImpl>())..fetchFavList(),
+        ),
+        BlocProvider(
+          create: (context) => SaveToFavCubit(getIt.get<SavedRepoImpl>()),
+        ),
+      ],
       child: Scaffold(
         appBar: AppBar(
           title: const Text(
