@@ -24,7 +24,9 @@ class CustomGenreShapeSaved extends StatelessWidget {
       child: Text(
         textAlign: TextAlign.center,
         detailsGenre,
-        style: Styles.styleText14,
+        style: Styles.styleText14.copyWith(
+          fontSize: 12,
+        ),
       ),
     );
   }
