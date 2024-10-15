@@ -4,6 +4,7 @@ import 'package:movie_app/Features/home_feature/presentation/manager/cast_cubit/
 import 'package:movie_app/Features/home_feature/presentation/manager/details_cubit/details_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/reviews_cubit/reviews_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/save_to_fav_cubit/save_to_fav_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/saved_cubit/saved_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/similar_cubit/similar_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_back_arrow_icon.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
@@ -36,13 +37,20 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
       BlocProvider.of<ReviewsCubit>(context)
           .fetchReviews(id: widget.id, fromWhere: 'movie');
       BlocProvider.of<SimilarCubit>(context).fetchSimilar(id: widget.id);
-    } else {
+    } else if (widget.fromWhere == 'tv') {
       BlocProvider.of<DetailsCubit>(context).fetchTvShowsDetails(id: widget.id);
       BlocProvider.of<CastCubit>(context)
           .fetchCasts(id: widget.id, fromWhere: 'tv');
       BlocProvider.of<ReviewsCubit>(context)
           .fetchReviews(id: widget.id, fromWhere: 'tv');
       BlocProvider.of<SimilarCubit>(context).fetchSimilarTV(id: widget.id);
+    } else {
+      BlocProvider.of<DetailsCubit>(context).fetchDetails(id: widget.id);
+      BlocProvider.of<CastCubit>(context)
+          .fetchCasts(id: widget.id, fromWhere: 'movie');
+      BlocProvider.of<ReviewsCubit>(context)
+          .fetchReviews(id: widget.id, fromWhere: 'movie');
+      BlocProvider.of<SimilarCubit>(context).fetchSimilar(id: widget.id);
     }
   }
 
@@ -78,6 +86,9 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
                                 };
                                 BlocProvider.of<SaveToFavCubit>(context)
                                     .saveToFav(body: body);
+                                BlocProvider.of<SavedCubit>(context)
+                                    .fetchFavList();
+
                                 savedMovies.remove(state.detailsModel!.id);
                                 saveItems();
                                 print('${state.detailsModel!.id} removed');
@@ -90,6 +101,9 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
                                 };
                                 BlocProvider.of<SaveToFavCubit>(context)
                                     .saveToFav(body: body);
+                                BlocProvider.of<SavedCubit>(context)
+                                    .fetchFavList();
+
                                 savedMovies.add(state.detailsModel!.id!);
                                 saveItems();
                                 print('${state.detailsModel!.id} added');
@@ -148,6 +162,9 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
                                 };
                                 BlocProvider.of<SaveToFavCubit>(context)
                                     .saveToFav(body: body);
+                                BlocProvider.of<SavedCubit>(context)
+                                    .fetchFavList();
+
                                 savedTvShows
                                     .remove(state.tvShowsDetailsModel!.id);
                                 saveItems();
@@ -163,6 +180,9 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
                                 };
                                 BlocProvider.of<SaveToFavCubit>(context)
                                     .saveToFav(body: body);
+                                BlocProvider.of<SavedCubit>(context)
+                                    .fetchFavList();
+
                                 savedTvShows
                                     .add(state.tvShowsDetailsModel!.id!);
                                 saveItems();

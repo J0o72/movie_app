@@ -22,7 +22,6 @@ class SavedListView extends StatelessWidget {
             },
           );
         } else if (state is SavedFailure) {
-          print(state.errorMessage);
           return const CustomErrorFailure();
         } else {
           return const CustomCircularLoading();

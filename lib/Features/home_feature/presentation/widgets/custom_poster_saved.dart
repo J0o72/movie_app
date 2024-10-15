@@ -136,11 +136,11 @@ class CutsomPosterSaved extends StatelessWidget {
                   )
                 : InkWell(
                     onTap: () {
-                      DetailsViewNavigatorModel detailsViewNavigatorModel =
-                          DetailsViewNavigatorModel(
-                              fromWhere: 'saved', id: favItem!.id!);
-                      GoRouter.of(context).push(AppRouter.kDetailsView,
-                          extra: detailsViewNavigatorModel);
+                      // DetailsViewNavigatorModel detailsViewNavigatorModel =
+                      //     DetailsViewNavigatorModel(
+                      //         fromWhere: 'saved', id: favItem!.id!);
+                      // GoRouter.of(context).push(AppRouter.kDetailsView,
+                      //     extra: detailsViewNavigatorModel);
                     },
                     child: SizedBox(
                       height: MediaQuery.of(context).size.height * 0.25,

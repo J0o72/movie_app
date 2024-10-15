@@ -26,11 +26,16 @@ class SavedViewItemContent extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                favItem.originalTitle != null
-                    ? '${favItem.originalTitle}'
-                    : '${favItem.originalName}',
-                style: Styles.styleText18,
+              SizedBox(
+                width: 200,
+                child: Text(
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  favItem.originalTitle != null
+                      ? '${favItem.originalTitle}'
+                      : '${favItem.originalName}',
+                  style: Styles.styleText22,
+                ),
               ),
               CustomRating(
                 favItem: favItem,

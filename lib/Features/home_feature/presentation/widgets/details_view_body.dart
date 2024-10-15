@@ -6,6 +6,7 @@ import 'package:movie_app/Features/home_feature/presentation/manager/cast_cubit/
 import 'package:movie_app/Features/home_feature/presentation/manager/details_cubit/details_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/reviews_cubit/reviews_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/save_to_fav_cubit/save_to_fav_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/saved_cubit/saved_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/similar_cubit/similar_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_view_body_content.dart';
 import 'package:movie_app/core/utils/service_locator.dart';
@@ -34,6 +35,9 @@ class DetailsViewBody extends StatelessWidget {
         BlocProvider(
           create: (context) => SaveToFavCubit(getIt.get<SavedRepoImpl>()),
         ),
+        BlocProvider(
+          create: (context) => SavedCubit(getIt.get<SavedRepoImpl>()),
+        )
       ],
       child: Scaffold(
         body: DetailsViewBodyContent(

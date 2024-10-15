@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/details_view_navigator_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_shows_model.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/save_to_fav_cubit/save_to_fav_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/saved_cubit/saved_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/constants.dart';
@@ -62,6 +63,8 @@ class _TvShowsCustomImageCarouselItemState
                 'favorite': false,
               };
               BlocProvider.of<SaveToFavCubit>(context).saveToFav(body: body);
+              BlocProvider.of<SavedCubit>(context).fetchFavList();
+
               savedTvShows.remove(widget.tvShow.id);
               saveItems();
 
@@ -74,6 +77,8 @@ class _TvShowsCustomImageCarouselItemState
                 'favorite': true,
               };
               BlocProvider.of<SaveToFavCubit>(context).saveToFav(body: body);
+              BlocProvider.of<SavedCubit>(context).fetchFavList();
+
               savedTvShows.add(widget.tvShow.id!);
               saveItems();
 

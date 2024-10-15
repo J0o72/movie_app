@@ -10,6 +10,7 @@ import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubit
 import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/popular_movie_cubit/popular_movie_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/top_rating_movie_cubit/top_rating_movie_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/save_to_fav_cubit/save_to_fav_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/saved_cubit/saved_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/tv_shows_cubits/airing_today_tv_shows_cubit/airing_today_tv_shows_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/tv_shows_cubits/on_the_air_tv_shows_cubit/on_the_air_tv_shows_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/tv_shows_cubits/popular_tv_shows_cubit/popular_tv_shows_cubit.dart';
@@ -65,6 +66,9 @@ class PageWithTabBarView extends StatelessWidget {
                   create: (context) =>
                       SaveToFavCubit(getIt.get<SavedRepoImpl>()),
                 ),
+                BlocProvider(
+                  create: (context) => SavedCubit(getIt.get<SavedRepoImpl>()),
+                ),
               ],
               child: const CustomScrollView(
                 slivers: [
@@ -103,6 +107,9 @@ class PageWithTabBarView extends StatelessWidget {
                 BlocProvider(
                   create: (context) =>
                       SaveToFavCubit(getIt.get<SavedRepoImpl>()),
+                ),
+                BlocProvider(
+                  create: (context) => SavedCubit(getIt.get<SavedRepoImpl>()),
                 ),
               ],
               child: const CustomScrollView(
