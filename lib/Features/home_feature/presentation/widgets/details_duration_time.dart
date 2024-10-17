@@ -48,7 +48,9 @@ class DetailsDurationTime extends StatelessWidget {
           )
         : GestureDetector(
             onTap: () {
-              GoRouter.of(context).push(AppRouter.kSeasonsView);
+              print(tvShowsDetailsModel!.id);
+              GoRouter.of(context)
+                  .push(AppRouter.kSeasonsView, extra: tvShowsDetailsModel!.id);
             },
             child: Row(
               children: [

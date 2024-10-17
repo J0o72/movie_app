@@ -81,7 +81,9 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kSeasonsView,
-        builder: (context, state) => const SeasonsView(),
+        builder: (context, state) => SeasonsView(
+          seasonId: state.extra as int,
+        ),
       ),
       GoRoute(
         path: kSeasonEpisodesView,

@@ -18,7 +18,9 @@ class SeasonRepoImpl implements SeasonRepo {
       var data = await apiService.get(endPoint: 'tv/$id?language=en-US');
 
       for (var item in data['seasons']) {
-        seasons.add(SeasonModel.fromJson(item));
+        if (item['name'] != 'Specials') {
+          seasons.add(SeasonModel.fromJson(item));
+        }
       }
       return right(seasons);
     } catch (e) {

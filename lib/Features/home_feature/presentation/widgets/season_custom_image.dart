@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:movie_app/Features/home_feature/data/models/details_model/tv_shows_details/season.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/seasons_title.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
@@ -9,9 +10,11 @@ import 'package:movie_app/core/utils/styles.dart';
 class SeasonsCutomImage extends StatelessWidget {
   const SeasonsCutomImage({
     super.key,
+    required this.seasonModel,
   });
 
-  final String image = "https://image.tmdb.org/t/p/original/";
+  final SeasonModel seasonModel;
+  final String image = "https://image.tmdb.org/t/p/original";
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +32,10 @@ class SeasonsCutomImage extends StatelessWidget {
                 aspectRatio: 2.8 / 3.5,
                 child: CachedNetworkImage(
                   fit: BoxFit.fill,
-                  imageUrl: '$image' '1BP4xYv9ZG4ZVHkL7ocOziBbSYH.jpg',
+                  imageUrl: '$image' '${seasonModel.posterPath}',
                   errorWidget: (context, url, error) => Center(
                     child: Text(
-                      "Season 1",
+                      "${seasonModel.name}",
                       style: Styles.styleText18.copyWith(color: Colors.white),
                     ),
                   ),
@@ -43,7 +46,9 @@ class SeasonsCutomImage extends StatelessWidget {
               ),
             ),
           ),
-          const SeasonsTitle(),
+          SeasonsTitle(
+            seasonNumber: '${seasonModel.name}',
+          ),
         ],
       ),
     );

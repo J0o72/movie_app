@@ -4,7 +4,10 @@ import 'package:movie_app/core/utils/styles.dart';
 class SeasonsTitle extends StatelessWidget {
   const SeasonsTitle({
     super.key,
+    required this.seasonNumber,
   });
+
+  final String seasonNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +29,7 @@ class SeasonsTitle extends StatelessWidget {
         ),
         child: Center(
           child: Text(
-            'Season 1',
+            seasonNumber,
             style: Styles.styleText22.copyWith(
               color: Colors.white,
             ),
