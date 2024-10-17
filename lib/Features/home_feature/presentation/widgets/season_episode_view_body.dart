@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/seasons_episodes_grid_view.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class SeasonEpisodeViewBody extends StatelessWidget {
@@ -17,6 +18,7 @@ class SeasonEpisodeViewBody extends StatelessWidget {
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
+      body: const SeasonEpisodesGridView(),
     );
   }
 }
