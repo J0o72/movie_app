@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/tv_shows_details/season.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/season_custom_rating.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/seasons_title.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/styles.dart';
@@ -49,6 +50,7 @@ class SeasonsCutomImage extends StatelessWidget {
           SeasonsTitle(
             seasonNumber: '${seasonModel.name}',
           ),
+          SeasonCutsomRating(seasonModel: seasonModel),
         ],
       ),
     );
