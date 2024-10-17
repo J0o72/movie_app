@@ -13,32 +13,35 @@ class SeasonsCutomImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        SizedBox(
-          height: MediaQuery.of(context).size.height * 0.4,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(16),
-            child: AspectRatio(
-              aspectRatio: 2.8 / 3.5,
-              child: CachedNetworkImage(
-                fit: BoxFit.fill,
-                imageUrl: '$image' '1BP4xYv9ZG4ZVHkL7ocOziBbSYH.jpg',
-                errorWidget: (context, url, error) => Center(
-                  child: Text(
-                    "Season 1",
-                    style: Styles.styleText18.copyWith(color: Colors.white),
+    return GestureDetector(
+      onTap: () {},
+      child: Stack(
+        children: [
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.4,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: AspectRatio(
+                aspectRatio: 2.8 / 3.5,
+                child: CachedNetworkImage(
+                  fit: BoxFit.fill,
+                  imageUrl: '$image' '1BP4xYv9ZG4ZVHkL7ocOziBbSYH.jpg',
+                  errorWidget: (context, url, error) => Center(
+                    child: Text(
+                      "Season 1",
+                      style: Styles.styleText18.copyWith(color: Colors.white),
+                    ),
                   ),
-                ),
-                placeholder: (context, url) => const Center(
-                  child: CustomCircularLoading(),
+                  placeholder: (context, url) => const Center(
+                    child: CustomCircularLoading(),
+                  ),
                 ),
               ),
             ),
           ),
-        ),
-        const SeasonsTitle(),
-      ],
+          const SeasonsTitle(),
+        ],
+      ),
     );
   }
 }
