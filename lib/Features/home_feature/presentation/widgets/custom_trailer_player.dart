@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/Features/home_feature/presentation/manager/cubit/trailler_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/trailler_cubit/trailler_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/core/utils/functions/url_launcher.dart';
 import 'package:movie_app/core/utils/styles.dart';

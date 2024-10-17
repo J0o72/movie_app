@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class Season extends Equatable {
+class SeasonModel extends Equatable {
   final dynamic airDate;
   final num? episodeCount;
   final num? id;
@@ -10,7 +10,7 @@ class Season extends Equatable {
   final num? seasonNumber;
   final double? voteAverage;
 
-  const Season({
+  const SeasonModel({
     this.airDate,
     this.episodeCount,
     this.id,
@@ -21,7 +21,7 @@ class Season extends Equatable {
     this.voteAverage,
   });
 
-  factory Season.fromJson(Map<String, dynamic> json) => Season(
+  factory SeasonModel.fromJson(Map<String, dynamic> json) => SeasonModel(
         airDate: json['air_date'] as dynamic,
         episodeCount: json['episode_count'] as num?,
         id: json['id'] as num?,

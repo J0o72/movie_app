@@ -36,7 +36,7 @@ class TvShowsDetailsModel extends Equatable {
   final String? posterPath;
   final List<ProductionCompany>? productionCompanies;
   final List<ProductionCountry>? productionCountries;
-  final List<Season>? seasons;
+  final List<SeasonModel>? seasons;
   final List<SpokenLanguage>? spokenLanguages;
   final String? status;
   final String? tagline;
@@ -123,7 +123,7 @@ class TvShowsDetailsModel extends Equatable {
           ?.map((e) => ProductionCountry.fromJson(e as Map<String, dynamic>))
           .toList(),
       seasons: (json['seasons'] as List<dynamic>?)
-          ?.map((e) => Season.fromJson(e as Map<String, dynamic>))
+          ?.map((e) => SeasonModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       spokenLanguages: (json['spoken_languages'] as List<dynamic>?)
           ?.map((e) => SpokenLanguage.fromJson(e as Map<String, dynamic>))
