@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/cast_cubit/cast_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/cubit/trailler_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/details_cubit/details_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/reviews_cubit/reviews_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/save_to_fav_cubit/save_to_fav_cubit.dart';
@@ -37,6 +38,8 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
       BlocProvider.of<ReviewsCubit>(context)
           .fetchReviews(id: widget.id, fromWhere: 'movie');
       BlocProvider.of<SimilarCubit>(context).fetchSimilar(id: widget.id);
+      BlocProvider.of<TraillerCubit>(context)
+          .fetchTrailler(id: widget.id, fromWhere: 'movie');
     } else {
       BlocProvider.of<DetailsCubit>(context).fetchTvShowsDetails(id: widget.id);
       BlocProvider.of<CastCubit>(context)
@@ -44,6 +47,8 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
       BlocProvider.of<ReviewsCubit>(context)
           .fetchReviews(id: widget.id, fromWhere: 'tv');
       BlocProvider.of<SimilarCubit>(context).fetchSimilarTV(id: widget.id);
+      BlocProvider.of<TraillerCubit>(context)
+          .fetchTrailler(id: widget.id, fromWhere: 'tv');
     }
   }
 
