@@ -1,5 +1,6 @@
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/details_view_navigator_model.dart';
+import 'package:movie_app/Features/home_feature/data/models/episode_model/episode_navigator.dart';
 import 'package:movie_app/Features/home_feature/presentation/actors_profile_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/cast_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/details_view.dart';
@@ -87,7 +88,9 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: kSeasonEpisodesView,
-        builder: (context, state) => const SeasonEpisodeView(),
+        builder: (context, state) => SeasonEpisodeView(
+          episodeNavigatorHepler: state.extra as EpisodeNavigatorHepler,
+        ),
       ),
     ],
   );

@@ -11,10 +11,10 @@ class SeasonEpisodeCubit extends Cubit<SeasonEpisodeState> {
   final SeasonRepo seasonRepo;
 
   Future<void> fetchSeasonEpisodes(
-      {required int seasonId, required int seasonNumber}) async {
+      {required num seasonId, required num seasonNumber}) async {
     emit(SeasonEpisodeLoading());
     var result = await seasonRepo.fetchSeasonEpisodes(
-        seasonId: seasonId, seasonNumber: seasonNumber);
+        seriesId: seasonId, seasonNumber: seasonNumber);
 
     result.fold((failure) {
       emit(SeasonEpisodeFailure(errorMessage: failure.errMessage));

@@ -4,7 +4,7 @@ import 'package:movie_app/Features/home_feature/data/models/episode_model/episod
 import 'package:movie_app/core/errors/failure.dart';
 
 abstract class SeasonRepo {
-  Future<Either<Failure, List<SeasonModel>>> fetchSeasons({required int id});
+  Future<Either<Failure, List<SeasonModel>>> fetchSeasons({required num id});
   Future<Either<Failure, List<EpisodeModel>>> fetchSeasonEpisodes(
-      {required int seasonId, required int seasonNumber});
+      {required num seriesId, required num seasonNumber});
 }

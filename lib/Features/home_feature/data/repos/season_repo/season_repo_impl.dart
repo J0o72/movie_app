@@ -13,7 +13,7 @@ class SeasonRepoImpl implements SeasonRepo {
 
   @override
   Future<Either<Failure, List<SeasonModel>>> fetchSeasons(
-      {required int id}) async {
+      {required num id}) async {
     try {
       List<SeasonModel> seasons = [];
       var data = await apiService.get(endPoint: 'tv/$id?language=en-US');
@@ -35,12 +35,12 @@ class SeasonRepoImpl implements SeasonRepo {
 
   @override
   Future<Either<Failure, List<EpisodeModel>>> fetchSeasonEpisodes(
-      {required int seasonId, required int seasonNumber}) async {
+      {required num seriesId, required num seasonNumber}) async {
     try {
       List<EpisodeModel> episodes = [];
 
       var data = await apiService.get(
-          endPoint: 'tv/$seasonId/season/$seasonNumber?language=en-US');
+          endPoint: 'tv/$seriesId/season/$seasonNumber?language=en-US');
 
       for (var item in data['episodes']) {
         episodes.add(EpisodeModel.fromJson(item));

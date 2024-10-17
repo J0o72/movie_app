@@ -8,7 +8,7 @@ import 'package:movie_app/core/utils/styles.dart';
 
 class SeasonsViewBody extends StatelessWidget {
   const SeasonsViewBody({super.key, required this.seasonId});
-  final int seasonId;
+  final num seasonId;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,9 @@ class SeasonsViewBody extends StatelessWidget {
           elevation: 0,
           backgroundColor: Colors.transparent,
         ),
-        body: const SeasonsGridView(),
+        body: SeasonsGridView(
+          seriesId: seasonId,
+        ),
       ),
     );
   }

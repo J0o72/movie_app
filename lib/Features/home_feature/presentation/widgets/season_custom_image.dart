@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/tv_shows_details/season.dart';
+import 'package:movie_app/Features/home_feature/data/models/episode_model/episode_navigator.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/season_custom_rating.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/seasons_title.dart';
@@ -12,16 +13,21 @@ class SeasonsCutomImage extends StatelessWidget {
   const SeasonsCutomImage({
     super.key,
     required this.seasonModel,
+    required this.seriesId,
   });
 
   final SeasonModel seasonModel;
   final String image = "https://image.tmdb.org/t/p/original";
+  final num seriesId;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GoRouter.of(context).push(AppRouter.kSeasonEpisodesView);
+        EpisodeNavigatorHepler episodeNavigatorHepler = EpisodeNavigatorHepler(
+            seriesId: seriesId, seasonNumber: seasonModel.seasonNumber!);
+        GoRouter.of(context)
+            .push(AppRouter.kSeasonEpisodesView, extra: episodeNavigatorHepler);
       },
       child: Stack(
         children: [
@@ -33,7 +39,9 @@ class SeasonsCutomImage extends StatelessWidget {
                 aspectRatio: 2.8 / 3.5,
                 child: CachedNetworkImage(
                   fit: BoxFit.fill,
-                  imageUrl: '$image' '${seasonModel.posterPath}',
+                  imageUrl: seasonModel.posterPath != null
+                      ? '$image${seasonModel.posterPath}'
+                      : '',
                   errorWidget: (context, url, error) => Center(
                     child: Text(
                       "${seasonModel.name}",

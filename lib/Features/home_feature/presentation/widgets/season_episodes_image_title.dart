@@ -5,7 +5,10 @@ import 'package:movie_app/core/utils/styles.dart';
 class SeasonEpisodesImageTitle extends StatelessWidget {
   const SeasonEpisodesImageTitle({
     super.key,
+    required this.episodeNumber,
   });
+
+  final int episodeNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -13,14 +16,14 @@ class SeasonEpisodesImageTitle extends StatelessWidget {
       right: 5,
       bottom: 5,
       child: Container(
-        width: 90,
+        width: 100,
         height: 40,
         decoration: BoxDecoration(
             color: kMainColor.withOpacity(0.9),
             borderRadius: BorderRadius.circular(12)),
-        child: const Center(
+        child: Center(
           child: Text(
-            "Episode 1",
+            "Episode $episodeNumber",
             style: Styles.styleText18,
           ),
         ),

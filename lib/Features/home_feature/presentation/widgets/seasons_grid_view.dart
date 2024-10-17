@@ -6,7 +6,8 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/season_cust
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
 
 class SeasonsGridView extends StatelessWidget {
-  const SeasonsGridView({super.key});
+  const SeasonsGridView({super.key, required this.seriesId});
+  final num seriesId;
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +27,7 @@ class SeasonsGridView extends StatelessWidget {
               itemBuilder: (context, index) {
                 return SeasonsCutomImage(
                   seasonModel: state.seasons[index],
+                  seriesId: seriesId,
                 );
               },
             ),

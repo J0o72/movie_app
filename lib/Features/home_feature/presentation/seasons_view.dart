@@ -3,7 +3,7 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/seasons_vie
 
 class SeasonsView extends StatelessWidget {
   const SeasonsView({super.key, required this.seasonId});
-  final int seasonId;
+  final num seasonId;
 
   @override
   Widget build(BuildContext context) {

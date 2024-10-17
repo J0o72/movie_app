@@ -10,7 +10,7 @@ class SeasonsCubit extends Cubit<SeasonsState> {
 
   final SeasonRepo seasonRepo;
 
-  Future<void> fetchSeasons({required int id}) async {
+  Future<void> fetchSeasons({required num id}) async {
     emit(SeasonsLoading());
     var result = await seasonRepo.fetchSeasons(id: id);
 
