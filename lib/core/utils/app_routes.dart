@@ -8,6 +8,7 @@ import 'package:movie_app/Features/home_feature/presentation/home_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/movies_collection_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/review_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/saved_view.dart';
+import 'package:movie_app/Features/home_feature/presentation/season_episodes_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/seasons_view.dart';
 import 'package:movie_app/Features/welcome_feature/presentation/views/welcome_view.dart';
 import 'package:movie_app/core/utils/collection_model.dart';
@@ -22,6 +23,7 @@ abstract class AppRouter {
   static const kReviewView = '/reviewView';
   static const kActorProfileView = '/actorView';
   static const kSeasonsView = '/seasonsView';
+  static const kSeasonEpisodesView = '/seasonEpisodesView';
 
   static final router = GoRouter(
     routes: [
@@ -80,6 +82,10 @@ abstract class AppRouter {
       GoRoute(
         path: kSeasonsView,
         builder: (context, state) => const SeasonsView(),
+      ),
+      GoRoute(
+        path: kSeasonEpisodesView,
+        builder: (context, state) => const SeasonEpisodeView(),
       ),
     ],
   );
