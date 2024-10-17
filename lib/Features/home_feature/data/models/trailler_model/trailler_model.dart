@@ -4,14 +4,14 @@ import 'result.dart';
 
 class TraillerModel extends Equatable {
   final int? id;
-  final List<Result>? results;
+  final List<TraillerResult>? results;
 
   const TraillerModel({this.id, this.results});
 
   factory TraillerModel.fromJson(Map<String, dynamic> json) => TraillerModel(
         id: json['id'] as int?,
         results: (json['results'] as List<dynamic>?)
-            ?.map((e) => Result.fromJson(e as Map<String, dynamic>))
+            ?.map((e) => TraillerResult.fromJson(e as Map<String, dynamic>))
             .toList(),
       );
 

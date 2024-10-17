@@ -5,6 +5,7 @@ import 'package:movie_app/Features/home_feature/data/models/details_model/detail
 import 'package:movie_app/Features/home_feature/data/models/details_model/reviews_model/result.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/tv_shows_details/tv_shows_details_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
+import 'package:movie_app/Features/home_feature/data/models/trailler_model/result.dart';
 import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_shows_model.dart';
 import 'package:movie_app/Features/home_feature/data/repos/details_repo/details_repo.dart';
 import 'package:movie_app/core/errors/failure.dart';
@@ -177,6 +178,30 @@ class DetailsRepoImpl implements DetailsRepo {
       }
 
       return right(casts);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, TraillerResult>> fetchTrailler(
+      {required int id, required String fromWhere}) async {
+    try {
+      TraillerResult? trailler;
+      var data = await apiService.get(
+          endPoint: '$fromWhere/$id/videos?language=en-US');
+
+      for (var item in data['results']) {
+        if (item['type'] == 'Trailer') {
+          trailler = TraillerResult.fromJson(item);
+          break;
+        }
+      }
+      return right(trailler!);
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDioError(e));

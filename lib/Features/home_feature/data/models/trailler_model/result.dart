@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-class Result extends Equatable {
+class TraillerResult extends Equatable {
   final String? iso6391;
   final String? iso31661;
   final String? name;
@@ -12,7 +12,7 @@ class Result extends Equatable {
   final DateTime? publishedAt;
   final String? id;
 
-  const Result({
+  const TraillerResult({
     this.iso6391,
     this.iso31661,
     this.name,
@@ -25,7 +25,7 @@ class Result extends Equatable {
     this.id,
   });
 
-  factory Result.fromJson(Map<String, dynamic> json) => Result(
+  factory TraillerResult.fromJson(Map<String, dynamic> json) => TraillerResult(
         iso6391: json['iso_639_1'] as String?,
         iso31661: json['iso_3166_1'] as String?,
         name: json['name'] as String?,
