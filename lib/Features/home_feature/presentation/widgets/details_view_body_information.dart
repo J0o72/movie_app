@@ -140,7 +140,7 @@ class DetailsViewBodyInformation extends StatelessWidget {
                   style: Styles.styleText28,
                 ),
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  tvShowsDetailsModel!.genres != null
+                  tvShowsDetailsModel!.genres!.isNotEmpty
                       ? CustomGenreShapeSaved(
                           detailsGenre: tvShowsDetailsModel!.genres![0].name!,
                         )

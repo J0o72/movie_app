@@ -30,7 +30,7 @@ class SeasonEpisodeRating extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 5, right: 5),
               child: Text(
-                '${episodeModel.voteAverage}',
+                episodeModel.voteAverage.toString().substring(0, 3),
                 style: Styles.styleText20.copyWith(
                   color: Colors.white,
                 ),

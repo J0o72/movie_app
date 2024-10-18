@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/cubit/season_episode_cubit.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/season_episodes_custom_image.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/seasons_grid_view.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
 
 class SeasonEpisodesGridView extends StatelessWidget {
@@ -33,7 +33,7 @@ class SeasonEpisodesGridView extends StatelessWidget {
         } else if (state is SeasonEpisodeFailure) {
           return const CustomErrorFailure();
         } else {
-          return const CustomCircularLoading();
+          return const SeasonsGridViewSkeletonizer();
         }
       },
     );

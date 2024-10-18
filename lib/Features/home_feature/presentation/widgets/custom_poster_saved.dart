@@ -93,7 +93,7 @@ class CutsomPosterSaved extends StatelessWidget {
                         ),
                         placeholder: (context, url) => const Center(
                           child: ImagePlaceholderSkeletonizer(
-                            height: 120,
+                            height: 180,
                           ),
                         ),
                       ),
@@ -132,7 +132,7 @@ class CutsomPosterSaved extends StatelessWidget {
                             ),
                             placeholder: (context, url) => const Center(
                               child: ImagePlaceholderSkeletonizer(
-                                height: 120,
+                                height: 180,
                               ),
                             ),
                           ),
@@ -177,7 +177,7 @@ class CutsomPosterSaved extends StatelessWidget {
                             ),
                             placeholder: (context, url) => const Center(
                               child: ImagePlaceholderSkeletonizer(
-                                height: 120,
+                                height: 180,
                               ),
                             ),
                           ),
