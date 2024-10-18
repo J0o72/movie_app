@@ -4,9 +4,9 @@ import 'package:go_router/go_router.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/details_view_navigator_model.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/tv_shows_cubits/popular_tv_shows_cubit/popular_tv_shows_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_carousel_slider.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_row.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/genres_list_view.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/movie_tab_content_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/tv_shows_airing_today_list_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/tv_shows_on_the_air_list_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/tv_shows_top_rating_list_view.dart';
@@ -36,7 +36,7 @@ class TvShowsTabContentView extends StatelessWidget {
             } else if (state is PopularTvShowsFailure) {
               return const CustomErrorFailure();
             } else {
-              return const CustomCircularLoading();
+              return const SliderSkeletonizer();
             }
           },
         ),

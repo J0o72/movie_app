@@ -9,6 +9,7 @@ import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/shared_preference.dart';
 import 'package:movie_app/core/utils/styles.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
+import 'package:movie_app/core/widgets/loading.dart';
 import 'package:movie_app/core/widgets/show_snack_bar.dart';
 
 class SavedListView extends StatefulWidget {
@@ -70,7 +71,7 @@ class _SavedListViewState extends State<SavedListView> {
         } else if (state is SavedFailure) {
           return const CustomErrorFailure();
         } else {
-          return const CustomCircularLoading();
+          return const Loading();
         }
       },
     );

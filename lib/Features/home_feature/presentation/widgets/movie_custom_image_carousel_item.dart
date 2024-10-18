@@ -7,10 +7,11 @@ import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_mo
 import 'package:movie_app/Features/home_feature/presentation/manager/save_to_fav_cubit/save_to_fav_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/saved_cubit/saved_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/shared_preference.dart';
+import 'package:movie_app/core/widgets/show_snack_bar.dart';
 
 class MovieCustomImageCarouselItem extends StatefulWidget {
   const MovieCustomImageCarouselItem({super.key, required this.movie});
@@ -45,7 +46,8 @@ class _MovieCustomImageCarouselItemState
               width: MediaQuery.of(context).size.width * 0.8,
               height: MediaQuery.of(context).size.height * 0.4,
               errorWidget: (context, url, error) => const Icon(Icons.error),
-              placeholder: (context, url) => const CustomCircularLoading(),
+              placeholder: (context, url) =>
+                  const ImagePlaceholderSkeletonizer(),
               imageUrl: "$imageUrl${widget.movie.posterPath}",
             ),
           ),
@@ -66,7 +68,9 @@ class _MovieCustomImageCarouselItemState
               savedMovies.remove(widget.movie.id);
               saveItems();
 
-              print('${widget.movie.id} removed');
+              showSnackBar(
+                  context, '${widget.movie.title} removed from Favorite');
+
               setState(() {});
             } else {
               Map<String, dynamic> body = {
@@ -80,7 +84,7 @@ class _MovieCustomImageCarouselItemState
               savedMovies.add(widget.movie.id!);
               saveItems();
 
-              print('${widget.movie.id} added');
+              showSnackBar(context, '${widget.movie.title} added to Favorite');
               setState(() {});
             }
           },

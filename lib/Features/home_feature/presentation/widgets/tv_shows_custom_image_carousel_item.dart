@@ -7,10 +7,11 @@ import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_sh
 import 'package:movie_app/Features/home_feature/presentation/manager/save_to_fav_cubit/save_to_fav_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/saved_cubit/saved_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/shared_preference.dart';
+import 'package:movie_app/core/widgets/show_snack_bar.dart';
 
 class TvShowsCustomImageCarouselItem extends StatefulWidget {
   const TvShowsCustomImageCarouselItem({super.key, required this.tvShow});
@@ -45,7 +46,8 @@ class _TvShowsCustomImageCarouselItemState
               width: MediaQuery.of(context).size.width * 0.8,
               height: MediaQuery.of(context).size.height * 0.4,
               errorWidget: (context, url, error) => const Icon(Icons.error),
-              placeholder: (context, url) => const CustomCircularLoading(),
+              placeholder: (context, url) =>
+                  const ImagePlaceholderSkeletonizer(),
               imageUrl: "$imageUrl${widget.tvShow.posterPath}",
             ),
           ),
@@ -68,7 +70,8 @@ class _TvShowsCustomImageCarouselItemState
               savedTvShows.remove(widget.tvShow.id);
               saveItems();
 
-              print('${widget.tvShow.id} removed');
+              showSnackBar(
+                  context, '${widget.tvShow.name} removed from Favorite');
               setState(() {});
             } else {
               Map<String, dynamic> body = {
@@ -82,7 +85,7 @@ class _TvShowsCustomImageCarouselItemState
               savedTvShows.add(widget.tvShow.id!);
               saveItems();
 
-              print('${widget.tvShow.id} added');
+              showSnackBar(context, '${widget.tvShow.name} added to Favorite');
               setState(() {});
             }
           },

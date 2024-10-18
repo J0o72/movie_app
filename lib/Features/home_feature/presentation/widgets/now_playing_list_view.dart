@@ -39,9 +39,30 @@ class _NowPlayingListViewState extends State<NowPlayingListView> {
         } else if (state is NowPlayingMovieFailure) {
           return const CustomErrorFailure();
         } else {
-          return const CustomCircularLoading();
+          return const ListViewSkeletonizer();
         }
       },
+    );
+  }
+}
+
+class ListViewSkeletonizer extends StatelessWidget {
+  const ListViewSkeletonizer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 300,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20),
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return const CustomCircularLoading();
+          },
+        ),
+      ),
     );
   }
 }
