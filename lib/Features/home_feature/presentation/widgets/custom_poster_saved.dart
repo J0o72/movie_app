@@ -6,7 +6,6 @@ import 'package:movie_app/Features/home_feature/data/models/details_model/detail
 import 'package:movie_app/Features/home_feature/data/models/favorite_model/favorite_model/fav_result.dart';
 import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_shows_model.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/styles.dart';
@@ -93,7 +92,9 @@ class CutsomPosterSaved extends StatelessWidget {
                           ),
                         ),
                         placeholder: (context, url) => const Center(
-                          child: CustomCircularLoading(),
+                          child: ImagePlaceholderSkeletonizer(
+                            height: 120,
+                          ),
                         ),
                       ),
                     ),
@@ -130,7 +131,9 @@ class CutsomPosterSaved extends StatelessWidget {
                               ),
                             ),
                             placeholder: (context, url) => const Center(
-                              child: CustomCircularLoading(),
+                              child: ImagePlaceholderSkeletonizer(
+                                height: 120,
+                              ),
                             ),
                           ),
                         ),
@@ -173,21 +176,14 @@ class CutsomPosterSaved extends StatelessWidget {
                               ),
                             ),
                             placeholder: (context, url) => const Center(
-                              child: CustomCircularLoading(),
+                              child: ImagePlaceholderSkeletonizer(
+                                height: 120,
+                              ),
                             ),
                           ),
                         ),
                       ),
                     ),
                   );
-  }
-}
-
-class CollectionsImage extends StatelessWidget {
-  const CollectionsImage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }

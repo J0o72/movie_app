@@ -4,7 +4,6 @@ import 'package:movie_app/Features/home_feature/data/models/actor_model/actor_kn
 import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_shows_model.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/core/utils/styles.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -91,7 +90,9 @@ class CustomPoster extends StatelessWidget {
                             ),
                           ),
                           placeholder: (context, url) => const Center(
-                            child: CustomCircularLoading(),
+                            child: ImagePlaceholderSkeletonizer(
+                              height: 180,
+                            ),
                           ),
                         ),
                       ),
@@ -129,7 +130,9 @@ class CustomPoster extends StatelessWidget {
                             ),
                           ),
                           placeholder: (context, url) => const Center(
-                            child: CustomCircularLoading(),
+                            child: ImagePlaceholderSkeletonizer(
+                              height: 200,
+                            ),
                           ),
                         ),
                       ),

@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/Features/home_feature/data/models/actor_model/actor_model.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster.dart';
+import 'package:movie_app/core/utils/styles.dart';
 
 class ActorProfileBackgroundImage extends StatelessWidget {
   const ActorProfileBackgroundImage({
@@ -20,6 +22,18 @@ class ActorProfileBackgroundImage extends StatelessWidget {
         child: CachedNetworkImage(
           fit: BoxFit.cover,
           imageUrl: '$image${actorDetails.profilePath!}',
+          errorWidget: (context, url, error) => Center(
+            child: Text(
+              textAlign: TextAlign.center,
+              "${actorDetails.name}",
+              style: Styles.styleText18.copyWith(color: Colors.white),
+            ),
+          ),
+          placeholder: (context, url) => const Center(
+            child: ImagePlaceholderSkeletonizer(
+              height: 180,
+            ),
+          ),
         ),
       ),
     );

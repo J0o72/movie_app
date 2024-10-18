@@ -5,11 +5,11 @@ import 'package:movie_app/Features/home_feature/data/models/actor_model/actor_mo
 import 'package:movie_app/Features/home_feature/presentation/manager/actor_known_for_cubit/actor_known_for_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/actor_profile_birth_location.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/actor_profile_social_media_icons.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_row.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_custom_person_photo.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_read_more_text.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_item.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_list_view.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/collection_model.dart';
 import 'package:movie_app/core/utils/styles.dart';
@@ -106,7 +106,7 @@ class ActorProfileKnownFor extends StatelessWidget {
         } else if (state is ActorKnownForFailure) {
           return const CustomErrorFailure();
         } else {
-          return const CustomCircularLoading();
+          return const ListViewSkeletonizer();
         }
       },
     );

@@ -5,8 +5,8 @@ import 'package:movie_app/Features/home_feature/presentation/manager/actor_profi
 import 'package:movie_app/Features/home_feature/presentation/manager/actor_social_media_cubit/actor_social_media_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/actor_profile_Information.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/actor_profile_background_image.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
+import 'package:movie_app/core/widgets/loading.dart';
 
 class ActorProfileViewBody extends StatefulWidget {
   const ActorProfileViewBody({super.key, required this.actorID});
@@ -47,7 +47,7 @@ class _ActorProfileViewBodyState extends State<ActorProfileViewBody> {
           } else if (state is ActorProfileFailure) {
             return const CustomErrorFailure();
           } else {
-            return const CustomCircularLoading();
+            return const Loading();
           }
         },
       ),

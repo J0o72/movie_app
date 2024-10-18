@@ -2,9 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/details_view_navigator_model.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/details_custom_person_photo.dart';
 import 'package:movie_app/Features/search_feature/data/models/search_model/search_results.dart';
-import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
@@ -49,7 +49,9 @@ class CustomSearchImage extends StatelessWidget {
                   ),
                 ),
                 placeholder: (context, url) => const Center(
-                  child: CustomCircularLoading(),
+                  child: ImagePlaceholderSkeletonizer(
+                    height: 200,
+                  ),
                 ),
               ),
             )
@@ -69,7 +71,7 @@ class CustomSearchImage extends StatelessWidget {
                     ),
                   ),
                   placeholder: (context, url) => const Center(
-                    child: CustomCircularLoading(),
+                    child: DetailsReviewsCustomPersonPhotoSkeletonizer(),
                   ),
                 ),
               ),
