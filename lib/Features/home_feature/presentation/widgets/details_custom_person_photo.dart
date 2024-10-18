@@ -6,6 +6,7 @@ import 'package:movie_app/Features/home_feature/data/models/details_model/review
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/styles.dart';
 import 'package:movie_app/core/widgets/loading.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class DetailsCustomPersonPhoto extends StatelessWidget {
   const DetailsCustomPersonPhoto({
@@ -47,7 +48,7 @@ class DetailsCustomPersonPhoto extends StatelessWidget {
                   ),
                 ),
                 placeholder: (context, url) => const Center(
-                  child: Loading(),
+                  child: DetailsReviewsCustomPersonPhotoSkeletonizer(),
                 ),
               ),
             ),
@@ -73,11 +74,32 @@ class DetailsCustomPersonPhoto extends StatelessWidget {
                   ),
                 ),
                 placeholder: (context, url) => const Center(
-                  child: Loading(),
+                  child: DetailsReviewsCustomPersonPhotoSkeletonizer(),
                 ),
               ),
             ),
           );
+  }
+}
+
+class DetailsReviewsCustomPersonPhotoSkeletonizer extends StatelessWidget {
+  const DetailsReviewsCustomPersonPhotoSkeletonizer({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Skeletonizer(
+      enabled: true,
+      child: SizedBox(
+        width: 80,
+        height: 80,
+        child: ClipRRect(
+            borderRadius: BorderRadius.circular(50),
+            child: Image.asset(
+              'assets/images/movie_welcome_screen_bg.jpg',
+              fit: BoxFit.cover,
+            )),
+      ),
+    );
   }
 }
 
@@ -117,7 +139,7 @@ class DetailsReviewsCustomPersonPhoto extends StatelessWidget {
             ),
           ),
           placeholder: (context, url) => const Center(
-            child: Loading(),
+            child: DetailsReviewsCustomPersonPhotoSkeletonizer(),
           ),
         ),
       ),

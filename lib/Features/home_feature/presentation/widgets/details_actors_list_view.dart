@@ -14,30 +14,33 @@ class ActorsListView extends StatelessWidget {
     return BlocBuilder<CastCubit, CastState>(
       builder: (context, state) {
         if (state is CastSuccess) {
-          return Padding(
-            padding: const EdgeInsets.only(left: 15, top: 5),
-            child: SizedBox(
-              height: state.castsModel!.isNotEmpty ? 140 : 0,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: state.castsModel!.length,
-                itemBuilder: (context, index) {
-                  if (state.castsModel!.isNotEmpty) {
+          if (state.castsModel!.isNotEmpty) {
+            return Padding(
+              padding: const EdgeInsets.only(left: 15, top: 5),
+              child: SizedBox(
+                height: state.castsModel!.isNotEmpty ? 140 : 0,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: state.castsModel!.length,
+                  itemBuilder: (context, index) {
                     return ActorsItem(
                       castsModel: state.castsModel![index],
                     );
-                  } else {
-                    return const Center(
-                      child: Text(
-                        'Sorry ,No Reviews For This',
-                        style: Styles.styleText18,
-                      ),
-                    );
-                  }
-                },
+                  },
+                ),
               ),
-            ),
-          );
+            );
+          } else {
+            return const Center(
+              child: Padding(
+                padding: EdgeInsets.all(22),
+                child: Text(
+                  'Sorry ,No Cast For This',
+                  style: Styles.styleText22,
+                ),
+              ),
+            );
+          }
         } else if (state is CastFailure) {
           return const CustomErrorFailure();
         } else {
