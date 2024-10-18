@@ -6,6 +6,7 @@ import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_sh
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/core/utils/styles.dart';
+import 'package:skeletonizer/skeletonizer.dart';
 
 class CustomPoster extends StatelessWidget {
   const CustomPoster({
@@ -38,21 +39,20 @@ class CustomPoster extends StatelessWidget {
                   child: AspectRatio(
                     aspectRatio: 2.8 / 3.5,
                     child: CachedNetworkImage(
-                      fit: BoxFit.cover,
-                      imageUrl: movieModel!.posterPath != null
-                          ? '$image${movieModel!.posterPath}'
-                          : "",
-                      errorWidget: (context, url, error) => Center(
-                        child: Text(
-                          "${movieModel?.title}",
-                          style:
-                              Styles.styleText18.copyWith(color: Colors.white),
-                        ),
-                      ),
-                      placeholder: (context, url) => const Center(
-                        child: CustomCircularLoading(),
-                      ),
-                    ),
+                        fit: BoxFit.cover,
+                        imageUrl: movieModel!.posterPath != null
+                            ? '$image${movieModel!.posterPath}'
+                            : "",
+                        errorWidget: (context, url, error) => Center(
+                              child: Text(
+                                "${movieModel?.title}",
+                                style: Styles.styleText18
+                                    .copyWith(color: Colors.white),
+                              ),
+                            ),
+                        placeholder: (context, url) {
+                          return const ImagePlaceholderSkeletonizer();
+                        }),
                   ),
                 ),
               ),
@@ -143,5 +143,32 @@ class CustomPoster extends StatelessWidget {
                       : Container(),
                 ],
               );
+  }
+}
+
+class ImagePlaceholderSkeletonizer extends StatelessWidget {
+  const ImagePlaceholderSkeletonizer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Skeletonizer(
+      enabled: true,
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height * 0.13,
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(16),
+          child: AspectRatio(
+            aspectRatio: 2.8 / 3.5,
+            child: Container(
+              width: 50,
+              height: 50,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

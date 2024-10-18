@@ -14,6 +14,7 @@ import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/shared_preference.dart';
 import 'package:movie_app/core/utils/styles.dart';
+import 'package:movie_app/core/widgets/show_snack_bar.dart';
 
 class NowPlayingItem extends StatefulWidget {
   const NowPlayingItem(
@@ -50,7 +51,6 @@ class _NowPlayingItemState extends State<NowPlayingItem> {
                       movieModel: widget.movieModel!,
                       isBookmarked: savedMovies.contains(widget.movieModel!.id),
                       onPressed: () {
-                        // print(widget.movieModel!.id);
                         if (savedMovies.contains(widget.movieModel!.id)) {
                           Map<String, dynamic> body = {
                             'media_id': widget.movieModel!.id,
@@ -64,7 +64,8 @@ class _NowPlayingItemState extends State<NowPlayingItem> {
                           saveItems();
                           BlocProvider.of<SavedCubit>(context).fetchFavList();
 
-                          print('${widget.movieModel!.id} removed');
+                          showSnackBar(context,
+                              '${widget.movieModel!.title} removed from Favorite');
                           setState(() {});
                         } else {
                           Map<String, dynamic> body = {
@@ -79,7 +80,8 @@ class _NowPlayingItemState extends State<NowPlayingItem> {
                           saveItems();
                           BlocProvider.of<SavedCubit>(context).fetchFavList();
 
-                          print('${widget.movieModel!.id} added');
+                          showSnackBar(context,
+                              '${widget.movieModel!.title} added To Favorite');
                           setState(() {});
                         }
                       },
@@ -153,7 +155,8 @@ class _NowPlayingItemState extends State<NowPlayingItem> {
                               BlocProvider.of<SavedCubit>(context)
                                   .fetchFavList();
 
-                              print('${widget.tvShowsModel!.id} removed');
+                              showSnackBar(context,
+                                  '${widget.tvShowsModel!.name} removed from Favorite');
                               setState(() {});
                             } else {
                               Map<String, dynamic> body = {
@@ -170,7 +173,8 @@ class _NowPlayingItemState extends State<NowPlayingItem> {
                               BlocProvider.of<SavedCubit>(context)
                                   .fetchFavList();
 
-                              print('${widget.tvShowsModel!.id} added');
+                              showSnackBar(context,
+                                  '${widget.tvShowsModel!.name} added to Favorite');
                               setState(() {});
                             }
                           },
@@ -246,7 +250,8 @@ class _NowPlayingItemState extends State<NowPlayingItem> {
                               BlocProvider.of<SavedCubit>(context)
                                   .fetchFavList();
 
-                              print('${widget.actorCredits!.id} removed');
+                              showSnackBar(context,
+                                  '${widget.actorCredits!.name ?? widget.actorCredits!.title} removed from Favorite');
                               setState(() {});
                             } else {
                               Map<String, dynamic> body = {
@@ -266,7 +271,8 @@ class _NowPlayingItemState extends State<NowPlayingItem> {
                               BlocProvider.of<SavedCubit>(context)
                                   .fetchFavList();
 
-                              print('${widget.actorCredits!.id} added');
+                              showSnackBar(context,
+                                  '${widget.actorCredits!.name ?? widget.actorCredits!.title} added to Favorite');
                               setState(() {});
                             }
                           },

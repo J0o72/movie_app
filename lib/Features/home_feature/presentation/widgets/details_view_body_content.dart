@@ -15,6 +15,7 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/details_vie
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/shared_preference.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
+import 'package:movie_app/core/widgets/show_snack_bar.dart';
 
 class DetailsViewBodyContent extends StatefulWidget {
   const DetailsViewBodyContent(
@@ -89,7 +90,8 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
 
                                 savedMovies.remove(state.detailsModel!.id);
                                 saveItems();
-                                print('${state.detailsModel!.id} removed');
+                                showSnackBar(context,
+                                    '${state.detailsModel!.title} removed from Favorite');
                                 setState(() {});
                               } else {
                                 Map<String, dynamic> body = {
@@ -104,7 +106,8 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
 
                                 savedMovies.add(state.detailsModel!.id!);
                                 saveItems();
-                                print('${state.detailsModel!.id} added');
+                                showSnackBar(context,
+                                    '${state.detailsModel!.title} added to Favorite');
                                 setState(() {});
                               }
                             },
@@ -167,8 +170,8 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
                                     .remove(state.tvShowsDetailsModel!.id);
                                 saveItems();
 
-                                print(
-                                    '${state.tvShowsDetailsModel!.id} removed');
+                                showSnackBar(context,
+                                    '${state.tvShowsDetailsModel!.name} removed from Favorite');
                                 setState(() {});
                               } else {
                                 Map<String, dynamic> body = {
@@ -184,8 +187,8 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
                                 savedTvShows
                                     .add(state.tvShowsDetailsModel!.id!);
                                 saveItems();
-
-                                print('${state.tvShowsDetailsModel!.id} added');
+                                showSnackBar(context,
+                                    '${state.tvShowsDetailsModel!.name} added to Favorite');
                                 setState(() {});
                               }
                             },
@@ -216,7 +219,6 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
             );
           }
         } else if (state is DetailsFailure) {
-          print(state.errorMessage);
           return const CustomErrorFailure();
         } else {
           return const CustomCircularLoading();

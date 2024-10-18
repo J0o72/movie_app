@@ -9,6 +9,7 @@ import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/shared_preference.dart';
 import 'package:movie_app/core/utils/styles.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
+import 'package:movie_app/core/widgets/show_snack_bar.dart';
 
 class SavedListView extends StatefulWidget {
   const SavedListView({super.key});
@@ -42,12 +43,14 @@ class _SavedListViewState extends State<SavedListView> {
                         removeSavedItem(state, index, context,
                             mediaType: 'movie', savedItems: savedMovies);
 
-                        print('${state.favList[index].id} removed');
+                        showSnackBar(context,
+                            '${state.favList[index].title} removed from Favorite');
                       } else {
                         removeSavedItem(state, index, context,
                             mediaType: 'tv', savedItems: savedTvShows);
 
-                        print('${state.favList[index].id} removed');
+                        showSnackBar(context,
+                            '${state.favList[index].name} removed from Favorite');
                       }
                     });
                   },
