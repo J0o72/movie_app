@@ -46,8 +46,9 @@ class _MovieCustomImageCarouselItemState
               width: MediaQuery.of(context).size.width * 0.8,
               height: MediaQuery.of(context).size.height * 0.4,
               errorWidget: (context, url, error) => const Icon(Icons.error),
-              placeholder: (context, url) =>
-                  const ImagePlaceholderSkeletonizer(),
+              placeholder: (context, url) => ImagePlaceholderSkeletonizer(
+                height: MediaQuery.of(context).size.height * 0.13,
+              ),
               imageUrl: "$imageUrl${widget.movie.posterPath}",
             ),
           ),

@@ -51,7 +51,9 @@ class CustomPoster extends StatelessWidget {
                               ),
                             ),
                         placeholder: (context, url) {
-                          return const ImagePlaceholderSkeletonizer();
+                          return ImagePlaceholderSkeletonizer(
+                            height: MediaQuery.of(context).size.height * 0.13,
+                          );
                         }),
                   ),
                 ),
@@ -149,14 +151,17 @@ class CustomPoster extends StatelessWidget {
 class ImagePlaceholderSkeletonizer extends StatelessWidget {
   const ImagePlaceholderSkeletonizer({
     super.key,
+    required this.height,
   });
+
+  final double height;
 
   @override
   Widget build(BuildContext context) {
     return Skeletonizer(
       enabled: true,
       child: SizedBox(
-        height: MediaQuery.of(context).size.height * 0.13,
+        height: height,
         child: ClipRRect(
           borderRadius: BorderRadius.circular(16),
           child: AspectRatio(

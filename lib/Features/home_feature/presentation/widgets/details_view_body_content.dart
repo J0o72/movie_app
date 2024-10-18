@@ -9,12 +9,12 @@ import 'package:movie_app/Features/home_feature/presentation/manager/saved_cubit
 import 'package:movie_app/Features/home_feature/presentation/manager/similar_cubit/similar_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_back_arrow_icon.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_custom_poster.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_view_body_information.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/shared_preference.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
+import 'package:movie_app/core/widgets/loading.dart';
 import 'package:movie_app/core/widgets/show_snack_bar.dart';
 
 class DetailsViewBodyContent extends StatefulWidget {
@@ -75,7 +75,6 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
                             isBookmarked:
                                 savedMovies.contains(state.detailsModel!.id),
                             onPressed: () {
-                              // print(widget.movieModel!.id);
                               if (savedMovies
                                   .contains(state.detailsModel!.id)) {
                                 Map<String, dynamic> body = {
@@ -221,7 +220,7 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
         } else if (state is DetailsFailure) {
           return const CustomErrorFailure();
         } else {
-          return const CustomCircularLoading();
+          return const Loading();
         }
       },
     );
