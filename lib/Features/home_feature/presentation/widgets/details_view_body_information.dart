@@ -234,37 +234,59 @@ class DetailsSimilarListView extends StatelessWidget {
       builder: (context, state) {
         if (state is SimilarSuccess) {
           if (state.similartMovies != null) {
-            return SizedBox(
-              height: state.similartMovies!.isNotEmpty ? 300 : 0,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: state.similartMovies!.length,
-                  itemBuilder: (context, index) {
-                    return NowPlayingItem(
-                      movieModel: state.similartMovies![index],
-                    );
-                  },
+            if (state.similartMovies!.isNotEmpty) {
+              return SizedBox(
+                height: state.similartMovies!.isNotEmpty ? 300 : 0,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: state.similartMovies!.length,
+                    itemBuilder: (context, index) {
+                      return NowPlayingItem(
+                        movieModel: state.similartMovies![index],
+                      );
+                    },
+                  ),
                 ),
-              ),
-            );
+              );
+            } else {
+              return const Padding(
+                padding: EdgeInsets.all(22),
+                child: Center(
+                    child: Text(
+                  'Sorry, No More Like This',
+                  style: Styles.styleText20,
+                )),
+              );
+            }
           } else {
-            return SizedBox(
-              height: state.similartTv!.isNotEmpty ? 300 : 0,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: state.similartTv!.length,
-                  itemBuilder: (context, index) {
-                    return NowPlayingItem(
-                      tvShowsModel: state.similartTv![index],
-                    );
-                  },
+            if (state.similartTv!.isNotEmpty) {
+              return SizedBox(
+                height: state.similartTv!.isNotEmpty ? 300 : 0,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: state.similartTv!.length,
+                    itemBuilder: (context, index) {
+                      return NowPlayingItem(
+                        tvShowsModel: state.similartTv![index],
+                      );
+                    },
+                  ),
                 ),
-              ),
-            );
+              );
+            } else {
+              return const Padding(
+                padding: EdgeInsets.all(22),
+                child: Center(
+                    child: Text(
+                  'Sorry, No More Like This',
+                  style: Styles.styleText20,
+                )),
+              );
+            }
           }
         } else if (state is DetailsFailure) {
           return const CustomErrorFailure();

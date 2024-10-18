@@ -5,7 +5,6 @@ import 'package:movie_app/Features/home_feature/data/models/details_model/casts_
 import 'package:movie_app/Features/home_feature/data/models/details_model/reviews_model/result.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/styles.dart';
-import 'package:movie_app/core/widgets/loading.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
 class DetailsCustomPersonPhoto extends StatelessWidget {
