@@ -78,3 +78,40 @@ class DetailsRating extends StatelessWidget {
           );
   }
 }
+
+// class DetailsRatingSkeletonizer extends StatelessWidget {
+//   const DetailsRatingSkeletonizer({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Row(
+//       children: [
+//         const Icon(
+//           Icons.star_rate_rounded,
+//           size: 45,
+//           color: Colors.yellow,
+//         ),
+//         const SizedBox(
+//           width: 1,
+//         ),
+//         Column(
+//           children: [
+//             const Text(
+//               "Rating",
+//               style: Styles.styleText16,
+//             ),
+//             Row(
+//               children: [
+//                 Text(
+//                   '9.9/10'.toString().substring(0, 3),
+//                   style: Styles.styleText20,
+//                 ),
+//                 const Text("/10")
+//               ],
+//             ),
+//           ],
+//         )
+//       ],
+//     );
+//   }
+// }
