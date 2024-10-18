@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/Features/home_feature/data/models/actor_model/actor_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/casts_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/reviews_model/result.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/custom_circular_loading.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/styles.dart';
+import 'package:movie_app/core/widgets/loading.dart';
 
 class DetailsCustomPersonPhoto extends StatelessWidget {
   const DetailsCustomPersonPhoto({
@@ -47,7 +47,7 @@ class DetailsCustomPersonPhoto extends StatelessWidget {
                   ),
                 ),
                 placeholder: (context, url) => const Center(
-                  child: CustomCircularLoading(),
+                  child: Loading(),
                 ),
               ),
             ),
@@ -73,7 +73,7 @@ class DetailsCustomPersonPhoto extends StatelessWidget {
                   ),
                 ),
                 placeholder: (context, url) => const Center(
-                  child: CustomCircularLoading(),
+                  child: Loading(),
                 ),
               ),
             ),
@@ -117,7 +117,7 @@ class DetailsReviewsCustomPersonPhoto extends StatelessWidget {
             ),
           ),
           placeholder: (context, url) => const Center(
-            child: CustomCircularLoading(),
+            child: Loading(),
           ),
         ),
       ),
