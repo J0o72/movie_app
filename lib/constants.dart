@@ -50,9 +50,11 @@ List<Widget> pages = [
 List<String> categoriesName = [
   'Arabic',
   'Turky',
-  'Asian',
   'English',
   'Indian',
+  'Spain',
+  'Chine',
+  'Korean',
 ];
 
 List<int> savedMovies = [];
