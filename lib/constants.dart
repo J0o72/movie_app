@@ -47,6 +47,14 @@ List<Widget> pages = [
   const CategoriesView(),
 ];
 
+List<String> categoriesName = [
+  'Arabic',
+  'Turky',
+  'Asian',
+  'English',
+  'Indian',
+];
+
 List<int> savedMovies = [];
 List<int> savedTvShows = [];
 
