@@ -55,6 +55,26 @@ List<String> categoriesName = [
   'Spain',
   'Chine',
   'Korean',
+  '',
+  '',
+  '',
+  '',
+  '',
+];
+
+List<String> categoriesNetworksLogo = [
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  '',
+  'https://m.media-amazon.com/images/G/01/digital/video/acquisition/web_footer_logo._CB462908456_.png',
+  'https://i.ytimg.com/vi/k9-O5j6qvZo/maxresdefault.jpg',
+  'https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940',
+  'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKWvTBRoPPPWRqEhiP3PK_fvawaL2_3MI1Cg&s',
+  'https://lh3.googleusercontent.com/proxy/2RfjsChxnqzEbOPgHvJZO2iHXqMlSPXj3aHmAp7LkHeUVEoV2_lQz-XmkPPQD3s0XSPJV_8NPvWE05UYW16438s90v4ZSFkP3n7ePrBfT6wT2Y8hn2Qiz2atZlzBxcxiJLTCEtZ5plPbwagZoEVkmggj4ORCrw41jGeBU3r1E32vzRsBWR25p5wmJ57dNyRZ10XWkPJ0MrDUsnIigDwNyINSYCbD2nRpA8-aJojx5w',
 ];
 
 List<int> savedMovies = [];

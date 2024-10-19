@@ -3,10 +3,14 @@ import 'package:movie_app/core/utils/styles.dart';
 
 class CategoriesGridViewItem extends StatelessWidget {
   const CategoriesGridViewItem(
-      {super.key, required this.categoryName, required this.categoryColor});
+      {super.key,
+      required this.categoryName,
+      required this.categoryColor,
+      required this.categoryImage});
 
   final String categoryName;
   final Color categoryColor;
+  final String categoryImage;
 
   @override
   Widget build(BuildContext context) {
@@ -22,10 +26,17 @@ class CategoriesGridViewItem extends StatelessWidget {
       child: Container(
         width: 200,
         height: 200,
-        decoration: BoxDecoration(
-          color: categoryColor,
-          borderRadius: BorderRadius.circular(16),
-        ),
+        decoration: categoryImage == ''
+            ? BoxDecoration(
+                color: categoryColor,
+                borderRadius: BorderRadius.circular(16),
+              )
+            : BoxDecoration(
+                borderRadius: BorderRadius.circular(16),
+                image: DecorationImage(
+                  image: NetworkImage(categoryImage),
+                  fit: BoxFit.contain,
+                )),
         child: Center(
           child: Text(
             textAlign: TextAlign.center,

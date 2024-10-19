@@ -20,6 +20,7 @@ class CategoriesGridView extends StatelessWidget {
           return CategoriesGridViewItem(
             categoryName: categoriesName[index],
             categoryColor: genreColor[index],
+            categoryImage: categoriesNetworksLogo[index],
           );
         },
       ),
