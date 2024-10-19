@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/Features/categories_feature/presentation/views/categories_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/saved_view.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/page_with_tab_bar.dart';
 import 'package:movie_app/Features/search_feature/presentation/views/search_view.dart';
@@ -43,7 +44,7 @@ List<Widget> pages = [
   const PageWithTabBarView(),
   const SearchView(),
   const SavedView(),
-  const Center(child: Text('Page 4')),
+  const CategoriesView(),
 ];
 
 List<int> savedMovies = [];
