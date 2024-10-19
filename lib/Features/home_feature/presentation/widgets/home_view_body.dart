@@ -62,8 +62,8 @@ class _HomeViewBodyState extends State<HomeViewBody> {
           icon: Icon(Icons.bookmark_border),
         ),
         BottomNavigationBarItem(
-          label: "Me",
-          icon: Icon(Icons.person),
+          label: "Categories",
+          icon: Icon(Icons.grid_view_rounded),
         ),
       ],
     );
