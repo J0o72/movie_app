@@ -82,11 +82,10 @@ class TvShowsTabContentView extends StatelessWidget {
         ),
         const TopRatingTvShowsListView(),
         CustomRow(
-          leftText: "Airing Today",
+          leftText: "Popular",
           onTap: () {
             CollectionModel collectionModel = CollectionModel(
-                collectionName: 'airing_today',
-                collectionTitle: 'Airing Today');
+                collectionName: 'popular', collectionTitle: 'Popular');
             GoRouter.of(context)
                 .push(AppRouter.kMovieCollevionView, extra: collectionModel);
           },

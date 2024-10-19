@@ -29,9 +29,8 @@ class _MovieCollectionGridViewState extends State<MovieCollectionGridView> {
     } else if (widget.fromWhere == 'upcoming') {
       BlocProvider.of<CollectionsCubit>(context)
           .fetchComingSoonMoviesCollection();
-    } else if (widget.fromWhere == 'airing_today') {
-      BlocProvider.of<CollectionsCubit>(context)
-          .fetchTVShowsCollectionOf(collectionOf: widget.fromWhere);
+    } else if (widget.fromWhere == 'popular') {
+      BlocProvider.of<CollectionsCubit>(context).fetchPopularTv();
     } else if (widget.fromWhere == 'on_the_air') {
       BlocProvider.of<CollectionsCubit>(context)
           .fetchTVShowsCollectionOf(collectionOf: widget.fromWhere);
@@ -68,7 +67,7 @@ class _MovieCollectionGridViewState extends State<MovieCollectionGridView> {
       builder: (context, state) {
         if (state is CollectionsSuccess) {
           return Padding(
-            padding: const EdgeInsets.only(left: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
             child: GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 3,
@@ -110,7 +109,7 @@ class MovieCollectionGridViewSkeletonizer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      padding: const EdgeInsets.only(left: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 3,
         crossAxisSpacing: 10,

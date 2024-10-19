@@ -205,4 +205,28 @@ class CollectionsRepoImpl implements CollectionsRepo {
       }
     }
   }
+
+  @override
+  Future<Either<Failure, List<TvShowsModel>>> fetchPopularTvCollection() async {
+    try {
+      List<TvShowsModel> popularTvShows = [];
+      for (int i = 1; i <= 10; i++) {
+        var data = await apiService.get(
+            endPoint:
+                'discover/tv?first_air_date.gte=2024-01-01&include_adult=false&include_null_first_air_dates=false&language=en-US&page=$i&sort_by=popularity.desc&without_genres=37%7C10763%7C10762%7C10766%7C10767%7C10751%7C35');
+
+        for (var item in data['results']) {
+          popularTvShows.add(TvShowsModel.fromJson(item));
+        }
+      }
+
+      return right(popularTvShows);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
 }

@@ -74,7 +74,8 @@ class TVShowsRepoImpl implements TVShowsRepo {
   Future<Either<Failure, List<TvShowsModel>>> fetchAiringTodayTVShows() async {
     try {
       var data = await apiService.get(
-          endPoint: 'tv/airing_today?language=en-US&page=1');
+          endPoint:
+              'discover/tv?first_air_date.gte=2024-01-01&include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&without_genres=37%7C10763%7C10762%7C10766%7C10767%7C10751%7C35');
 
       List<TvShowsModel> airingTodayTVShows = [];
       for (var item in data['results']) {

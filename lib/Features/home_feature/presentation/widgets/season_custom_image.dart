@@ -50,7 +50,7 @@ class SeasonsCutomImage extends StatelessWidget {
                   ),
                   placeholder: (context, url) => const Center(
                     child: ImagePlaceholderSkeletonizer(
-                      height: 250,
+                      height: 200,
                     ),
                   ),
                 ),

@@ -142,4 +142,20 @@ class CollectionsCubit extends Cubit<CollectionsState> {
       );
     });
   }
+
+  Future<void> fetchPopularTv() async {
+    emit(CollectionsLoading());
+
+    var result = await collectionsRepo.fetchPopularTvCollection();
+
+    result.fold((failure) {
+      emit(
+        CollectionsFailure(errorMessage: failure.errMessage),
+      );
+    }, (popularCollections) {
+      emit(
+        CollectionsSuccess(tvCollection: popularCollections),
+      );
+    });
+  }
 }
