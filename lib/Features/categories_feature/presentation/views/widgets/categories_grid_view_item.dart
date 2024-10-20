@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/Features/categories_feature/data/models/category_item.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class CategoriesGridViewItem extends StatelessWidget {
-  const CategoriesGridViewItem(
-      {super.key,
-      required this.categoryName,
-      required this.categoryColor,
-      required this.categoryImage});
+  const CategoriesGridViewItem({
+    super.key,
+    required this.categoryItem,
+    required this.categoryColor,
+  });
 
-  final String categoryName;
+  final CategoryItem categoryItem;
   final Color categoryColor;
-  final String categoryImage;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class CategoriesGridViewItem extends StatelessWidget {
       child: Container(
         width: 200,
         height: 200,
-        decoration: categoryImage == ''
+        decoration: categoryItem.image == null
             ? BoxDecoration(
                 color: categoryColor,
                 borderRadius: BorderRadius.circular(16),
@@ -34,13 +34,13 @@ class CategoriesGridViewItem extends StatelessWidget {
             : BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 image: DecorationImage(
-                  image: NetworkImage(categoryImage),
+                  image: NetworkImage(categoryItem.image!),
                   fit: BoxFit.contain,
                 )),
         child: Center(
           child: Text(
             textAlign: TextAlign.center,
-            categoryName,
+            categoryItem.name ?? '',
             style: Styles.styleText28,
           ),
         ),

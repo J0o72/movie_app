@@ -15,12 +15,11 @@ class CategoriesGridView extends StatelessWidget {
           mainAxisSpacing: 8,
           crossAxisSpacing: 8,
         ),
-        itemCount: categoriesName.length,
+        itemCount: categoryItem.length,
         itemBuilder: (context, index) {
           return CategoriesGridViewItem(
-            categoryName: categoriesName[index],
+            categoryItem: categoryItem[index],
             categoryColor: genreColor[index],
-            categoryImage: categoriesNetworksLogo[index],
           );
         },
       ),
