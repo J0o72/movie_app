@@ -18,8 +18,13 @@ class MovieCollecionViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => CollectionsCubit(getIt.get<CollectionsRepoImpl>()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              CollectionsCubit(getIt.get<CollectionsRepoImpl>()),
+        ),
+      ],
       child: Scaffold(
         appBar: AppBar(
           title: Text(

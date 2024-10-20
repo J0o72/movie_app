@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:movie_app/Features/categories_feature/data/models/category_item.dart';
+import 'package:movie_app/core/utils/app_routes.dart';
+import 'package:movie_app/core/utils/collection_model.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class CategoriesGridViewItem extends StatelessWidget {
@@ -16,12 +19,12 @@ class CategoriesGridViewItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        // CollectionModel collectionModel = CollectionModel(
-        //     collectionName: fromWhere,
-        //     collectionTitle: genre.name!,
-        //     id: genre.id.toString());
-        // GoRouter.of(context)
-        //     .push(AppRouter.kMovieCollevionView, extra: collectionModel);
+        CollectionModel collectionModel = CollectionModel(
+            collectionName: categoryItem.name!,
+            collectionTitle: categoryItem.name!,
+            id: categoryItem.searchKey);
+        GoRouter.of(context)
+            .push(AppRouter.kMovieCollevionView, extra: collectionModel);
       },
       child: Container(
         width: 200,
@@ -38,11 +41,13 @@ class CategoriesGridViewItem extends StatelessWidget {
                   fit: BoxFit.contain,
                 )),
         child: Center(
-          child: Text(
-            textAlign: TextAlign.center,
-            categoryItem.name ?? '',
-            style: Styles.styleText28,
-          ),
+          child: categoryItem.image == null
+              ? Text(
+                  textAlign: TextAlign.center,
+                  categoryItem.name!,
+                  style: Styles.styleText28,
+                )
+              : Container(),
         ),
       ),
     );
