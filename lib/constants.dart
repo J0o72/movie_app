@@ -60,6 +60,8 @@ List<String> categoriesName = [
   '',
   '',
   '',
+  '',
+  '',
 ];
 
 List<String> categoriesNetworksLogo = [
@@ -70,6 +72,8 @@ List<String> categoriesNetworksLogo = [
   '',
   '',
   '',
+  'https://www.cmosmagazine.com/wp-content/uploads/2022/03/WATCH-IT-VOD-Platform.jpg',
+  'https://wecima.movie/wp-content/uploads/2020/10/warner_bros_logo.jpg',
   'https://m.media-amazon.com/images/G/01/digital/video/acquisition/web_footer_logo._CB462908456_.png',
   'https://i.ytimg.com/vi/k9-O5j6qvZo/maxresdefault.jpg',
   'https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940',

@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
+import 'package:movie_app/Features/categories_feature/data/repos/category_repo_impl.dart';
 import 'package:movie_app/Features/home_feature/data/repos/actor_repo/actor_repo_impl.dart';
 import 'package:movie_app/Features/home_feature/data/repos/collections_repo/collections_repo_impl.dart';
 import 'package:movie_app/Features/home_feature/data/repos/details_repo/details_repo_impl.dart';
@@ -66,6 +67,12 @@ void setupServerLocator() {
 
   getIt.registerSingleton<SeasonRepoImpl>(
     SeasonRepoImpl(
+      getIt.get<ApiService>(),
+    ),
+  );
+
+  getIt.registerSingleton<CategoryRepoImpl>(
+    CategoryRepoImpl(
       getIt.get<ApiService>(),
     ),
   );

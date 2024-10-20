@@ -5,4 +5,8 @@ import 'package:movie_app/core/errors/failure.dart';
 abstract class CategoryRepo {
   Future<Either<Failure, List<CategoryModel>>> fetchCategoryByOriginalLanguage(
       {required String originalLanguage});
+  Future<Either<Failure, List<CategoryModel>>> fetchCategoryByCompany(
+      {required String companyID});
+  Future<Either<Failure, List<CategoryModel>>> fetchCategoryByNetwork(
+      {required String networkID});
 }

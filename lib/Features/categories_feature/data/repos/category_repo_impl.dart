@@ -56,4 +56,82 @@ class CategoryRepoImpl implements CategoryRepo {
       }
     }
   }
+
+  @override
+  Future<Either<Failure, List<CategoryModel>>> fetchCategoryByCompany(
+      {required String companyID}) async {
+    List<CategoryModel> collections = [];
+
+    try {
+      var dataTv = await apiService.get(
+          endPoint:
+              'discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_companies=$companyID');
+
+      for (int i = 1;
+          i <= (dataTv['total_pages'] >= 5) ? 5 : dataTv['total_pages'];
+          i++) {
+        var data = await apiService.get(
+            endPoint:
+                'discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=$i&sort_by=popularity.desc&with_companies=$companyID');
+        for (var item in data['results']) {
+          collections.add(CategoryModel.fromJson(item));
+        }
+      }
+
+      var dataMovie = await apiService.get(
+          endPoint:
+              'discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_companies=$companyID');
+
+      for (int i = 1;
+          i <= (dataMovie['total_pages'] >= 5) ? 5 : dataMovie['total_pages'];
+          i++) {
+        var data = await apiService.get(
+            endPoint:
+                'discover/movie?include_adult=false&include_video=false&language=en-US&page=$i&sort_by=popularity.desc&with_companies=$companyID');
+        for (var item in data['results']) {
+          collections.add(CategoryModel.fromJson(item));
+        }
+      }
+
+      collections.shuffle();
+      return right(collections);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<CategoryModel>>> fetchCategoryByNetwork(
+      {required String networkID}) async {
+    List<CategoryModel> collections = [];
+
+    try {
+      var dataTv = await apiService.get(
+          endPoint:
+              'discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_networks=$networkID');
+
+      for (int i = 1;
+          i <= (dataTv['total_pages'] >= 5) ? 5 : dataTv['total_pages'];
+          i++) {
+        var data = await apiService.get(
+            endPoint:
+                'discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=$i&sort_by=popularity.desc&with_networks=$networkID');
+        for (var item in data['results']) {
+          collections.add(CategoryModel.fromJson(item));
+        }
+      }
+
+      return right(collections);
+    } catch (e) {
+      if (e is DioException) {
+        return left(ServerFailure.fromDioError(e));
+      } else {
+        return left(ServerFailure(e.toString()));
+      }
+    }
+  }
 }
