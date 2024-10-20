@@ -4,13 +4,14 @@ import 'package:movie_app/Features/home_feature/data/models/episode_model/episod
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/season_episode_rating.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/season_episodes_image_title.dart';
-import 'package:movie_app/core/utils/styles.dart';
 
 class SeasonEpisodeCustomImage extends StatelessWidget {
-  const SeasonEpisodeCustomImage({super.key, required this.episodeModel});
+  const SeasonEpisodeCustomImage(
+      {super.key, required this.episodeModel, this.seriesPoster});
 
   final String image = "https://image.tmdb.org/t/p/original";
   final EpisodeModel episodeModel;
+  final String? seriesPoster;
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +27,7 @@ class SeasonEpisodeCustomImage extends StatelessWidget {
                 fit: BoxFit.cover,
                 imageUrl: episodeModel.stillPath != null
                     ? '$image${episodeModel.stillPath}'
-                    : '',
-                errorWidget: (context, url, error) => Center(
-                  child: Text(
-                    "${episodeModel.name}",
-                    style: Styles.styleText18.copyWith(color: Colors.white),
-                  ),
-                ),
+                    : '$image' '$seriesPoster',
                 placeholder: (context, url) => const Center(
                   child: ImagePlaceholderSkeletonizer(
                     height: 180,

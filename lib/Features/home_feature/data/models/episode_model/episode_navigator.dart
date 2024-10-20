@@ -1,5 +1,7 @@
 class EpisodeNavigatorHepler {
   final num seriesId, seasonNumber;
+  final String? seriesPoster;
 
-  EpisodeNavigatorHepler({required this.seriesId, required this.seasonNumber});
+  EpisodeNavigatorHepler(
+      {this.seriesPoster, required this.seriesId, required this.seasonNumber});
 }

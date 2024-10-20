@@ -25,7 +25,9 @@ class SeasonsCutomImage extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         EpisodeNavigatorHepler episodeNavigatorHepler = EpisodeNavigatorHepler(
-            seriesId: seriesId, seasonNumber: seasonModel.seasonNumber!);
+            seriesId: seriesId,
+            seasonNumber: seasonModel.seasonNumber!,
+            seriesPoster: seasonModel.posterPath);
         GoRouter.of(context)
             .push(AppRouter.kSeasonEpisodesView, extra: episodeNavigatorHepler);
       },

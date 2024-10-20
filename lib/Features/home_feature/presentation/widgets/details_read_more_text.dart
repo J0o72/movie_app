@@ -23,33 +23,35 @@ class _ReadMoreTextState extends State<ReadMoreText> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            style: Styles.styleText16,
-            widget.text,
-            maxLines: isExpanded ? null : widget.maxLines,
-            overflow: TextOverflow.fade,
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              TextButton(
-                style: ButtonStyle(
-                  padding: MaterialStateProperty.all(EdgeInsets.zero),
-                  alignment: Alignment.topCenter,
+      child: widget.text != ''
+          ? Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  style: Styles.styleText16,
+                  widget.text,
+                  maxLines: isExpanded ? null : widget.maxLines,
+                  overflow: TextOverflow.fade,
                 ),
-                onPressed: toggleExpanded,
-                child: Text(
-                  isExpanded ? 'Read Less' : 'Read More',
-                  style: const TextStyle(color: Colors.blue),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                      style: ButtonStyle(
+                        padding: MaterialStateProperty.all(EdgeInsets.zero),
+                        alignment: Alignment.topCenter,
+                      ),
+                      onPressed: toggleExpanded,
+                      child: Text(
+                        isExpanded ? 'Read Less' : 'Read More',
+                        style: const TextStyle(color: Colors.blue),
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-            ],
-          ),
-        ],
-      ),
+              ],
+            )
+          : Container(),
     );
   }
 }

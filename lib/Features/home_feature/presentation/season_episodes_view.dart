@@ -13,6 +13,7 @@ class SeasonEpisodeView extends StatelessWidget {
       child: SeasonEpisodeViewBody(
         seasonId: episodeNavigatorHepler.seriesId,
         seasonNumber: episodeNavigatorHepler.seasonNumber,
+        seriesPoster: episodeNavigatorHepler.seriesPoster,
       ),
     );
   }

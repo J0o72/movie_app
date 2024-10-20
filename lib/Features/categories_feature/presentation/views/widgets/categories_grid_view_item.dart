@@ -24,7 +24,7 @@ class CategoriesGridViewItem extends StatelessWidget {
             collectionTitle: categoryItem.name!,
             id: categoryItem.searchKey);
         GoRouter.of(context)
-            .push(AppRouter.kMovieCollevionView, extra: collectionModel);
+            .push(AppRouter.kCategoryResultsView, extra: collectionModel);
       },
       child: Container(
         width: 200,
@@ -37,7 +37,7 @@ class CategoriesGridViewItem extends StatelessWidget {
             : BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 image: DecorationImage(
-                  image: NetworkImage(categoryItem.image!),
+                  image: AssetImage(categoryItem.image!),
                   fit: BoxFit.contain,
                 )),
         child: Center(

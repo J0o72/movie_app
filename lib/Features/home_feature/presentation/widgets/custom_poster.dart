@@ -4,6 +4,7 @@ import 'package:movie_app/Features/home_feature/data/models/actor_model/actor_kn
 import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_shows_model.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
+import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/styles.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
@@ -59,12 +60,18 @@ class CustomPoster extends StatelessWidget {
               ),
               isThereBookmark
                   ? CustomBookmarkIcon(
-                      rightPos: 5,
+                      rightPos: 10,
                       topPos: 5,
                       onPressed: onPressed,
                       isBookmarked: isBookmarked,
                     )
                   : Container(),
+              movieModel!.releaseDate != ''
+                  ? DateTime.parse(movieModel!.releaseDate!)
+                          .isAfter(DateTime.now())
+                      ? const IsComingSoon()
+                      : Container()
+                  : const IsComingSoon(),
             ],
           )
         : tvShowsModel != null
@@ -100,12 +107,18 @@ class CustomPoster extends StatelessWidget {
                   ),
                   isThereBookmark
                       ? CustomBookmarkIcon(
-                          rightPos: 5,
+                          rightPos: 10,
                           topPos: 5,
                           onPressed: onPressed,
                           isBookmarked: isBookmarked,
                         )
                       : Container(),
+                  tvShowsModel!.firstAirDate != ''
+                      ? DateTime.parse(tvShowsModel!.firstAirDate!)
+                              .isAfter(DateTime.now())
+                          ? const IsComingSoon()
+                          : Container()
+                      : const IsComingSoon(),
                 ],
               )
             : Stack(
@@ -124,7 +137,7 @@ class CustomPoster extends StatelessWidget {
                           errorWidget: (context, url, error) => Center(
                             child: Text(
                               textAlign: TextAlign.center,
-                              "${actorCredits?.originalTitle}",
+                              "${actorCredits?.originalTitle ?? actorCredits?.originalName}",
                               style: Styles.styleText18
                                   .copyWith(color: Colors.white),
                             ),
@@ -146,8 +159,48 @@ class CustomPoster extends StatelessWidget {
                           isBookmarked: isBookmarked,
                         )
                       : Container(),
+                  actorCredits!.releaseDate != null
+                      ? actorCredits!.releaseDate != ""
+                          ? DateTime.parse(actorCredits!.releaseDate!)
+                                  .isAfter(DateTime.now())
+                              ? const IsComingSoon()
+                              : Container()
+                          : const IsComingSoon()
+                      : actorCredits!.firstAirDate != ""
+                          ? DateTime.parse(actorCredits!.firstAirDate!)
+                                  .isAfter(DateTime.now())
+                              ? const IsComingSoon()
+                              : Container()
+                          : const IsComingSoon(),
                 ],
               );
+  }
+}
+
+class IsComingSoon extends StatelessWidget {
+  const IsComingSoon({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Positioned(
+      top: 5,
+      left: 5,
+      child: Container(
+        decoration: BoxDecoration(
+          color: kMainColor.withOpacity(0.9),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+          child: Text(
+            'UpComing',
+            style: Styles.styleText16,
+          ),
+        ),
+      ),
+    );
   }
 }
 

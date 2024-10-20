@@ -27,48 +27,13 @@ class CutsomPosterSaved extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return movieModel != null
-        ? InkWell(
-            onTap: () {
-              DetailsViewNavigatorModel detailsViewNavigatorModel =
-                  DetailsViewNavigatorModel(
-                      fromWhere: 'movie', id: movieModel!.id!);
-              GoRouter.of(context).push(AppRouter.kDetailsView,
-                  extra: detailsViewNavigatorModel);
-            },
-            child: SizedBox(
-              height: MediaQuery.of(context).size.height * 0.25,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(16),
-                child: AspectRatio(
-                  aspectRatio: 2.8 / 3.5,
-                  child: CachedNetworkImage(
-                    fit: BoxFit.cover,
-                    imageUrl: movieModel!.posterPath != null
-                        ? '$imageUrl${movieModel!.posterPath}'
-                        : "",
-                    errorWidget: (context, url, error) => Center(
-                      child: Text(
-                        textAlign: TextAlign.center,
-                        "${movieModel?.title}",
-                        style: Styles.styleText18.copyWith(color: Colors.white),
-                      ),
-                    ),
-                    placeholder: (context, url) => const Center(
-                      child: ImagePlaceholderSkeletonizer(
-                        height: 180,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          )
-        : tvShowsModel != null
-            ? InkWell(
+        ? Stack(
+            children: [
+              InkWell(
                 onTap: () {
                   DetailsViewNavigatorModel detailsViewNavigatorModel =
                       DetailsViewNavigatorModel(
-                          fromWhere: 'tv', id: tvShowsModel!.id!);
+                          fromWhere: 'movie', id: movieModel!.id!);
                   GoRouter.of(context).push(AppRouter.kDetailsView,
                       extra: detailsViewNavigatorModel);
                 },
@@ -80,13 +45,13 @@ class CutsomPosterSaved extends StatelessWidget {
                       aspectRatio: 2.8 / 3.5,
                       child: CachedNetworkImage(
                         fit: BoxFit.cover,
-                        imageUrl: tvShowsModel!.posterPath != null
-                            ? '$imageUrl${tvShowsModel!.posterPath}'
+                        imageUrl: movieModel!.posterPath != null
+                            ? '$imageUrl${movieModel!.posterPath}'
                             : "",
                         errorWidget: (context, url, error) => Center(
                           child: Text(
                             textAlign: TextAlign.center,
-                            "${tvShowsModel?.name}",
+                            "${movieModel?.title}",
                             style: Styles.styleText18
                                 .copyWith(color: Colors.white),
                           ),
@@ -100,14 +65,23 @@ class CutsomPosterSaved extends StatelessWidget {
                     ),
                   ),
                 ),
-              )
-            : actorCredits != null
-                ? InkWell(
+              ),
+              movieModel!.releaseDate != ''
+                  ? DateTime.parse(movieModel!.releaseDate!)
+                          .isAfter(DateTime.now())
+                      ? const IsComingSoon()
+                      : Container()
+                  : const IsComingSoon(),
+            ],
+          )
+        : tvShowsModel != null
+            ? Stack(
+                children: [
+                  InkWell(
                     onTap: () {
                       DetailsViewNavigatorModel detailsViewNavigatorModel =
                           DetailsViewNavigatorModel(
-                              fromWhere: actorCredits!.mediaType!,
-                              id: actorCredits!.id!);
+                              fromWhere: 'tv', id: tvShowsModel!.id!);
                       GoRouter.of(context).push(AppRouter.kDetailsView,
                           extra: detailsViewNavigatorModel);
                     },
@@ -119,13 +93,13 @@ class CutsomPosterSaved extends StatelessWidget {
                           aspectRatio: 2.8 / 3.5,
                           child: CachedNetworkImage(
                             fit: BoxFit.cover,
-                            imageUrl: actorCredits!.posterPath != null
-                                ? '$imageUrl${actorCredits!.posterPath}'
+                            imageUrl: tvShowsModel!.posterPath != null
+                                ? '$imageUrl${tvShowsModel!.posterPath}'
                                 : "",
                             errorWidget: (context, url, error) => Center(
                               child: Text(
                                 textAlign: TextAlign.center,
-                                "${actorCredits?.originalTitle}",
+                                "${tvShowsModel?.name}",
                                 style: Styles.styleText18
                                     .copyWith(color: Colors.white),
                               ),
@@ -139,6 +113,70 @@ class CutsomPosterSaved extends StatelessWidget {
                         ),
                       ),
                     ),
+                  ),
+                  tvShowsModel!.firstAirDate != ''
+                      ? DateTime.parse(tvShowsModel!.firstAirDate!)
+                              .isAfter(DateTime.now())
+                          ? const IsComingSoon()
+                          : Container()
+                      : const IsComingSoon(),
+                ],
+              )
+            : actorCredits != null
+                ? Stack(
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          DetailsViewNavigatorModel detailsViewNavigatorModel =
+                              DetailsViewNavigatorModel(
+                                  fromWhere: actorCredits!.mediaType!,
+                                  id: actorCredits!.id!);
+                          GoRouter.of(context).push(AppRouter.kDetailsView,
+                              extra: detailsViewNavigatorModel);
+                        },
+                        child: SizedBox(
+                          height: MediaQuery.of(context).size.height * 0.25,
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(16),
+                            child: AspectRatio(
+                              aspectRatio: 2.8 / 3.5,
+                              child: CachedNetworkImage(
+                                fit: BoxFit.cover,
+                                imageUrl: actorCredits!.posterPath != null
+                                    ? '$imageUrl${actorCredits!.posterPath}'
+                                    : "",
+                                errorWidget: (context, url, error) => Center(
+                                  child: Text(
+                                    textAlign: TextAlign.center,
+                                    "${actorCredits?.originalTitle}",
+                                    style: Styles.styleText18
+                                        .copyWith(color: Colors.white),
+                                  ),
+                                ),
+                                placeholder: (context, url) => const Center(
+                                  child: ImagePlaceholderSkeletonizer(
+                                    height: 180,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      actorCredits!.releaseDate != null
+                          ? actorCredits!.releaseDate != ""
+                              ? DateTime.parse(actorCredits!.releaseDate!)
+                                      .isAfter(DateTime.now())
+                                  ? const IsComingSoon()
+                                  : Container()
+                              : const IsComingSoon()
+                          : actorCredits!.firstAirDate != ""
+                              ? DateTime.parse(actorCredits!.firstAirDate!)
+                                      .isAfter(DateTime.now())
+                                  ? const IsComingSoon()
+                                  : Container()
+                              : const IsComingSoon(),
+                    ],
                   )
                 : InkWell(
                     onTap: () {

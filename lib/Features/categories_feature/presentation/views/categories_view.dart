@@ -6,6 +6,8 @@ class CategoriesView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(child: CategoriesViewBody());
+    return const SafeArea(
+      child: CategoriesViewBody(),
+    );
   }
 }

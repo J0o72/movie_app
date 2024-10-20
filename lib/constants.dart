@@ -57,39 +57,25 @@ List<CategoryItem> categoryItem = [
   CategoryItem(name: 'Korean', searchKey: 'ko'),
   CategoryItem(name: 'Indian', searchKey: 'hi|kn|ml|ta|te'),
   CategoryItem(
-      name: 'watch it',
-      image:
-          'https://www.cmosmagazine.com/wp-content/uploads/2022/03/WATCH-IT-VOD-Platform.jpg',
+      name: 'Watch It',
+      image: 'assets/images/WATCH-IT-VOD-Platform.jpg',
       searchKey: '4786'),
   CategoryItem(
-      name: 'warner bros',
-      image:
-          'https://wecima.movie/wp-content/uploads/2020/10/warner_bros_logo.jpg',
+      name: 'Warner Bros',
+      image: 'assets/images/warner_bros_logo.jpg',
       searchKey: '174'),
   CategoryItem(
-      name: 'prime video',
-      image:
-          'https://m.media-amazon.com/images/G/01/digital/video/acquisition/web_footer_logo._CB462908456_.png',
-      searchKey: '1024'),
+      name: 'Prime Video', image: 'assets/images/11499.jpg', searchKey: '1024'),
   CategoryItem(
-      name: 'hbo',
-      image: 'https://i.ytimg.com/vi/k9-O5j6qvZo/maxresdefault.jpg',
-      searchKey: '49'),
+      name: 'HBO', image: 'assets/images/maxresdefault.jpg', searchKey: '49'),
   CategoryItem(
-      name: 'netflix',
-      image:
-          'https://images.ctfassets.net/y2ske730sjqp/1aONibCke6niZhgPxuiilC/2c401b05a07288746ddf3bd3943fbc76/BrandAssets_Logos_01-Wordmark.jpg?w=940',
+      name: 'Netflix',
+      image: 'assets/images/BrandAssets_Logos_01-Wordmark.jpg',
       searchKey: '213'),
   CategoryItem(
-      name: 'marvel',
-      image:
-          'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKWvTBRoPPPWRqEhiP3PK_fvawaL2_3MI1Cg&s',
-      searchKey: '420'),
+      name: 'Marvel', image: 'assets/images/images.png', searchKey: '420'),
   CategoryItem(
-      name: 'lionsgate',
-      image:
-          'https://lh3.googleusercontent.com/proxy/2RfjsChxnqzEbOPgHvJZO2iHXqMlSPXj3aHmAp7LkHeUVEoV2_lQz-XmkPPQD3s0XSPJV_8NPvWE05UYW16438s90v4ZSFkP3n7ePrBfT6wT2Y8hn2Qiz2atZlzBxcxiJLTCEtZ5plPbwagZoEVkmggj4ORCrw41jGeBU3r1E32vzRsBWR25p5wmJ57dNyRZ10XWkPJ0MrDUsnIigDwNyINSYCbD2nRpA8-aJojx5w',
-      searchKey: '1632'),
+      name: 'Lionsgate', image: 'assets/images/unnamed.jpg', searchKey: '1632'),
 ];
 
 List<int> savedMovies = [];

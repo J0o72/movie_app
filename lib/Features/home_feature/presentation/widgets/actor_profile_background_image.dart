@@ -21,14 +21,18 @@ class ActorProfileBackgroundImage extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         child: CachedNetworkImage(
           fit: BoxFit.cover,
-          imageUrl: '$image${actorDetails.profilePath!}',
-          errorWidget: (context, url, error) => Center(
-            child: Text(
-              textAlign: TextAlign.center,
-              "${actorDetails.name}",
-              style: Styles.styleText18.copyWith(color: Colors.white),
-            ),
-          ),
+          imageUrl: actorDetails.profilePath != null
+              ? '$image${actorDetails.profilePath}'
+              : '',
+          errorWidget: (context, url, error) => actorDetails.profilePath != null
+              ? Center(
+                  child: Text(
+                    textAlign: TextAlign.center,
+                    "${actorDetails.name}",
+                    style: Styles.styleText18.copyWith(color: Colors.white),
+                  ),
+                )
+              : Container(),
           placeholder: (context, url) => const Center(
             child: ImagePlaceholderSkeletonizer(
               height: 180,

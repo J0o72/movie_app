@@ -60,7 +60,7 @@ class SearchResultGridViewSkeletonizer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-      padding: const EdgeInsets.only(left: 15),
+      padding: const EdgeInsets.symmetric(horizontal: 15),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 10,

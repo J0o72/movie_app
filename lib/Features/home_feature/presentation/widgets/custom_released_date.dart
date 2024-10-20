@@ -54,7 +54,7 @@ class CustomReleasedDate extends StatelessWidget {
                             )
                           : const Text('')
                       : actorCredits!.mediaType == 'tv'
-                          ? actorCredits!.releaseDate.toString() != ''
+                          ? actorCredits!.firstAirDate.toString() != ''
                               ? Text(
                                   '(${actorCredits!.firstAirDate.toString().substring(0, 4)})',
                                   style: Styles.styleText16,

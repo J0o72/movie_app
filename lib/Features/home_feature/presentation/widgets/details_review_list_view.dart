@@ -38,7 +38,6 @@ class DetailsReviewListView extends StatelessWidget {
             );
           }
         } else if (state is ReviewsFailure) {
-          print(state.errorMessage);
           return const CustomErrorFailure();
         } else {
           return const DetailsReviewsSkeletonizer();

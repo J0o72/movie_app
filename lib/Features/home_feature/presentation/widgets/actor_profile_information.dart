@@ -42,9 +42,11 @@ class ActorProfileInformation extends StatelessWidget {
               actorDetails!.name!,
               style: Styles.styleText26,
             ),
-            ActorProfileBirthLocation(
-              actorBirthLocation: actorDetails!.placeOfBirth!,
-            ),
+            actorDetails!.placeOfBirth != null
+                ? ActorProfileBirthLocation(
+                    actorBirthLocation: actorDetails!.placeOfBirth!,
+                  )
+                : Container(),
             const SizedBox(
               height: 20,
             ),
@@ -52,13 +54,15 @@ class ActorProfileInformation extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Container(
-              width: MediaQuery.of(context).size.width,
-              padding: const EdgeInsets.symmetric(horizontal: 16),
-              child: ReadMoreText(
-                text: actorDetails!.biography!,
-              ),
-            ),
+            actorDetails!.biography != ""
+                ? Container(
+                    width: MediaQuery.of(context).size.width,
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    child: ReadMoreText(
+                      text: actorDetails!.biography!,
+                    ),
+                  )
+                : const Text(''),
             CustomRow(
               leftText: "Known For",
               onTap: () {

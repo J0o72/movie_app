@@ -13,36 +13,37 @@ class CategoryRepoImpl implements CategoryRepo {
   @override
   Future<Either<Failure, List<CategoryModel>>> fetchCategoryByOriginalLanguage(
       {required String originalLanguage}) async {
-    List<CategoryModel> collections = [];
-
     try {
+      List<CategoryModel> collections = [];
       var dataTv = await apiService.get(
           endPoint:
               'discover/tv?first_air_date.gte=2024-01-01&include_adult=false&include_null_first_air_dates=false&page=1&sort_by=popularity.desc&with_original_language=$originalLanguage');
 
-      for (int i = 1;
-          i <= (dataTv['total_pages'] > 5) ? 5 : dataTv['total_pages'];
-          i++) {
+      for (int i = 1; i <= dataTv['total_pages']; i++) {
         var data = await apiService.get(
             endPoint:
                 'discover/tv?first_air_date.gte=2024-01-01&include_adult=false&include_null_first_air_dates=false&page=$i&sort_by=popularity.desc&with_original_language=$originalLanguage');
         for (var item in data['results']) {
           collections.add(CategoryModel.fromJson(item));
         }
+        if (i == 5) {
+          break;
+        }
       }
 
       var dataMovie = await apiService.get(
           endPoint:
-              'discover/movie?include_adult=false&include_video=false&page=3&primary_release_date.gte=2024-01-01&sort_by=popularity.desc&with_original_language=$originalLanguage');
+              'discover/movie?include_adult=false&include_video=false&page=1&primary_release_date.gte=2024-01-01&sort_by=popularity.desc&with_original_language=$originalLanguage');
 
-      for (int i = 1;
-          i <= (dataMovie['total_pages'] > 5) ? 5 : dataMovie['total_pages'];
-          i++) {
+      for (int i = 1; i <= dataMovie['total_pages']; i++) {
         var data = await apiService.get(
             endPoint:
-                'discover/movie?include_adult=false&include_video=false&page=3&primary_release_date.gte=2024-01-01&sort_by=popularity.desc&with_original_language=$originalLanguage');
+                'discover/movie?include_adult=false&include_video=false&page=$i&primary_release_date.gte=2024-01-01&sort_by=popularity.desc&with_original_language=$originalLanguage');
         for (var item in data['results']) {
           collections.add(CategoryModel.fromJson(item));
+        }
+        if (i == 5) {
+          break;
         }
       }
 
@@ -60,21 +61,22 @@ class CategoryRepoImpl implements CategoryRepo {
   @override
   Future<Either<Failure, List<CategoryModel>>> fetchCategoryByCompany(
       {required String companyID}) async {
-    List<CategoryModel> collections = [];
-
     try {
+      List<CategoryModel> collections = [];
+
       var dataTv = await apiService.get(
           endPoint:
               'discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_companies=$companyID');
 
-      for (int i = 1;
-          i <= (dataTv['total_pages'] >= 5) ? 5 : dataTv['total_pages'];
-          i++) {
+      for (int i = 1; i <= dataTv['total_pages']; i++) {
         var data = await apiService.get(
             endPoint:
                 'discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=$i&sort_by=popularity.desc&with_companies=$companyID');
         for (var item in data['results']) {
           collections.add(CategoryModel.fromJson(item));
+        }
+        if (i == 5) {
+          break;
         }
       }
 
@@ -82,14 +84,16 @@ class CategoryRepoImpl implements CategoryRepo {
           endPoint:
               'discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_companies=$companyID');
 
-      for (int i = 1;
-          i <= (dataMovie['total_pages'] >= 5) ? 5 : dataMovie['total_pages'];
-          i++) {
+      for (int i = 1; i <= dataMovie['total_pages']; i++) {
         var data = await apiService.get(
             endPoint:
                 'discover/movie?include_adult=false&include_video=false&language=en-US&page=$i&sort_by=popularity.desc&with_companies=$companyID');
         for (var item in data['results']) {
           collections.add(CategoryModel.fromJson(item));
+        }
+
+        if (i == 5) {
+          break;
         }
       }
 
@@ -107,21 +111,22 @@ class CategoryRepoImpl implements CategoryRepo {
   @override
   Future<Either<Failure, List<CategoryModel>>> fetchCategoryByNetwork(
       {required String networkID}) async {
-    List<CategoryModel> collections = [];
-
     try {
+      List<CategoryModel> collections = [];
       var dataTv = await apiService.get(
           endPoint:
               'discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_networks=$networkID');
 
-      for (int i = 1;
-          i <= (dataTv['total_pages'] >= 5) ? 5 : dataTv['total_pages'];
-          i++) {
+      for (int i = 1; i <= dataTv['total_pages']; i++) {
         var data = await apiService.get(
             endPoint:
                 'discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=$i&sort_by=popularity.desc&with_networks=$networkID');
         for (var item in data['results']) {
           collections.add(CategoryModel.fromJson(item));
+        }
+
+        if (i == 10) {
+          break;
         }
       }
 

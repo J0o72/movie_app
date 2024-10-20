@@ -76,7 +76,11 @@ class ReviewerRating extends StatelessWidget {
           width: 5,
         ),
         Text(
-          resultReviewsModel.authorDetails!.rating.toString().substring(0, 3),
+          resultReviewsModel.authorDetails!.rating != null
+              ? resultReviewsModel.authorDetails!.rating
+                  .toString()
+                  .substring(0, 3)
+              : '0',
           textAlign: TextAlign.end,
           style: Styles.styleText20,
         ),

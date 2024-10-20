@@ -218,7 +218,6 @@ class _DetailsViewBodyContentState extends State<DetailsViewBodyContent> {
             );
           }
         } else if (state is DetailsFailure) {
-          print('details cubit => ${state.errorMessage}');
           return const CustomErrorFailure();
         } else {
           return const Loading();

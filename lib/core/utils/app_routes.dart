@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:movie_app/Features/categories_feature/presentation/views/category_results_view.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/details_view_navigator_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/episode_model/episode_navigator.dart';
 import 'package:movie_app/Features/home_feature/presentation/actors_profile_view.dart';
@@ -25,6 +26,7 @@ abstract class AppRouter {
   static const kActorProfileView = '/actorView';
   static const kSeasonsView = '/seasonsView';
   static const kSeasonEpisodesView = '/seasonEpisodesView';
+  static const kCategoryResultsView = '/categoryResultsView';
 
   static final router = GoRouter(
     routes: [
@@ -90,6 +92,12 @@ abstract class AppRouter {
         path: kSeasonEpisodesView,
         builder: (context, state) => SeasonEpisodeView(
           episodeNavigatorHepler: state.extra as EpisodeNavigatorHepler,
+        ),
+      ),
+      GoRoute(
+        path: kCategoryResultsView,
+        builder: (context, state) => CategoryResultsView(
+          collectionModel: state.extra as CollectionModel,
         ),
       ),
     ],
