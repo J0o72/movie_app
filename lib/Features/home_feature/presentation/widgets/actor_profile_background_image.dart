@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/Features/home_feature/data/models/actor_model/actor_model.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/Skeletonizer/image_placeholder_skeletonizer.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class ActorProfileBackgroundImage extends StatelessWidget {

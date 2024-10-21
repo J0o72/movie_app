@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/reviews_cubit/reviews_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/Skeletonizer/details_reviews_skeletonizer.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/details_review_item.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/details_review_list_view.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
 
 class ReviewListView extends StatefulWidget {

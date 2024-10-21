@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/details_model/details_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/tv_shows_details/tv_shows_details_model.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/Skeletonizer/image_placeholder_skeletonizer.dart';
 import 'package:movie_app/core/utils/styles.dart';
 
 class DetailsCustomPoster extends StatelessWidget {

@@ -1,7 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:movie_app/Features/home_feature/data/models/episode_model/episode_model.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/Skeletonizer/image_placeholder_skeletonizer.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/season_episode_rating.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/season_episodes_image_title.dart';
 

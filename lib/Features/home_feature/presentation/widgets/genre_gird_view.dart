@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/genre_cubit/genre_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/Skeletonizer/home_genres_grid_view_skeletonizer.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/genre_item_genres.dart';
 import 'package:movie_app/constants.dart';
-import 'package:movie_app/core/utils/styles.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class GenreGirdViewGenres extends StatefulWidget {
   const GenreGirdViewGenres(
@@ -61,41 +60,6 @@ class _GenreGirdViewGenresState extends State<GenreGirdViewGenres> {
           }
         },
       ),
-    );
-  }
-}
-
-class HomeGenresGridViewSkeletonizer extends StatelessWidget {
-  const HomeGenresGridViewSkeletonizer({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GridView.builder(
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        mainAxisSpacing: 8,
-        crossAxisSpacing: 8,
-      ),
-      itemBuilder: (context, index) {
-        return Skeletonizer(
-          enabled: true,
-          child: Container(
-            width: 200,
-            height: 200,
-            decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.2),
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: const Center(
-              child: Text(
-                textAlign: TextAlign.center,
-                "Action",
-                style: Styles.styleText28,
-              ),
-            ),
-          ),
-        );
-      },
     );
   }
 }

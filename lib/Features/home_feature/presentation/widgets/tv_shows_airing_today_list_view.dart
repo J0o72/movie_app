@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/tv_shows_cubits/airing_today_tv_shows_cubit/airing_today_tv_shows_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/Skeletonizer/list_view_skeletonizer.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_item.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_list_view.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
 
 class AiringTodayListView extends StatelessWidget {

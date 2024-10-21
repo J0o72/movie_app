@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/details_view_navigator_model.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/popular_movie_cubit/popular_movie_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/Skeletonizer/slider_skeletonizer.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_carousel_slider.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_row.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/genres_list_view.dart';
@@ -12,7 +13,6 @@ import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing
 import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/collection_model.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class MovieTabContentView extends StatelessWidget {
   const MovieTabContentView({
@@ -98,32 +98,6 @@ class MovieTabContentView extends StatelessWidget {
         ),
         const UpComingListView(),
       ],
-    );
-  }
-}
-
-class SliderSkeletonizer extends StatelessWidget {
-  const SliderSkeletonizer({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Skeletonizer(
-      enabled: true,
-      child: Center(
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-          ),
-          width: MediaQuery.of(context).size.width * 0.8,
-          height: MediaQuery.of(context).size.height * 0.2,
-          child: Image.asset(
-            'assets/images/movie_welcome_screen_bg.jpg',
-            fit: BoxFit.cover,
-          ),
-        ),
-      ),
     );
   }
 }

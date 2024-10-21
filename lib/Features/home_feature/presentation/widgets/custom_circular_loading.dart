@@ -93,14 +93,3 @@ class CustomCircularLoading extends StatelessWidget {
         ));
   }
 }
-
-// class CustomCircularLoading extends StatelessWidget {
-//   const CustomCircularLoading({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const Center(
-//       child: CustomCircularLoading(),
-//     );
-//   }
-// }

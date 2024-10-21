@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:movie_app/Features/categories_feature/data/models/category_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/details_model/details_view_navigator_model.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/Skeletonizer/image_placeholder_skeletonizer.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/is_coming_soon.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/styles.dart';
 

@@ -6,7 +6,8 @@ import 'package:movie_app/Features/home_feature/data/models/details_model/detail
 import 'package:movie_app/Features/home_feature/data/models/favorite_model/favorite_model/fav_result.dart';
 import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_shows_model.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/Skeletonizer/image_placeholder_skeletonizer.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/is_coming_soon.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/styles.dart';
 

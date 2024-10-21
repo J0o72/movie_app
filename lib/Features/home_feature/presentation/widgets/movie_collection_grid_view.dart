@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/collections_cubit/collections_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/Skeletonizer/movie_collection_grid_view_skeletonizer.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster_saved.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class MovieCollectionGridView extends StatefulWidget {
   const MovieCollectionGridView({super.key, required this.fromWhere, this.id});
@@ -98,40 +98,6 @@ class _MovieCollectionGridViewState extends State<MovieCollectionGridView> {
         } else {
           return const MovieCollectionGridViewSkeletonizer();
         }
-      },
-    );
-  }
-}
-
-class MovieCollectionGridViewSkeletonizer extends StatelessWidget {
-  const MovieCollectionGridViewSkeletonizer({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return GridView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
-        childAspectRatio: 1.4 / 2,
-      ),
-      itemBuilder: (context, index) {
-        return Skeletonizer(
-          enabled: true,
-          child: SizedBox(
-            height: MediaQuery.of(context).size.height * 0.25,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: AspectRatio(
-                  aspectRatio: 2.8 / 3.5,
-                  child: Image.asset(
-                    'assets/images/movie_welcome_screen_bg.jpg',
-                    fit: BoxFit.cover,
-                  )),
-            ),
-          ),
-        );
       },
     );
   }

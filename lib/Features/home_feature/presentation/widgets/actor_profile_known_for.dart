@@ -1,42 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:movie_app/Features/home_feature/presentation/manager/movie_cubits/now_playing_movie_cubit/now_playing_movie_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/manager/actor_known_for_cubit/actor_known_for_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/Skeletonizer/list_view_skeletonizer.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/now_playing_item.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
 
-class NowPlayingListView extends StatefulWidget {
-  const NowPlayingListView({super.key, this.horizontalPadding = 20});
+class ActorProfileKnownFor extends StatelessWidget {
+  const ActorProfileKnownFor({super.key});
 
-  final double horizontalPadding;
-
-  @override
-  State<NowPlayingListView> createState() => _NowPlayingListViewState();
-}
-
-class _NowPlayingListViewState extends State<NowPlayingListView> {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NowPlayingMovieCubit, NowPlayingMovieState>(
+    return BlocBuilder<ActorKnownForCubit, ActorKnownForState>(
       builder: (context, state) {
-        if (state is NowPlayingMovieSuccess) {
+        if (state is ActorKnownForSuccess) {
           return SizedBox(
             height: 300,
             child: Padding(
-              padding:
-                  EdgeInsets.symmetric(horizontal: widget.horizontalPadding),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: state.nowPlayingMovies.length,
+                itemCount: state.actorCredits.length,
                 itemBuilder: (context, index) {
                   return NowPlayingItem(
-                    movieModel: state.nowPlayingMovies[index],
+                    actorCredits: state.actorCredits[index],
                   );
                 },
               ),
             ),
           );
-        } else if (state is NowPlayingMovieFailure) {
+        } else if (state is ActorKnownForFailure) {
           return const CustomErrorFailure();
         } else {
           return const ListViewSkeletonizer();

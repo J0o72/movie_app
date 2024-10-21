@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:movie_app/Features/home_feature/data/models/actor_model/actor_known_for.dart';
 import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
 import 'package:movie_app/Features/home_feature/data/models/tv_shows_model/tv_shows_model.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/Skeletonizer/image_placeholder_skeletonizer.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
-import 'package:movie_app/constants.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/is_coming_soon.dart';
 import 'package:movie_app/core/utils/styles.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class CustomPoster extends StatelessWidget {
   const CustomPoster({
@@ -174,62 +174,5 @@ class CustomPoster extends StatelessWidget {
                           : const IsComingSoon(),
                 ],
               );
-  }
-}
-
-class IsComingSoon extends StatelessWidget {
-  const IsComingSoon({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Positioned(
-      top: 5,
-      left: 5,
-      child: Container(
-        decoration: BoxDecoration(
-          color: kMainColor.withOpacity(0.9),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        child: const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-          child: Text(
-            'UpComing',
-            style: Styles.styleText16,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class ImagePlaceholderSkeletonizer extends StatelessWidget {
-  const ImagePlaceholderSkeletonizer({
-    super.key,
-    required this.height,
-  });
-
-  final double height;
-
-  @override
-  Widget build(BuildContext context) {
-    return Skeletonizer(
-      enabled: true,
-      child: SizedBox(
-        height: height,
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(16),
-          child: AspectRatio(
-            aspectRatio: 2.8 / 3.5,
-            child: Container(
-              width: 50,
-              height: 50,
-              color: Colors.white,
-            ),
-          ),
-        ),
-      ),
-    );
   }
 }

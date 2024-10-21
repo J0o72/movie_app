@@ -60,7 +60,6 @@ class SavedViewItemContent extends StatelessWidget {
                       : Container(),
                 ],
               ),
-              // CustomDurationTime(),
             ],
           )
         ],

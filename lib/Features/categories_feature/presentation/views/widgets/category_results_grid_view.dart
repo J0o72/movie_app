@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movie_app/Features/categories_feature/presentation/manager/category_cubit/category_cubit.dart';
 import 'package:movie_app/Features/categories_feature/presentation/views/widgets/category_results_image.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/movie_collection_Grid_view.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/Skeletonizer/movie_collection_grid_view_skeletonizer.dart';
 import 'package:movie_app/core/utils/collection_model.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
 

@@ -6,8 +6,8 @@ import 'package:movie_app/Features/home_feature/data/models/details_model/detail
 import 'package:movie_app/Features/home_feature/data/models/movie_model/movie_model.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/save_to_fav_cubit/save_to_fav_cubit.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/saved_cubit/saved_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/Skeletonizer/image_placeholder_skeletonizer.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/custom_bookmark_icon.dart';
-import 'package:movie_app/Features/home_feature/presentation/widgets/custom_poster.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/app_routes.dart';
 import 'package:movie_app/core/utils/shared_preference.dart';

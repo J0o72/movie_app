@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:movie_app/Features/home_feature/presentation/manager/actor_social_media_cubit/actor_social_media_cubit.dart';
+import 'package:movie_app/Features/home_feature/presentation/widgets/Skeletonizer/actor_profile_social_media_icons_skeletonizer.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/actor_profile_social_icon.dart';
 import 'package:movie_app/constants.dart';
 import 'package:movie_app/core/utils/functions/url_launcher.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
 import 'package:movie_app/core/widgets/show_snack_bar.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class ActorProfileSocialMediaIcons extends StatelessWidget {
   const ActorProfileSocialMediaIcons({
@@ -76,36 +76,6 @@ class ActorProfileSocialMediaIcons extends StatelessWidget {
           return const ActorProfileSocialMediaIconsSkeletonizer();
         }
       },
-    );
-  }
-}
-
-class ActorProfileSocialMediaIconsSkeletonizer extends StatelessWidget {
-  const ActorProfileSocialMediaIconsSkeletonizer({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Skeletonizer(
-      enabled: true,
-      child: Row(
-        children: [
-          Icon(
-            Icons.facebook,
-            color: Colors.blue,
-            size: 36,
-          ),
-          Icon(
-            FontAwesomeIcons.instagram,
-            color: Colors.red,
-            size: 36,
-          ),
-          Icon(
-            FontAwesomeIcons.xTwitter,
-            color: Colors.grey,
-            size: 36,
-          ),
-        ],
-      ),
     );
   }
 }
