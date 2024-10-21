@@ -23,7 +23,7 @@ class ApiService {
   }
 
   Future<void> post({required String endPoint, @required dynamic body}) async {
-    var response = await _dio.post(
+    await _dio.post(
       '$_baseURL$endPoint',
       data: body,
       options: Options(
@@ -34,6 +34,5 @@ class ApiService {
         },
       ),
     );
-    print('${response.data}');
   }
 }

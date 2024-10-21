@@ -4,7 +4,6 @@ import 'package:movie_app/Features/home_feature/presentation/manager/seasons_cub
 import 'package:movie_app/Features/home_feature/presentation/widgets/Skeletonizer/seasons_grid_view_skeletonizer.dart';
 import 'package:movie_app/Features/home_feature/presentation/widgets/season_custom_image.dart';
 import 'package:movie_app/core/widgets/custom_error_failure.dart';
-import 'package:skeletonizer/skeletonizer.dart';
 
 class SeasonsGridView extends StatelessWidget {
   const SeasonsGridView({super.key, required this.seriesId});
